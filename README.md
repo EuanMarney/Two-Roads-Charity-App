@@ -1,6 +1,6 @@
 # SH29 Main
 
-
+edited from temi's machine
 
 ## Getting started
 
