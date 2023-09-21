@@ -1,7 +1,7 @@
 # SH29 Main
 
 edited from temi's machine
-
+edited from patricks machine
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
