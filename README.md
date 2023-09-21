@@ -1,5 +1,6 @@
 # SH29 Main
 
+edited from maks's machine
 edited from temi's machine
 edited from patricks machine
 ## Getting started
