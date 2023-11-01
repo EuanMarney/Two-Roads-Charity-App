@@ -1,11 +1,11 @@
 # SH29 Main
 
 ### Installing and running React expo
-    to install you neeed to make sure that You have node JS installed 
+        to install you neeed to make sure that You have node JS installed 
         this can be done on mac with brew install node
         this can be done on windows by going to https://nodejs.org/en/download
 
-    Set up
+#### Set up
         Once node JS is installed you can check by running "node --version" in terminal / Command prompt
         Check to see that npm and npx have been installed alongside node by running "npm -v" and "npx -v"
 
@@ -20,7 +20,7 @@
         Then select the blank tempate:
         After this try to git pull and push to make sure that you are set up with everyone
     
-    Login:
+#### Login:
         to use the app you need to be logged into Expo I have created a twoRoads account
         First run "npx expo whoami" to see if you are already logged in - if nothing comes back then run the following
         "npx login"
@@ -30,7 +30,7 @@
         run "npx expo whoami" again to make sure that you are logged in as tworoadstest
         You need to be logged in to run the app
 
-    Running and Testing:
+#### Running and Testing:
         To run the application you can run "expo start" or "npx expo start" on mac
         this will create a local server (localhost) that anyone on your network can see
         Download the expo Go app from the Apple app store or google play store
