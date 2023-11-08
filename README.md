@@ -42,7 +42,16 @@
         you have to be on a local hotspot
 
 
-       
+### Setting up Branches:
+        Creating a branch, run: **git checkout -b "[branch-name]"**
+        -- This creates a branch on your LOCAL device, not on Gitlab --
+        -- Use 'git branch' to see if new branch has been made --
+        -- Star should be next to branch that you are actively on --
+        To push branch to gitlab so its no longer only local: **git push origin [branch-name]**
+        -- Always check if branch was made in Gitlab --
+        Add and Commit to branch like normal.
+        To push, do: git push --set-upstream origin [branch-name]
+        
 
 ## Getting started
 
