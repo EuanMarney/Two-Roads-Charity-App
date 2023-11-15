@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import Layout from "../components/Layout";
 
 const HomeScreen = ({ navigation }) => {
@@ -7,44 +7,70 @@ const HomeScreen = ({ navigation }) => {
     navigation.navigate(screenName);
   };
 
+  const buttons = [
+    { title: "Gratitude Diary", color: "#634AFA" },
+    { title: "Acts of Kindness", color: "#4A89FA" },
+    { title: "Hedonic Moments", color: "#BB4AFA" },
+    { title: "Acts of Connection", color: "#FABB4A" },
+    { title: "Daily Mindfulness", color: "#82ED46" },
+  ];
+
   return (
     <Layout>
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerText}>Daily Practices</Text>
+      </View>
       <View style={styles.buttonContainer}>
-        <Button
-          title="Gratitude Diary"
-          onPress={() => handlePress("Gratitude Diary")}
-          color="#634AFA"
-        />
-        <Button
-          title="Daily Acts of Kindness"
-          onPress={() => handlePress("Acts of Kindness")}
-          color="#4A89FA"
-        />
-        <Button
-          title="Hedonic Moments"
-          onPress={() => handlePress("Hedonic Moments")}
-          color="#BB4AFA"
-        />
-        <Button
-          title="Acts of Connection"
-          onPress={() => handlePress("Acts of Connection")}
-          color="#FABB4A"
-        />
-        <Button
-          title="Daily Mindfulness"
-          onPress={() => handlePress("Daily Mindfulness")}
-          color="#82ED46"
-        />
+        {buttons.map((button, index) => (
+          <TouchableOpacity
+            key={index}
+            style={[styles.customButton, { backgroundColor: button.color }]}
+            onPress={() => handlePress(button.title)}
+          >
+            <Text style={styles.buttonText}>{button.title}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
     </Layout>
   );
 };
 
 const styles = StyleSheet.create({
+  headerContainer: {
+    alignItems: "center",
+    marginBottom: -30, // Adjust the marginBottom for padding
+  },
+  headerText: {
+    marginTop: 20,
+    color: "#000",
+    fontFamily: "Inter",
+    fontSize: 24,
+    fontStyle: "normal",
+    fontWeight: "400",
+    lineHeight: 30, // Set a numeric value for lineHeight
+  },
   buttonContainer: {
     flex: 1,
-    justifyContent: "space-around",
-    padding: 10,
+    justifyContent: "center",
+    paddingHorizontal: 22,
+    marginTop: 10, // Adjust the marginTop to bring buttons closer to text
+  },
+  customButton: {
+    marginBottom: 20,
+    borderRadius: 20,
+    paddingVertical: 32,
+    paddingHorizontal: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 16,
   },
 });
 
