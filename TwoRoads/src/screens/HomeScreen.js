@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: "400",
     lineHeight: 30, // Set a numeric value for lineHeight
+    paddingBottom: 35,
   },
   buttonContainer: {
     flex: 1,

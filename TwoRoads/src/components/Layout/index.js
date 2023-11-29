@@ -1,16 +1,20 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView, ScrollView, StatusBar } from "react-native";
 
 import Header from "../Header";
 import Footer from "../Footer";
 
 const Layout = ({ children }) => {
   return (
-    <View style={styles.container}>
-      <Header />
-      <View style={styles.content}>{children}</View>
-      <Footer />
-    </View>
+
+      <View style={styles.container}>
+        <Header />
+          <ScrollView>
+          <View style={styles.content}>{children}</View>
+          </ScrollView>
+        <Footer />
+      </View>
+
   );
 };
 

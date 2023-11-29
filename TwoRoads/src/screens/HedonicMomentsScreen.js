@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, KeyboardAvoidingView, Keyboard, Platform, ScrollView, Touch } from "react-native";
 import Layout from "../components/Layout";
 import SubmitButton from "../components/interactiveComps/SubmitButton";
 import TextBox from "../components/interactiveComps/TextBox";
@@ -7,44 +7,61 @@ import BLeaveTextBox from "../components/interactiveComps/ButtonToLeaveTextBox";
 
 const HedonicMomentsScreen = () => {
   return (
-    <Layout>
-      <Text style={styles.headerText}>This is the Hedonic Moments page</Text>
+    <KeyboardAvoidingView 
+      style={styles.textBoxContainer}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
+    >
+      <Layout>
+        <ScrollView>
+          <Text style={styles.headerText}>This is the Hedonic Moments page</Text>
+          {/* Adding TextBox component and BLeaveTextBox */}
+          <View style={styles.rowContainer}>
+            <View style={styles.textBoxContainer}>
+              <Text style={styles.paddedText}>First Hedonic moment</Text>
+              <TextBox />
+            </View>
+            <View style={styles.buttonContainer}>
+              <BLeaveTextBox />
+            </View>
+          </View>
 
-      {/* Adding TextBox component and BLeaveTextBox */}
-      <View style={styles.rowContainer}>
-        <View style={styles.textBoxContainer}>
-          <Text style={styles.paddedText}>First Hedonic moment</Text>
-          <TextBox />
-        </View>
-        <View style={styles.buttonContainer}>
-          <BLeaveTextBox />
-        </View>
-      </View>
+          <View style={styles.rowContainer}>
+            <View style={styles.textBoxContainer}>
+              <Text style={styles.paddedText}>Second Hedonic moment</Text>
+              <TextBox />
+            </View>
+            <View style={styles.buttonContainer}>
+              <BLeaveTextBox />
+            </View>
+          </View>
+          
+          <View style={styles.rowContainer}>
+            <View style={styles.textBoxContainer}>
+              <Text style={styles.paddedText}>Third Hedonic moment</Text>
+              <TextBox />
+            </View>
+            <View style={styles.buttonContainer}>
+              <BLeaveTextBox />
+            </View>
+          </View>
 
-      <View style={styles.rowContainer}>
-        <View style={styles.textBoxContainer}>
-          <Text style={styles.paddedText}>First Hedonic moment</Text>
-          <TextBox />
-        </View>
-        <View style={styles.buttonContainer}>
-          <BLeaveTextBox />
-        </View>
-      </View>
-      
-      <View style={styles.rowContainer}>
-        <View style={styles.textBoxContainer}>
-          <Text style={styles.paddedText}>First Hedonic moment</Text>
-          <TextBox />
-        </View>
-        <View style={styles.buttonContainer}>
-          <BLeaveTextBox />
-        </View>
-      </View>
+          <View style={styles.rowContainer}>
+            <View style={styles.textBoxContainer}>
+              <Text style={styles.paddedText}>Fourth Hedonic moment</Text>
+              <TextBox />
+            </View>
+            <View style={styles.buttonContainer}>
+              <BLeaveTextBox />
+            </View>
+          </View>
 
-      <View style={styles.buttonContainer}>
-        <SubmitButton onPress={() => console.log("Button pressed")} title="Submit" />
-      </View>
-    </Layout>
+          <View style={styles.buttonContainer}>
+            <SubmitButton onPress={() => console.log("Button pressed")} title="Submit" />
+          </View>
+        </ScrollView>
+      </Layout>
+    </KeyboardAvoidingView>
   );
 };
 
