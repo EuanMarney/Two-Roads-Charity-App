@@ -2,6 +2,7 @@ import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import Layout from "../components/Layout";
 
+
 const HomeScreen = ({ navigation }) => {
   const handlePress = (screenName) => {
     navigation.navigate(screenName);
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   headerText: {
     marginTop: 20,
     color: "#000",
-    fontFamily: "Inter",
+    fontFamily: "Arial",
     fontSize: 24,
     fontStyle: "normal",
     fontWeight: "400",

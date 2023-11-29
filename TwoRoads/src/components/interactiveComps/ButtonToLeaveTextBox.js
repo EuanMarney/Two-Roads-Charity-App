@@ -1,18 +1,22 @@
 import React, { useRef } from 'react';
-import{ View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import{ View, StyleSheet, TouchableOpacity, Text, Keyboard } from 'react-native';
 
 const BLeaveTextBox = () => {
-  const textInputRef = useRef(null);
+  // const textInputRef = useRef(null);
 
-  const handleExitTextInput = () => {
-    if (textInputRef.current) {
-      textInputRef.current.blur(); // Blur the TextInput to remove focus
-    }
-  };
+  const dismissedKeyboard = () => {
+    Keyboard.dismiss();
+  }
+
+  // const handleExitTextInput = () => {
+  //   if (textInputRef.current) {
+  //     textInputRef.current.blur(); // Blur the TextInput to remove focus
+  //   }
+  // };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={handleExitTextInput} style={styles.button}>
+      <TouchableOpacity onPress={dismissedKeyboard} style={styles.button}>
         <Text style={styles.buttonText}>Exit</Text>
       </TouchableOpacity>
     </View>

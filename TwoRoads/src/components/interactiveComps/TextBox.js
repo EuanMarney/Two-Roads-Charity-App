@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 const TextBox = () => {
   const [text, setText] = useState('');
