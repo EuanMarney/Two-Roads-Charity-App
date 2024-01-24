@@ -14,7 +14,7 @@ const Footer = () => {
 
 const styles = StyleSheet.create({
   footerContainer: {
-    height: 60,
+    height: "8%",
     backgroundColor: "#FFF",
     borderTopWidth: 1,
     borderTopColor: "#EAEAEA",
