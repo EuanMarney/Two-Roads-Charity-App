@@ -4,16 +4,15 @@ import { View, StyleSheet, KeyboardAvoidingView, ScrollView, StatusBar } from "r
 import Header from "../Header";
 import Footer from "../Footer";
 
-const Layout = ({ children }) => {
+const HomeLayout = ({ children }) => {
   return (
-
       <View style={styles.container}>
+        <Header />
           <ScrollView>
           <View style={styles.content}>{children}</View>
           </ScrollView>
         <Footer />
       </View>
-
   );
 };
 
@@ -27,4 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Layout;
+export default HomeLayout;

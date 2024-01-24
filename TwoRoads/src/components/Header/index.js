@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import Feather from 'react-native-vector-icons/Feather';
 
 const Header = ({ title }) => {
   const currentDate = new Date();
@@ -9,7 +10,12 @@ const Header = ({ title }) => {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.blueRectangle}>
-        <Text style={styles.headerText}>Mind Yourself</Text>
+
+        <View style={{flexDirection: "row"}}>
+          <Text style={styles.headerText}>Mind Yourself</Text>
+          <Feather name="settings" style={styles.icon} />
+        </View>
+
         <View style={styles.inlineContainer}>
           <Text style={styles.subHeaderText}>NAME</Text>
           <View style={styles.dateContainer}>
@@ -26,13 +32,13 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "column",
     backgroundColor: "#FFF",
-    height: 90, // Increased height for headerContainer
+    height: "15%", // Increased height for headerContainer
   },
   blueRectangle: {
     backgroundColor: "#0395CC",
-    height: 90, // Increased height for blueRectangle
+    height: "100%", // Increased height for blueRectangle
     justifyContent: "flex-end", // Align content to the end (bottom)
-    padding: 10, // Add padding for better spacing
+    padding: "3.5%", // Add padding for better spacing
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -52,6 +58,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-end", // Align the items to the bottom of the container
   },
+
   subHeaderText: {
     fontSize: 16,
     fontWeight: "bold",
@@ -73,6 +80,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     padding: 0,
+  },
+  icon: {
+    marginLeft: "auto",
+    fontSize: 25, 
   },
 });
 

@@ -21,9 +21,9 @@ const HedonicMomentsScreen = () => {
               <Text style={styles.paddedText}>First Hedonic moment</Text>
               <TextBox />
             </View>
-            <View style={styles.buttonContainer}>
+            {/* <View style={styles.buttonContainer}>
               <BLeaveTextBox />
-            </View>
+            </View> */}
           </View>
 
           <View style={styles.rowContainer}>
@@ -31,9 +31,9 @@ const HedonicMomentsScreen = () => {
               <Text style={styles.paddedText}>Second Hedonic moment</Text>
               <TextBox />
             </View>
-            <View style={styles.buttonContainer}>
+            {/* <View style={styles.buttonContainer}>
               <BLeaveTextBox />
-            </View>
+            </View> */}
           </View>
           
           <View style={styles.rowContainer}>
@@ -41,9 +41,9 @@ const HedonicMomentsScreen = () => {
               <Text style={styles.paddedText}>Third Hedonic moment</Text>
               <TextBox />
             </View>
-            <View style={styles.buttonContainer}>
+            {/* <View style={styles.buttonContainer}>
               <BLeaveTextBox />
-            </View>
+            </View> */}
           </View>
 
           <View style={styles.rowContainer}>
@@ -51,14 +51,15 @@ const HedonicMomentsScreen = () => {
               <Text style={styles.paddedText}>Fourth Hedonic moment</Text>
               <TextBox />
             </View>
-            <View style={styles.buttonContainer}>
+            {/* <View style={styles.buttonContainer}>
               <BLeaveTextBox />
-            </View>
+            </View> */}
           </View>
 
           <View style={styles.buttonContainer}>
             <SubmitButton onPress={() => console.log("Button pressed")} title="Submit" />
           </View>
+
         </ScrollView>
       </Layout>
     </KeyboardAvoidingView>
@@ -69,12 +70,14 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 20,
     fontWeight: "bold",
+    paddingLeft: "3%",
+    paddingTop: "5%",
+    paddingBottom: "5%"
   },
   paddedText: {
-    paddingLeft: 20,
-    paddingRight: 30,
-    paddingTop: 15,
-    paddingBottom: 5,
+    paddingLeft: "3%",
+    paddingTop: "2%",
+    paddingBottom: "1%",
   },
   rowContainer: {
     flexDirection: "row", // Arrange components horizontally
@@ -86,7 +89,9 @@ const styles = StyleSheet.create({
     flex: 1, // Take remaining space in the row
   },
   buttonContainer: {
-    marginLeft: 10, // Adjust margin as needed
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingBottom: "5%",
   },
 });
 

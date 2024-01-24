@@ -12,13 +12,14 @@ const SubmitButton = ({ title, onPress }) => {
 
 const styles = StyleSheet.create({
   button: {
-    width: 174,
-    height: 26,
+    width: "50%",
+    height: 35,
     backgroundColor: '#BB4AFA', // Change this color to match your design
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,
   },
+  
   text: {
     color: '#FFF',
     fontSize: 14,

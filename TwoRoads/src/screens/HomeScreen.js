@@ -1,6 +1,7 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import Layout from "../components/Layout";
+import HomeLayout from "../components/Layout/HomeLayout";
+import Header from "../components/Header";
 
 
 const HomeScreen = ({ navigation }) => {
@@ -14,10 +15,12 @@ const HomeScreen = ({ navigation }) => {
     { title: "Hedonic Moments", color: "#BB4AFA" },
     { title: "Acts of Connection", color: "#FABB4A" },
     { title: "Daily Mindfulness", color: "#82ED46" },
+    { title: "LoginScreen", color: "#664AFA" },
+    { title: "RegisterScreen", color: "#664AFA" },
   ];
 
   return (
-    <Layout>
+    <HomeLayout>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Daily Practices</Text>
       </View>
@@ -32,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         ))}
       </View>
-    </Layout>
+    </HomeLayout>
   );
 };
 
