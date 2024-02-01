@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Svg, Path } from 'react-native-svg'; // For custom icons
-import { Feather } from '@expo/vector-icons';
-import * as SecureStore from 'expo-secure-store'
-import LoginHeader from '../../components/Header/LoginHeader';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Platform,
+} from "react-native";
+import { Svg, Path } from "react-native-svg"; // For custom icons
+import { Feather } from "@expo/vector-icons";
+import * as SecureStore from "expo-secure-store";
+import LoginHeader from "../../components/Header/LoginHeader";
 
 const PinScreenReg1 = ({ navigation }) => {
-  const [pin, setPin] = useState('');
+  const [pin, setPin] = useState("");
 
   const savePin = async (pin) => {
-    await SecureStore.setItemAsync('pin', pin);
-    console.log("here")
-    console.log(await SecureStore.getItemAsync('pin'))
-  }
+    await SecureStore.setItemAsync("pin", pin);
+    console.log("here");
+    console.log(await SecureStore.getItemAsync("pin"));
+  };
 
   const handlePress = (num) => {
     if (pin.length < 6) {
@@ -26,25 +32,19 @@ const PinScreenReg1 = ({ navigation }) => {
 
   const handleSubmit = () => {
     if (pin.length === 6) {
-      savePin(pin)
-      navigation.navigate('PinScreenReg2');
+      savePin(pin);
+      navigation.navigate("PinScreenReg2");
     } else {
-      alert('Please enter a 6-digit pin');
+      alert("Please enter a 6-digit pin");
     }
-
   };
 
   const storePinV1 = async (pin) => {
     try {
       //await secur.setItem('@username', username)
-    }
+    } catch {}
+  };
 
-    catch
-    {
-
-    }
-  } 
-  
   const renderCircles = () => {
     const circles = [];
     for (let i = 0; i < 6; i++) {
@@ -53,9 +53,9 @@ const PinScreenReg1 = ({ navigation }) => {
           key={i}
           style={[
             styles.circle,
-            { backgroundColor: i < pin.length ? 'black' : 'transparent' },
+            { backgroundColor: i < pin.length ? "black" : "transparent" },
           ]}
-        />
+        />,
       );
     }
     return circles;
@@ -63,12 +63,11 @@ const PinScreenReg1 = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-
       <LoginHeader />
 
       <Text style={styles.title}>Enter your 6-digit passnumber</Text>
       <View style={styles.circleContainer}>{renderCircles()}</View>
-      
+
       <View style={styles.numbersContainer}>
         {Array.from({ length: 9 }, (_, i) => i + 1).map((num) => (
           <TouchableOpacity
@@ -81,13 +80,13 @@ const PinScreenReg1 = ({ navigation }) => {
         ))}
 
         <TouchableOpacity style={styles.icon} onPress={() => handleDelete()}>
-            <Feather name="delete" size={30} color="black" />
+          <Feather name="delete" size={30} color="black" />
         </TouchableOpacity>
 
         <TouchableOpacity
-          key='0'
+          key="0"
           style={[styles.number, { marginLeft: 30 }]}
-          onPress={() => handlePress('0')}
+          onPress={() => handlePress("0")}
         >
           <Text style={styles.numberText}>0</Text>
         </TouchableOpacity>
@@ -95,8 +94,10 @@ const PinScreenReg1 = ({ navigation }) => {
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => console.log('Implement password recovery')}>
-      <Text style={styles.forgotText}>I can't log in</Text>
+      <TouchableOpacity
+        onPress={() => console.log("Implement password recovery")}
+      >
+        <Text style={styles.forgotText}>I can't log in</Text>
       </TouchableOpacity>
     </View>
   );
@@ -105,9 +106,9 @@ const PinScreenReg1 = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
   },
   title: {
     fontSize: 18,
@@ -115,61 +116,72 @@ const styles = StyleSheet.create({
     marginTop: "5%",
   },
   circleContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: "5%",
   },
   circle: {
     width: "5%",
     height: 20,
-    borderRadius: "100%",
+    // Android Border Issue Fix
+    ...Platform.select({
+      ios: {
+        borderRadius: "100%",
+      },
+      android: {
+        borderRadius: 100,
+      },
+      default: {
+        borderRadius: 100,
+      },
+    }),
     marginHorizontal: 5,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: "black",
   },
   numbersContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
     width: 300,
-},
-number: {
+  },
+  number: {
     width: 75,
     height: 75,
     borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     margin: 12,
     borderWidth: 1,
-    borderColor: 'black',
-},
-numberText: {
+    borderColor: "black",
+  },
+  numberText: {
     fontSize: 24,
-},
-icon: {
+  },
+  icon: {
     marginLeft: 15,
     width: 60,
     height: 75,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     margin: 5,
-},
-forgotText: {
+  },
+  forgotText: {
     marginTop: 20,
-    color: 'blue',
-},
-submitButtonText: {
+    color: "blue",
+  },
+  submitButtonText: {
     marginTop: 20,
-    color: 'black',
+    color: "black",
     fontSize: 18,
-},
-button: {
-    backgroundColor: '#007bff',
+  },
+  button: {
+    backgroundColor: "#007bff",
     padding: 15,
     borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     margin: 10,
-},
+  },
 });
 
 export default PinScreenReg1;
