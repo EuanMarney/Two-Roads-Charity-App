@@ -4,15 +4,15 @@ import { View, StyleSheet, KeyboardAvoidingView, ScrollView, StatusBar } from "r
 import Header from "../Header";
 import Footer from "../Footer";
 
-const HomeLayout = ({ children }) => {
+const HomeLayout = ({ children, navigation }) => {
   return (
-      <View style={styles.container}>
-        <Header />
-          <ScrollView>
-          <View style={styles.content}>{children}</View>
-          </ScrollView>
-        <Footer />
-      </View>
+    <View style={styles.container}>
+      <Header navigation={navigation} />
+      <ScrollView>
+        <View style={styles.content}>{children}</View>
+      </ScrollView>
+      <Footer />
+    </View>
   );
 };
 
