@@ -48,13 +48,12 @@ export const createTables = (db) => {
       thirdWhy TEXT
     );
   `;
-    
 
   db.transaction(
     (tx) => {
       tx.executeSql(hedonicMomentsQuery);
       tx.executeSql(userPreferencesQuery);
-      tx.executteSql(actsOfKindness);
+      tx.executeSql(actsOfKindness);
     },
     (error) => {
       console.error("Error creating tables: ", error);
