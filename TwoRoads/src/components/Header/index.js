@@ -1,19 +1,24 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Feather from 'react-native-vector-icons/Feather';
 
-const Header = ({ title }) => {
+const Header = ({ title, navigation }) => {
   const currentDate = new Date();
   const options = { weekday: "long", month: "short", day: "numeric" };
   const formattedDate = currentDate.toLocaleDateString("en-US", options);
 
+  const handleSettingsPress = () => {
+    navigation.navigate('Settings');
+  };
+
   return (
     <View style={styles.headerContainer}>
       <View style={styles.blueRectangle}>
-
-        <View style={{flexDirection: "row"}}>
+        <View style={styles.headerWithIconContainer}>
           <Text style={styles.headerText}>Mind Yourself</Text>
-          <Feather name="settings" style={styles.icon} />
+          <TouchableOpacity onPress={handleSettingsPress}>
+            <Feather name="settings" style={styles.icon} />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.inlineContainer}>
@@ -32,13 +37,13 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "column",
     backgroundColor: "#FFF",
-    height: "15%", // Increased height for headerContainer
+    height: "15%",
   },
   blueRectangle: {
     backgroundColor: "#0395CC",
-    height: "100%", // Increased height for blueRectangle
-    justifyContent: "flex-end", // Align content to the end (bottom)
-    padding: "3.5%", // Add padding for better spacing
+    height: "100%",
+    justifyContent: "flex-end",
+    padding: "3.5%",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -46,34 +51,38 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5, // For Android shadow
+    elevation: 5,
+  },
+  headerWithIconContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   headerText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#FFF", // Set text color to white
-    marginBottom: 0.5, // Adjusted bottom margin for "Mind Yourself"
+    color: "#FFF",
+    marginBottom: 0.5,
   },
   inlineContainer: {
     flexDirection: "row",
-    alignItems: "flex-end", // Align the items to the bottom of the container
+    alignItems: "flex-end",
   },
-
   subHeaderText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#FFF", // Set text color to white
-    marginTop: 0.5, // Further reduced margin between "Mind Yourself" and "NAME"
-    marginBottom: 0.5, // Adjusted bottom margin for "NAME"
+    color: "#FFF",
+    marginTop: 0.5,
+    marginBottom: 0.5,
   },
   dateContainer: {
-    flex: 1, // Take up the remaining space to push the date to the right
-    alignItems: "flex-end", // Align the date to the right
+    flex: 1,
+    alignItems: "flex-end",
   },
   dateText: {
     fontSize: 12,
     fontWeight: "normal",
-    color: "#FFF", // Set text color to white
+    color: "#FFF",
   },
   headerTitle: {
     fontSize: 20,
@@ -82,8 +91,8 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   icon: {
-    marginLeft: "auto",
-    fontSize: 25, 
+    fontSize: 25,
+    color: "#FFF",
   },
 });
 

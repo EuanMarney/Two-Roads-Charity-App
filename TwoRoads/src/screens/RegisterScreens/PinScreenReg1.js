@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Svg, Path } from 'react-native-svg'; // For custom icons
 import { Feather } from '@expo/vector-icons';
 import * as SecureStore from 'expo-secure-store'
+import LoginHeader from '../../components/Header/LoginHeader';
 
 const PinScreenReg1 = ({ navigation }) => {
   const [pin, setPin] = useState('');
@@ -62,8 +63,12 @@ const PinScreenReg1 = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+
+      <LoginHeader />
+
       <Text style={styles.title}>Enter your 6-digit passnumber</Text>
       <View style={styles.circleContainer}>{renderCircles()}</View>
+      
       <View style={styles.numbersContainer}>
         {Array.from({ length: 9 }, (_, i) => i + 1).map((num) => (
           <TouchableOpacity
@@ -102,21 +107,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    backgroundColor: '#FFFFFF',
   },
   title: {
     fontSize: 18,
-    marginBottom: 40,
-    marginTop: 20,
+    marginBottom: "8%",
+    marginTop: "5%",
   },
   circleContainer: {
     flexDirection: 'row',
-    marginBottom: 30,
+    marginBottom: "5%",
   },
   circle: {
-    width: 20,
+    width: "5%",
     height: 20,
-    borderRadius: 10,
+    borderRadius: "100%",
     marginHorizontal: 5,
     borderWidth: 1,
     borderColor: 'black',

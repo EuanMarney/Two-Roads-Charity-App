@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
   ];
 
   return (
-    <HomeLayout>
+    <HomeLayout navigation={navigation}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Daily Practices</Text>
       </View>
