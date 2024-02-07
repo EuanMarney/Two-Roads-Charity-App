@@ -2,16 +2,23 @@ import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet, ScrollView } from "react-native";
 import Layout from "../components/Layout";
 
+const NOTIFCATIONS_BUTTON_TEXT = "Notifications Settings";
+
 const SettingsScreen = ({ navigation }) => {
   const handlePress = (screenName) => {
-    // logic to handle navigation goes here
+    if (screenName == NOTIFCATIONS_BUTTON_TEXT) {
+      navigation.navigate(NOTIFCATIONS_BUTTON_TEXT);
+    }
+    else {
+      console.log(screenName + " is unimplemented");
+    }
   };
 
   // Assigning approximate color codes from the screenshot
   const buttons = [
     { title: "View Personal Information", color: "#FF6B6B" },
     { title: "Change Passcode", color: "#FF6B6B" },
-    { title: "Enable Notifications", color: "#FF6B6B" },
+    { title: NOTIFCATIONS_BUTTON_TEXT, color: "#FF6B6B" },
     { title: "Reset Data", color: "#D32F2F" },
   ];
 
