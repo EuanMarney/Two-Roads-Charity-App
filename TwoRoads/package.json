@@ -33,7 +33,9 @@
     "react-native-screens": "~3.22.0",
     "react-native-svg": "^14.1.0",
     "react-native-vector-icons": "^10.0.3",
-    "react-navigation": "^5.0.0"
+    "react-navigation": "^5.0.0",
+    "expo-checkbox": "~2.4.0",
+    "@react-native-picker/picker": "2.4.10"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
