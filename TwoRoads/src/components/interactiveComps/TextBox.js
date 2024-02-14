@@ -1,16 +1,16 @@
 import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 
-const TextBox = ({ onChangeText, value, placeholder }) => {
+// TextBox.js - Add a style prop for custom styles
+const TextBox = ({ onChangeText, value, placeholder, textInputStyle }) => {
   return (
     <View style={styles.container}>
       <TextInput
-        style={styles.textInput}
+        style={[styles.textInput, textInputStyle]} // Merge default style with custom style
         onChangeText={onChangeText}
         multiline={true}
         value={value}
         placeholder={placeholder || "Type here..."}
-        // You can adjust other TextInput props as needed
       />
     </View>
   );
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   textInput: {
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: "#BB4AFA",
     borderRadius: 5,
     padding: 10,
