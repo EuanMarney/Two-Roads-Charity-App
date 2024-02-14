@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, Button } from 'react-native';
+import { useEffect, useState } from 'react';
+import { View, StyleSheet, Button } from 'react-native';
 import { Audio } from 'expo-av';
-import Layout from '../components/Layout';
 
-const DailyMindfulnessScreen = () => {
+export default function App() {
   const [sound, setSound] = useState();
 
   async function playSound() {
     console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(
-      require('../assets/audio/Mindfulness The Chocolate Meditation.mp3')
+      require('../assets/audio/ChocolateMeditation.mp3')
     );
     setSound(sound);
 
@@ -27,11 +26,18 @@ const DailyMindfulnessScreen = () => {
   }, [sound]);
 
   return (
-    <Layout>
-      <Text>This is the Daily Mindfulness page</Text>
+    <View style={styles.container}>
       <Button title="Play Sound" onPress={playSound} />
-    </Layout>
+    </View>
   );
-};
+}
 
-export default DailyMindfulnessScreen;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  
+});
