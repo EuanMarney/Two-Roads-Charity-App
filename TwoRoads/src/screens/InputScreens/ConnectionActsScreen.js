@@ -1,21 +1,56 @@
 import React, { useState } from "react";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import Layout from "../../components/Layout";
 import TextBox from "../../components/interactiveComps/TextBox";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
+import { connectToDatabase } from "../../database/db";
+import { insertConnectionAct, getAllConnectionActs } from "../../database/connectionActs";
+import { useNavigation } from "@react-navigation/native";
 
 const ConnectionActsScreen = () => {
   const [firstConnectionAct, setFirstConnectionAct] = useState("");
   const [secondConnectionAct, setSecondConnectionAct] = useState("");
   const [thirdConnectionAct, setThirdConnectionAct] = useState("");
+
+  const navigation = useNavigation();
+
+  const handleSubmit = async () => {
+    try {
+      const db = await connectToDatabase();
+
+      const today = new Date();
+      const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+
+      await insertConnectionAct(
+        db,
+        firstConnectionAct,
+        secondConnectionAct,
+        thirdConnectionAct,
+        formattedDate,
+        () => console.log("Connection act entry added successfully."),
+        (error) => console.error("Error adding connection act: ", error)
+      );
+
+
+      getAllConnectionActs(
+        db,
+        (acts) => {
+          console.log("Retrieved connection acts:", acts);
+        },
+        (error) => {
+          console.error("Error retrieving connection acts: ", error);
+        },
+      );
+
+      setFirstConnectionAct("");
+      setSecondConnectionAct("");
+      setThirdConnectionAct("");
+
+      navigation.navigate("Home");
+    } catch (error) {
+      console.error("Error handling connection acts: ", error);
+    }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -37,7 +72,7 @@ const ConnectionActsScreen = () => {
                   onChangeText={(text) => setFirstConnectionAct(text)}
                   value={firstConnectionAct}
                   placeholder="Describe the first act..."
-                  textInputStyle={{ borderColor: '#FABB4A' }} // Custom border color
+                  textInputStyle={{ borderColor: '#FABB4A' }}
                 />
             </View>
           </View>
@@ -49,7 +84,7 @@ const ConnectionActsScreen = () => {
                   onChangeText={(text) => setSecondConnectionAct(text)}
                   value={secondConnectionAct}
                   placeholder="Describe the second act..."
-                  textInputStyle={{ borderColor: '#FABB4A' }} // Custom border color
+                  textInputStyle={{ borderColor: '#FABB4A' }} 
                 />
             </View>
           </View>
@@ -61,7 +96,7 @@ const ConnectionActsScreen = () => {
                   onChangeText={(text) => setThirdConnectionAct(text)}
                   value={thirdConnectionAct}
                   placeholder="Describe the third act..."
-                  textInputStyle={{ borderColor: '#FABB4A' }} // Custom border color
+                  textInputStyle={{ borderColor: '#FABB4A' }} 
                 />
             </View>
           </View>
@@ -70,8 +105,8 @@ const ConnectionActsScreen = () => {
           <View style={styles.buttonContainer}>
           <SubmitButton
               title="Submit"
-              onPress={() => console.log("Submitted!")}
-              buttonStyle={{ backgroundColor: '#FABB4A' }} // Custom background color
+              onPress={handleSubmit}
+              buttonStyle={{ backgroundColor: '#FABB4A' }} 
             />
           </View>
 
