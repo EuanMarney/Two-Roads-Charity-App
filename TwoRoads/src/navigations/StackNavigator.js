@@ -4,10 +4,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Feather } from "@expo/vector-icons/Feather";
 
 import HomeScreen from "../screens/HomeScreen";
-import GratitudeDiaryScreen from "../screens/GratitudeDiaryScreen";
-import KindnessActsScreen from "../screens/KindnessActsScreen";
-import HedonicMomentsScreen from "../screens/HedonicMomentsScreen";
-import ConnectionActsScreen from "../screens/ConnectionActsScreen";
+import GratitudeDiaryScreen from "../screens/InputScreens/GratitudeDiaryScreen";
+import KindnessActsScreen from "../screens/InputScreens/KindnessActsScreen";
+import HedonicMomentsScreen from "../screens/InputScreens/HedonicMomentsScreen";
+import ConnectionActsScreen from "../screens/InputScreens/ConnectionActsScreen";
 import DailyMindfulnessScreen from "../screens/DailyMindfulnessScreen";
 import LoginScreen from "../screens/LoginScreen";
 import PinScreenReg1 from "../screens/RegisterScreens/PinScreenReg1";
@@ -15,6 +15,8 @@ import PinScreenReg2 from "../screens/RegisterScreens/PinScreenReg2";
 import RegisterScreen from "../screens/RegisterScreens/RegisterUnameScreen";
 import WelcomePage from '../screens/WelcomePage';
 import SettingsScreen from "../screens/SettingsScreen";
+import CalendarScreen from "../screens/CalendarScreens/CalendarScreen";
+import CalendarRememberanceScreen from "../screens/CalendarScreens/CalendarRememberanceScreen";
 import NotificationsSettingsScreen from "../screens/NotificationsSettingsScreen";
 
 const Stack = createNativeStackNavigator();
@@ -34,6 +36,8 @@ const StackNavigator = () => {
       <Stack.Screen name="Acts of Connection" component={ConnectionActsScreen}/>
       <Stack.Screen name="Daily Mindfulness" component={DailyMindfulnessScreen}/>
       <Stack.Screen name="Settings" component={SettingsScreen}/>
+      <Stack.Screen name="Calendar" component={CalendarScreen}/>
+      <Stack.Screen name="CalendarRememberance" component={CalendarRememberanceScreen}/>
       <Stack.Screen name="Notifications Settings" component={NotificationsSettingsScreen}/>
     </Stack.Navigator>
   );

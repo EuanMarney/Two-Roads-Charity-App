@@ -7,15 +7,14 @@ import {
   Text,
   View,
 } from "react-native";
-import Layout from "../components/Layout";
-import SubmitButton from "../components/interactiveComps/SubmitButton";
-import TextBox from "../components/interactiveComps/TextBox";
-import BLeaveTextBox from "../components/interactiveComps/ButtonToLeaveTextBox";
-import { connectToDatabase } from "../database/db";
+import Layout from "../../components/Layout";
+import SubmitButton from "../../components/interactiveComps/SubmitButton";
+import TextBox from "../../components/interactiveComps/TextBox";
+import { connectToDatabase } from "../../database/db";
 import {
   insertHedonicMoment,
   getAllHedonicMoments,
-} from "../database/hedonicMoments";
+} from "../../database/hedonicMoments";
 import { useNavigation } from "@react-navigation/native";
 
 const HedonicMomentsScreen = () => {
@@ -31,11 +30,10 @@ const HedonicMomentsScreen = () => {
     try {
       const db = await connectToDatabase();
 
-      // Get today's date in YYYY-MM-DD format
-      const today = new Date();
-      const formattedDate = `${today.getFullYear()}-${
-        today.getMonth() + 1
-      }-${today.getDate()}`;
+// Get today's date in YYYY-MM-DD format with leading zeros for month and day
+const today = new Date();
+const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+
 
       await insertHedonicMoment(
         db,
@@ -161,6 +159,8 @@ const styles = StyleSheet.create({
     paddingLeft: "3%",
     paddingTop: "2%",
     paddingBottom: "1%",
+    color: '#BB4AFA',
+    fontWeight: "bold",
   },
   rowContainer: {
     flexDirection: "row", // Arrange components horizontally

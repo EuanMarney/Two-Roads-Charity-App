@@ -16,7 +16,6 @@ const PinScreenReg1 = ({ navigation }) => {
 
   const savePin = async (pin) => {
     await SecureStore.setItemAsync("pin", pin);
-    console.log("here");
     console.log(await SecureStore.getItemAsync("pin"));
   };
 

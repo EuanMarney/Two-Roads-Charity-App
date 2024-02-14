@@ -9,7 +9,7 @@ const { width } = Dimensions.get('window');
 
 const WelcomePage = ({ navigation }) => {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
 
       <LoginHeader />
 
@@ -22,13 +22,26 @@ const WelcomePage = ({ navigation }) => {
           To begin, create an account and set up a personal passcode to keep your entries secure.
         </Text>
       </View>
+
+      <View>
       <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('RegisterScreen')} // Make sure this is the correct name for your route
-      >
-        <Text style={styles.buttonText}>Get Started</Text>
-      </TouchableOpacity>
-    </ScrollView>
+          style={styles.button}
+          onPress={() => navigation.navigate('LoginScreen')} // Make sure this is the correct name for your route
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.button, {backgroundColor: 'white', borderColor: '#3498db', borderWidth: "2%"}]}
+          onPress={() => navigation.navigate('RegisterScreen')} // Make sure this is the correct name for your route
+        >
+          <Text style={[styles.buttonText, {color: "#3498db"}]}>Register</Text>
+        </TouchableOpacity>
+
+
+      </View>
+
+    </View>
   );
 };
 
@@ -60,14 +73,16 @@ const styles = StyleSheet.create({
     color: '#34495e', // Slightly lighter than title for hierarchy
     marginBottom: 20,
   },
+
   button: {
     backgroundColor: '#3498db', // A calming blue color for the button
-    borderRadius: 20, // Rounded corners
+    borderRadius: "10%", // Rounded corners
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginHorizontal: 20,
-    marginBottom: 30,
+    marginBottom: "4%"
   },
+
   buttonText: {
     textAlign: 'center',
     color: 'white',
