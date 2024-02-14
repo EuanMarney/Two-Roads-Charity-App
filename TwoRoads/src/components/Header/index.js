@@ -1,17 +1,40 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import Feather from 'react-native-vector-icons/Feather';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Feather from 'react-native-vector-icons/Feather'
+import * as SecureStore from 'expo-secure-store'
 
+
+
+const getUsername = async () => {
+  try {
+    console.log(await SecureStore.getItemAsync('username'))
+    return await SecureStore.getItemAsync('username');
+  } catch (e) {
+    console.error("error getting user name", e);
+  }
+};
+ 
 const Header = ({ title, navigation }) => {
+  const [username, setUsername] = useState('');
   const currentDate = new Date();
   const options = { weekday: "long", month: "short", day: "numeric" };
   const formattedDate = currentDate.toLocaleDateString("en-US", options);
-
+ 
   const handleSettingsPress = () => {
     navigation.navigate('Settings');
   };
+ 
+  useEffect(() => {
+    const fetchUsername = async () => {
+      const retrievedUsername = await getUsername();
+      setUsername(retrievedUsername || 'Guest');
+    };
+ 
+    fetchUsername();
+  }, []);
 
-  return (
+
+return (
     <View style={styles.headerContainer}>
       <View style={styles.blueRectangle}>
         <View style={styles.headerWithIconContainer}>
@@ -20,9 +43,9 @@ const Header = ({ title, navigation }) => {
             <Feather name="settings" style={styles.icon} />
           </TouchableOpacity>
         </View>
-
+ 
         <View style={styles.inlineContainer}>
-          <Text style={styles.subHeaderText}>NAME</Text>
+          <Text style={styles.subHeaderText}>{username}</Text>
           <View style={styles.dateContainer}>
             <Text style={styles.dateText}>{formattedDate}</Text>
           </View>
@@ -32,7 +55,7 @@ const Header = ({ title, navigation }) => {
     </View>
   );
 };
-
+ 
 const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "column",
@@ -95,5 +118,6 @@ const styles = StyleSheet.create({
     color: "#FFF",
   },
 });
-
+ 
 export default Header;
+ 

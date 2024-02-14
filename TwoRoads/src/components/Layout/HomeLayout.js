@@ -8,7 +8,7 @@ const HomeLayout = ({ children, navigation }) => {
   return (
     <View style={styles.container}>
       <Header navigation={navigation} />
-      <ScrollView>
+      <ScrollView style={styles.scrollStyle}>
         <View style={styles.content}>{children}</View>
       </ScrollView>
       <Footer />
@@ -17,6 +17,9 @@ const HomeLayout = ({ children, navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  scrollStyle: {
+    backgroundColor: "white",
+  },
   container: {
     flex: 1,
     flexDirection: "column",
