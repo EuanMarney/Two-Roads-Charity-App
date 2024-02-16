@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Platform,
 } from "react-native";
-import { Svg, Path } from "react-native-svg"; // For custom icons
 import { Feather } from "@expo/vector-icons";
 import * as SecureStore from "expo-secure-store";
 import LoginHeader from "../../components/Header/LoginHeader";
@@ -16,7 +15,6 @@ const PinScreenReg1 = ({ navigation }) => {
 
   const savePin = async (pin) => {
     await SecureStore.setItemAsync("pin", pin);
-    console.log(await SecureStore.getItemAsync("pin"));
   };
 
   const handlePress = (num) => {
@@ -36,12 +34,6 @@ const PinScreenReg1 = ({ navigation }) => {
     } else {
       alert("Please enter a 6-digit pin");
     }
-  };
-
-  const storePinV1 = async (pin) => {
-    try {
-      //await secur.setItem('@username', username)
-    } catch {}
   };
 
   const renderCircles = () => {

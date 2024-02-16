@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Svg, Path } from 'react-native-svg'; // For custom icons
 import { Feather } from '@expo/vector-icons';
 import * as SecureStore from 'expo-secure-store'
 import LoginHeader from '../../components/Header/LoginHeader';
@@ -16,21 +15,14 @@ const PinScreenReg2 = ({ navigation }) => {
         }   
     }
 
-  const getUsername = async () => {
-    console.log('username =', await SecureStore.getItemAsync('username'))
-    return await SecureStore.getItemAsync('username');
-  }
-
   const comparePin = async (enteredPin) => {
     try {
         const storedPin = await getPin();
-        const username = await getUsername();
         if (enteredPin === storedPin){
             navigation.navigate('Home')
-            alert('welcome ' + username)
         } else {
             alert('those pins did not match')
-            setPin(pinLogin.substring(0, pinLogin.length - 6));
+            clearPin();
         }
 
     } catch(e) {
@@ -48,9 +40,12 @@ const PinScreenReg2 = ({ navigation }) => {
     setPin(pinv2.substring(0, pinv2.length - 1));
   };
 
+  const clearPin = () => {
+    setPin(pinv2.substring(0, pinv2.length - 6));
+  };
+
   const handleSubmit = () => {
     if (pinv2.length === 6) {
-      console.log(pinv2);
       comparePin(pinv2)
     } else {
       alert('Please enter a 6-digit pin');

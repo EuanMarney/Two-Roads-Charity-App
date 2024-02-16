@@ -4,7 +4,6 @@ import Checkbox from 'expo-checkbox';
 import * as SecureStore from "expo-secure-store";
 import { View, Text, StyleSheet } from "react-native";
 import {Picker} from '@react-native-picker/picker';
-import Layout from "../components/Layout";
 
 const NOTIFIACATIONS_STORE_STRING = "notificationsOn";
 const NOTIFICATIONS_ON = "yes";
@@ -12,8 +11,6 @@ const NOTIFICATIONS_OFF = "no";
 
 const HOURS_STORE_STRING = "notificationsHours";
 const MINUTES_STORE_STRING = "notificationsMins";
-
-
 
 const NotificationsSettingsScreen = () => {
 

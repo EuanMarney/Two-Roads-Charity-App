@@ -1,8 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, Dimensions, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Alert } from 'react-native';
 
-import TwoRoadsImage from '../assets/twoRoads.png';
 import LoginHeader from '../components/Header/LoginHeader';
+import { removeAllUserData } from '../database/dataRemovalUtil';
+
+const handleDataRemoval = async () => {
+  await removeAllUserData();
+  console.log("data removed")
+};
 
 // Get the full screen width
 const { width } = Dimensions.get('window');
@@ -26,17 +31,35 @@ const WelcomePage = ({ navigation }) => {
       <View>
       <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('LoginScreen')} // Make sure this is the correct name for your route
+          onPress={() => navigation.navigate('LoginScreen')}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.button, {backgroundColor: 'white', borderColor: '#3498db', borderWidth: "2%"}]}
-          onPress={() => navigation.navigate('RegisterScreen')} // Make sure this is the correct name for your route
-        >
-          <Text style={[styles.buttonText, {color: "#3498db"}]}>Register</Text>
-        </TouchableOpacity>
+    style={[styles.button, {backgroundColor: 'white', borderColor: '#3498db', borderWidth: 2}]} // borderWidth should be a number, not a string
+    onPress={() => {
+      Alert.alert(
+        "Confirm New Account",
+        "Creating a new account will remove all previous data stored on this device. Do you want to continue?",
+        [
+          {
+            text: "No",
+            onPress: () => console.log("User canceled account creation"),
+            style: "cancel"
+          },
+          { 
+            text: "Yes", onPress: () => {navigation.navigate('RegisterScreen');
+            handleDataRemoval();}
+          }
+        ],
+        { cancelable: false }
+      );
+    }}
+>
+    <Text style={[styles.buttonText, {color: "#3498db"}]}>Register</Text>
+</TouchableOpacity>
+
 
 
       </View>

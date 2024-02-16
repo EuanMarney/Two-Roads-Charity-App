@@ -1,26 +1,22 @@
 import React from "react";
-import { View, TouchableOpacity, Text, StyleSheet, ScrollView } from "react-native";
+import { View, TouchableOpacity, Text, StyleSheet, ScrollView, Alert } from "react-native";
 import Layout from "../components/Layout";
-
-const NOTIFCATIONS_BUTTON_TEXT = "Notifications Settings";
+import { removeAllUserData } from "../database/dataRemovalUtil";
 
 const SettingsScreen = ({ navigation }) => {
-  const handlePress = (screenName) => {
-    if (screenName == NOTIFCATIONS_BUTTON_TEXT) {
-      navigation.navigate(NOTIFCATIONS_BUTTON_TEXT);
-    }
-    else {
-      console.log(screenName + " is unimplemented");
-    }
-  };
 
-  // Assigning approximate color codes from the screenshot
-  const buttons = [
-    { title: "View Personal Information", color: "#FF6B6B" },
-    { title: "Change Passcode", color: "#FF6B6B" },
-    { title: NOTIFCATIONS_BUTTON_TEXT, color: "#FF6B6B" },
-    { title: "Reset Data", color: "#D32F2F" },
-  ];
+  const navigateToNotifications = () => {
+    navigation.navigate('NotificationsSettingsScreen')
+  }
+
+  const navigateToWelcome = () => {
+    navigation.navigate('WelcomePage')
+  }
+
+  const handleDataRemoval = async () => {
+    await removeAllUserData();
+    console.log("removing all user data, SettingsScreen line 18")
+  };
 
   return (
     <Layout style={styles.layoutStyle}>
@@ -29,15 +25,40 @@ const SettingsScreen = ({ navigation }) => {
           <Text style={styles.headerText}>Settings</Text>
         </View>
         <View style={styles.buttonContainer}>
-          {buttons.map((button, index) => (
-            <TouchableOpacity
-              key={index}
-              style={[styles.customButton, { backgroundColor: button.color }]}
-              onPress={() => handlePress(button.title)}
-            >
-              <Text style={styles.buttonText}>{button.title}</Text>
-            </TouchableOpacity>
-          ))}
+
+          {/* Notifications Settings Button */}
+          <TouchableOpacity
+            style={[styles.customButton, { backgroundColor: "#FF6B6B" }]}
+            onPress={navigateToNotifications}
+          >
+            <Text style={styles.buttonText}>Notfications Settings</Text>
+          </TouchableOpacity>
+
+          {/* Reset Data Button */}
+          <TouchableOpacity
+            style={[styles.customButton, { backgroundColor: "#D32F2F" }]}
+            onPress={() => {
+              Alert.alert(
+                "Remove all Data?",
+                "Remove all data stored on this device and return to the welcome screen. Do you want to continue?",
+                [
+                  {
+                    text: "No",
+                    onPress: () => console.log("User canceled account creation"),
+                    style: "cancel"
+                  },
+                  { 
+                    text: "Yes", onPress: () => {navigateToWelcome();
+                    handleDataRemoval();}
+                  }
+                ],
+                { cancelable: false }
+              );
+            }}
+            
+          >
+            <Text style={styles.buttonText}>Reset Data</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </Layout>
