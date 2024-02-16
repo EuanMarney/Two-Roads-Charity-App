@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Platform,
 } from "react-native";
-import { Svg, Path } from "react-native-svg"; // For custom icons
 import { Feather } from "@expo/vector-icons";
 import * as SecureStore from "expo-secure-store";
 import LoginHeader from "../components/Header/LoginHeader";
@@ -20,7 +19,7 @@ const LoginScreen = ({ navigation }) => {
     const keys = ["username", "pin"]; // Replace with your actual keys
     keys.forEach(async (key) => {
       const value = await SecureStore.getItemAsync(key);
-      console.log(key, value);
+      console.log(key, value, "LoginScreen line 22");
     });
   };
 
@@ -39,7 +38,6 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const getUsername = async () => {
-    console.log("username =", await SecureStore.getItemAsync("username"));
     return await SecureStore.getItemAsync("username");
   };
 
@@ -71,7 +69,6 @@ const LoginScreen = ({ navigation }) => {
 
   const handleSubmit = () => {
     if (pinLogin.length === 6) {
-      console.log(pinLogin);
       comparePin(pinLogin);
     } else {
       alert("Please enter a 6-digit pin");
