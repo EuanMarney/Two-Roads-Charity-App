@@ -7,7 +7,6 @@ import * as SecureStore from 'expo-secure-store'
 
 const getUsername = async () => {
   try {
-    console.log(await SecureStore.getItemAsync('username'))
     return await SecureStore.getItemAsync('username');
   } catch (e) {
     console.error("error getting user name", e);

@@ -21,44 +21,44 @@ export const createTables = (db) => {
   const userPreferencesQuery = `
     CREATE TABLE IF NOT EXISTS UserPreferences (
       id INTEGER PRIMARY KEY,
+      date TEXT,
       notificationsEnabled BOOLEAN,
       name TEXT,
       password TEXT,
-      streaks INTEGER,
-      date TEXT
+      streaks INTEGER
     );
   `;
 
   const actsOfKindnessQuery = `
   CREATE TABLE IF NOT EXISTS ActsOfKindness (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date TEXT,
     firstKindness TEXT,
     secondKindness TEXT,
-    thirdKindness TEXT,
-    date TEXT
+    thirdKindness TEXT
   );
 `;
 
   const gratitudeDiaryQuery = `
     CREATE TABLE IF NOT EXISTS GratitudeDiary (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
+      date TEXT,
       firstGrateful TEXT,
       secondGrateful TEXT,
       thirdGrateful TEXT,
       firstWhy TEXT,
       secondWhy TEXT,
-      thirdWhy TEXT,
-      date TEXT
+      thirdWhy TEXT
     );
   `;
 
   const actsOfConnectionQuery = `
     CREATE TABLE IF NOT EXISTS ActsOfConnection (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
+      date TEXT,
       firstConnection TEXT,
       secondConnection TEXT,
-      thirdConnection TEXT,
-      date TEXT
+      thirdConnection TEXT
     );
   `;
   
@@ -72,43 +72,3 @@ export const createTables = (db) => {
     console.error("Error creating tables: ", error);
   });
 };
-
-export const getHedonicMoments = async (db) => {
-  return new Promise((resolve, reject) => {
-    db.transaction(tx => {
-      tx.executeSql(
-        'SELECT * FROM HedonicMoments;',
-        [],
-        (_, { rows: { _array } }) => {
-          resolve(_array);
-        },
-        (_, error) => {
-          reject(error);
-          return true; // To stop the propagation of the error
-        }
-      );
-    });
-  });
-};
-
-
-export const getHedonicMomentsForDate = async (db, selectedDate) => {
-  // Assuming selectedDate is in the correct format (YYYY-M-D) as stored in your database
-  return new Promise((resolve, reject) => {
-    db.transaction(tx => {
-      tx.executeSql(
-        'SELECT * FROM HedonicMoments WHERE date = ?;',
-        [selectedDate],
-        (_, { rows: { _array } }) => {
-          resolve(_array);
-        },
-        (_, error) => {
-          reject(error);
-          return true; // To stop the propagation of the error
-        }
-      );
-    });
-  });
-};
-
-

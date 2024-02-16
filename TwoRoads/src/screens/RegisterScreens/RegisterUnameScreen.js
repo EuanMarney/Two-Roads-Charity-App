@@ -11,7 +11,6 @@ const RegisterScreen = ({ navigation }) => {
   }
 
   const handlePress = () => {
-    console.log(username)
     saveUsername(username)
     navigation.navigate('PinScreenReg1')
   };

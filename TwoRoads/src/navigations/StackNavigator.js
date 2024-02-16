@@ -38,7 +38,7 @@ const StackNavigator = () => {
       <Stack.Screen name="Settings" component={SettingsScreen}/>
       <Stack.Screen name="Calendar" component={CalendarScreen}/>
       <Stack.Screen name="CalendarRememberance" component={CalendarRememberanceScreen}/>
-      <Stack.Screen name="Notifications Settings" component={NotificationsSettingsScreen}/>
+      <Stack.Screen name="NotificationsSettingsScreen" component={NotificationsSettingsScreen}/>
     </Stack.Navigator>
   );
 };

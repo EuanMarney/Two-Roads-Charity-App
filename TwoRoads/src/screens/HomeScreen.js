@@ -1,7 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import HomeLayout from "../components/Layout/HomeLayout";
-import Header from "../components/Header";
 
 
 const HomeScreen = ({ navigation }) => {

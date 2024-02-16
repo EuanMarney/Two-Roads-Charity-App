@@ -1,41 +1,66 @@
 // Function to insert a new gratitude diary entry
-export const insertGratitudeDiaryEntry = (db, firstGrateful, secondGrateful, thirdGrateful, firstWhy, secondWhy, thirdWhy, date, onSuccess, onError) => {
+export const insertGratitudeDiaryEntry = (db, date, firstGrateful, secondGrateful, thirdGrateful, firstWhy, secondWhy, thirdWhy, onSuccess, onError) => {
   const insertQuery = `
-    INSERT INTO GratitudeDiary (firstGrateful, secondGrateful, thirdGrateful, firstWhy, secondWhy, thirdWhy, date)
+    INSERT INTO GratitudeDiary (date,firstGrateful, secondGrateful, thirdGrateful, firstWhy, secondWhy, thirdWhy)
     VALUES (?, ?, ?, ?, ?, ?, ?);
   `;
 
   db.transaction(
-    tx => {
+    (tx) => {
       tx.executeSql(
         insertQuery,
-        [firstGrateful, secondGrateful, thirdGrateful, firstWhy, secondWhy, thirdWhy, date],
-        (_, resultSet) => onSuccess(resultSet),
+        [date, firstGrateful, secondGrateful, thirdGrateful, firstWhy, secondWhy, thirdWhy],
+        (_, resultSet) => {
+          if (onSuccess) onSuccess(resultSet);
+        },
         (_, error) => {
-          onError(error);
-          return false; // This prevents the transaction from being committed automatically.
+          if (onError) onError(error);
+          return false; // Returning false rolls back the transaction
         },
       );
     },
-    error => onError(error),
-    () => console.log("Gratitude diary entry added successfully."),
+    (error) => {
+      console.error("Transaction error: ", error);
+      if (onError) onError(error);
+    },
+    () => {
+      console.log("Transaction success, hedonicMoments.js line 36");
+    },
   );
 };
 
 // Function to retrieve all gratitude diary entries
-export const getAllGratitudeDiaryEntries = (db, onSuccess, onError) => {
-  const selectQuery = "SELECT * FROM GratitudeDiary;";
-
-  db.transaction(
-    tx => {
+export const getAllGratitudeDiaryEntries = async (db) => {
+  return new Promise((resolve, reject) => {
+    db.transaction((tx) => {
       tx.executeSql(
-        selectQuery,
+        `SELECT * FROM GratitudeDiary`, // Replace tableName with your actual table name
         [],
-        (_, resultSet) => onSuccess(resultSet.rows._array),
-        (_, error) => onError(error),
+        (_, { rows }) => resolve(rows._array),
+        (_, error) => {
+          console.error('Failed to fetch Grat Diary:', error);
+          reject(error);
+        }
       );
-    },
-    error => onError(error),
-    () => console.log("Gratitude diary entries retrieved successfully."),
-  );
+    });
+  });
+};
+
+
+export const getGratitudeDiaryForDate = async (db, selectedDate) => {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'SELECT * FROM GratitudeDiary WHERE date = ?;',
+        [selectedDate],
+        (_, { rows: { _array } }) => {
+          resolve(_array);
+        },
+        (_, error) => {
+          reject(error);
+          return true; // To stop the propagation of the error
+        }
+      );
+    });
+  });
 };

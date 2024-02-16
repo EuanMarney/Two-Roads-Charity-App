@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import Layout from "../../components/Layout";
 import TextBox from "../../components/interactiveComps/TextBox";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
-import { connectToDatabase } from "../../database/db";
+
+import { connectToDatabase, createTables } from "../../database/db";
 import { insertGratitudeDiaryEntry, getAllGratitudeDiaryEntries} from "../../database/gratitudeDiary";
-import { useNavigation } from "@react-navigation/native";
+
 const GratitudeDiaryScreen = () => {
   const [firstReason, setFirstReason] = useState("");
   const [secondReason, setSecondReason] = useState("");
@@ -25,46 +20,36 @@ const GratitudeDiaryScreen = () => {
   const navigation = useNavigation();
   
   const handleSubmit = async () => {
+    try {
     const db = await connectToDatabase();
-    const today = new Date().toISOString().slice(0, 10); // Gets current date in YYYY-MM-DD format
+    await createTables(db);
+
+    const today = new Date();
+    const formattedDate = today.toISOString().slice(0, 10);
   
     insertGratitudeDiaryEntry(
       db,
+      formattedDate,
       firstReason,
       secondReason,
       thirdReason,
       firstWhy,
       secondWhy,
       thirdWhy,
-      today,
-      () => {
-        console.log("Gratitude diary entry saved successfully.");
-        // Reset the input fields
+    );
+
         setFirstReason("");
         setSecondReason("");
         setThirdReason("");
         setFirstWhy("");
         setSecondWhy("");
         setThirdWhy("");
-        // Navigate back to the HomeScreen
+
         navigation.navigate("Home");
         
-        getAllGratitudeDiaryEntries(
-          db,
-          (moments) => {
-            console.log("Retrieved gratitude diary:", moments);
-            // Process or display the retrieved moments as needed
-          },
-          (error) => {
-            console.error("Error retrieving gratitude diary: ", error);
-          },
-        );
-        
-      },
-      (error) => {
-        console.error("Failed to save gratitude diary entry: ", error);
+      } catch (error) {
+        console.error("Error handling connection acts: ", error);
       }
-    );
   };
 
   return (

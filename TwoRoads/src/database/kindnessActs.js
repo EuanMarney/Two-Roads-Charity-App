@@ -1,45 +1,63 @@
-export const insertActOfKindness = (db, firstKindAct, secondKindAct, thirdKindAct, date, onSuccess, onError) => {
+export const insertActOfKindness = (db, date, firstKindAct, secondKindAct, thirdKindAct, onSuccess, onError) => {
   const insertQuery = `
-    INSERT INTO ActsOfKindness (firstKindness, secondKindness, thirdKindness, date)
+    INSERT INTO ActsOfKindness (date, firstKindness, secondKindness, thirdKindness)
     VALUES (?, ?, ?, ?);
   `;
 
   db.transaction(
-    tx => {
+    (tx) => {
       tx.executeSql(
         insertQuery,
-        [firstKindAct, secondKindAct, thirdKindAct, date],
-        (_, resultSet) => onSuccess(resultSet),
+        [date, firstKindAct, secondKindAct, thirdKindAct],
+        (_, resultSet) => {
+          if (onSuccess) onSuccess(resultSet);
+        },
         (_, error) => {
-          onError(error);
+          if (onError) onError(error);
           return false; // Returning false rolls back the transaction
         },
       );
     },
-    error => onError(error),
-    () => console.log("Insert act of kindness transaction successful."),
+    (error) => {
+      console.error("Transaction error: ", error);
+      if (onError) onError(error);
+    },
+    () => {
+      console.log("Transaction success, hedonicMoments.js line 36");
+    },
   );
 };
 
-/**
- * Retrieves all acts of kindness entries from the database.
- */
-export const getAllActsOfKindness = (db, onSuccess, onError) => {
-  const selectQuery = "SELECT * FROM ActsOfKindness;";
-
-  db.transaction(
-    tx => {
+export const getAllActsOfKindness = async (db) => {
+  return new Promise((resolve, reject) => {
+    db.transaction((tx) => {
       tx.executeSql(
-        selectQuery,
+        `SELECT * FROM ActsOfKindness`, // Replace tableName with your actual table name
         [],
-        (_, resultSet) => onSuccess(resultSet.rows._array),
+        (_, { rows }) => resolve(rows._array),
         (_, error) => {
-          onError(error);
-          return false; // Returning false rolls back the transaction
-        },
+          console.error('Failed to fetch all Kindness acts:', error);
+          reject(error);
+        }
       );
-    },
-    error => onError(error),
-    () => console.log("Get all acts of kindness transaction successful."),
-  );
+    });
+  });
+};
+
+export const getKindnessActsForDate = async (db, selectedDate) => {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'SELECT * FROM ActsOfKindness WHERE date = ?;',
+        [selectedDate],
+        (_, { rows: { _array } }) => {
+          resolve(_array);
+        },
+        (_, error) => {
+          reject(error);
+          return true; // To stop the propagation of the error
+        }
+      );
+    });
+  });
 };

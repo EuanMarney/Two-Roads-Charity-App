@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import Layout from "../../components/Layout";
 import TextBox from "../../components/interactiveComps/TextBox";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
-import { connectToDatabase } from "../../database/db";
-import { insertConnectionAct, getAllConnectionActs } from "../../database/connectionActs";
-import { useNavigation } from "@react-navigation/native";
+
+import { connectToDatabase, createTables } from "../../database/db";
+import { insertConnectionAct, getAllActsOfConnection } from "../../database/connectionActs";
+
 
 const ConnectionActsScreen = () => {
   const [firstConnectionAct, setFirstConnectionAct] = useState("");
@@ -17,29 +20,17 @@ const ConnectionActsScreen = () => {
   const handleSubmit = async () => {
     try {
       const db = await connectToDatabase();
+      await createTables(db);
 
       const today = new Date();
-      const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+      const formattedDate = today.toISOString().slice(0, 10);
 
       await insertConnectionAct(
         db,
+        formattedDate,
         firstConnectionAct,
         secondConnectionAct,
         thirdConnectionAct,
-        formattedDate,
-        () => console.log("Connection act entry added successfully."),
-        (error) => console.error("Error adding connection act: ", error)
-      );
-
-
-      getAllConnectionActs(
-        db,
-        (acts) => {
-          console.log("Retrieved connection acts:", acts);
-        },
-        (error) => {
-          console.error("Error retrieving connection acts: ", error);
-        },
       );
 
       setFirstConnectionAct("");
@@ -47,6 +38,10 @@ const ConnectionActsScreen = () => {
       setThirdConnectionAct("");
 
       navigation.navigate("Home");
+
+      const alldata = await getAllActsOfConnection(db);
+      console.log(alldata)
+
     } catch (error) {
       console.error("Error handling connection acts: ", error);
     }

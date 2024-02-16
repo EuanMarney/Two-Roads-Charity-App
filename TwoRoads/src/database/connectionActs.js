@@ -1,42 +1,64 @@
-export const insertConnectionAct = (db, firstConnection, secondConnection, thirdConnection, date, onSuccess, onError) => {
+export const insertConnectionAct = (db, date, firstConnection, secondConnection, thirdConnection, onSuccess, onError) => {
     const insertQuery = `
-      INSERT INTO ActsOfConnection (firstConnection, secondConnection, thirdConnection, date)
+      INSERT INTO ActsOfConnection (date, firstConnection, secondConnection, thirdConnection)
       VALUES (?, ?, ?, ?);
     `;
   
     db.transaction(
-      tx => {
+      (tx) => {
         tx.executeSql(
           insertQuery,
-          [firstConnection, secondConnection, thirdConnection, date],
-          (_, resultSet) => onSuccess(resultSet),
+          [date, firstConnection, secondConnection, thirdConnection],
+          (_, resultSet) => {
+            if (onSuccess) onSuccess(resultSet);
+          },
           (_, error) => {
-            onError(error);
-            return false;
+            if (onError) onError(error);
+            return false; // Returning false rolls back the transaction
           },
         );
       },
-      error => onError(error),
-      () => console.log("Connection act entry added successfully."),
+      (error) => {
+        console.error("Transaction error: ", error);
+        if (onError) onError(error);
+      },
+      () => {
+        console.log("Transaction success, hedonicMoments.js line 36");
+      },
     );
   };
   
-  /**
-   * Retrieves all acts of connection entries from the database.
-   */
-  export const getAllConnectionActs = (db, onSuccess, onError) => {
-    const selectQuery = "SELECT * FROM ActsOfConnection;";
-  
-    db.transaction(
-      tx => {
+
+  export const getAllActsOfConnection = (db) => {
+    return new Promise((resolve, reject) => {
+      db.transaction((tx) => {
         tx.executeSql(
-          selectQuery,
+          `SELECT * FROM ActsOfConnection`, // Replace tableName with your actual table name
           [],
-          (_, resultSet) => onSuccess(resultSet.rows._array),
-          (_, error) => onError(error),
+          (_, { rows }) => resolve(rows._array),
+          (_, error) => {
+            console.error('Failed to fetch all Acts of Connection:', error);
+            reject(error);
+          }
         );
-      },
-      error => onError(error),
-      () => console.log("Connection acts retrieved successfully."),
-    );
+      });
+    });
+  };
+
+  export const getConnectionActsForDate = async (db, selectedDate) => {
+    return new Promise((resolve, reject) => {
+      db.transaction(tx => {
+        tx.executeSql(
+          'SELECT * FROM ActsOfConnection WHERE date = ?;',
+          [selectedDate],
+          (_, { rows: { _array } }) => {
+            resolve(_array);
+          },
+          (_, error) => {
+            reject(error);
+            return true; // To stop the propagation of the error
+          }
+        );
+      });
+    });
   };

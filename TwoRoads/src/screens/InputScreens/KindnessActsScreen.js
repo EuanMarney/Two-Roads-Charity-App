@@ -1,18 +1,14 @@
 import React, { useState } from "react";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import { connectToDatabase } from "../../database/db";
-import { insertActOfKindness, getAllActsOfKindness } from "../../database/kindnessActs";
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
 import Layout from "../../components/Layout";
 import TextBox from "../../components/interactiveComps/TextBox";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
+
+import { connectToDatabase, createTables } from "../../database/db";
+import { insertActOfKindness, getAllActsOfKindness } from "../../database/kindnessActs";
+
 
 const KindnessActsScreen = () => {
   const [firstKindAct, setFirstKindAct] = useState("");
@@ -20,44 +16,34 @@ const KindnessActsScreen = () => {
   const [thirdKindAct, setThirdKindAct] = useState("");
   const navigation = useNavigation();
 
-  // Modify the handleSubmit function within KindnessActsScreen
 const handleSubmit = async () => {
+  try {
   const db = await connectToDatabase();
+  await createTables(db)
 
-  // Assuming you want to use the current date for the entry
   const today = new Date();
-  const date = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+  const formattedDate = today.toISOString().slice(0, 10);
 
   insertActOfKindness(
     db,
+    formattedDate,
     firstKindAct,
     secondKindAct,
     thirdKindAct,
-    date,
-    (resultSet) => {
-      console.log("Act of kindness added successfully.", resultSet);
-      // Reset the input fields or navigate as needed
+  );
+
       setFirstKindAct("");
       setSecondKindAct("");
       setThirdKindAct("");
-      // Navigate back to the HomeScreen
+
       navigation.navigate("Home");
 
-      getAllActsOfKindness(
-        db,
-        (acts) => {
-          console.log("Retrieved acts of kindness:", acts);
-        },
-        (error) => {
-          console.error("Error retrieving acts of kindness: ", error);
-        }
-      );
+      const alldata = await getAllActsOfKindness(db);
+      console.log(alldata)
 
-    },
-    (error) => {
-      console.error("Error adding act of kindness: ", error);
+    } catch (error) {
+      console.error("Error adding Kindness Acts: ", error);
     }
-  );
 };
   
   return (

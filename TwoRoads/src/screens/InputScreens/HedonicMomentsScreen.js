@@ -1,21 +1,13 @@
 import React, { useState } from "react";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import Layout from "../../components/Layout";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
 import TextBox from "../../components/interactiveComps/TextBox";
-import { connectToDatabase } from "../../database/db";
-import {
-  insertHedonicMoment,
-  getAllHedonicMoments,
-} from "../../database/hedonicMoments";
-import { useNavigation } from "@react-navigation/native";
+
+import { connectToDatabase, createTables } from "../../database/db";
+import { insertHedonicMoment, getAllHedonicMoments } from "../../database/hedonicMoments";
 
 const HedonicMomentsScreen = () => {
   const [firstMoment, setFirstMoment] = useState("");
@@ -29,11 +21,11 @@ const HedonicMomentsScreen = () => {
   const handleSubmit = async () => {
     try {
       const db = await connectToDatabase();
+      await createTables(db);
 
-// Get today's date in YYYY-MM-DD format with leading zeros for month and day
-const today = new Date();
-const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
 
+      const today = new Date();
+      const formattedDate = today.toISOString().slice(0, 10);
 
       await insertHedonicMoment(
         db,
@@ -41,32 +33,26 @@ const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString(
         firstMoment,
         secondMoment,
         thirdMoment,
-        fourthMoment,
+        fourthMoment
       );
-      console.log("Hedonic moments added successfully.");
 
-      // Reset the text fields
       setFirstMoment("");
       setSecondMoment("");
       setThirdMoment("");
       setFourthMoment("");
 
-      // Navigate back to the HomeScreen
       navigation.navigate("Home");
 
-      getAllHedonicMoments(
-        db,
-        (moments) => {
-          console.log("Retrieved hedonic moments:", moments);
-          // Process or display the retrieved moments as needed
-        },
-        (error) => {
-          console.error("Error retrieving hedonic moments: ", error);
-        },
-      );
+
+    const alldata = await getAllHedonicMoments(db);
+    console.log(alldata);
+
     } catch (error) {
       console.error("Error adding hedonic moments: ", error);
     }
+
+
+
   };
 
   return (
@@ -90,9 +76,6 @@ const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString(
                 placeholder="Describe the first moment..."
               />
             </View>
-            {/* <View style={styles.buttonContainer}>
-              <BLeaveTextBox />
-            </View> */}
           </View>
 
           <View style={styles.rowContainer}>
@@ -104,9 +87,6 @@ const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString(
                 placeholder="Describe the second moment..."
               />
             </View>
-            {/* <View style={styles.buttonContainer}>
-              <BLeaveTextBox />
-            </View> */}
           </View>
 
           <View style={styles.rowContainer}>
@@ -118,9 +98,6 @@ const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString(
                 placeholder="Describe the third moment..."
               />
             </View>
-            {/* <View style={styles.buttonContainer}>
-              <BLeaveTextBox />
-            </View> */}
           </View>
 
           <View style={styles.rowContainer}>
@@ -132,9 +109,6 @@ const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString(
                 placeholder="Describe the fourth moment..."
               />
             </View>
-            {/* <View style={styles.buttonContainer}>
-              <BLeaveTextBox />
-            </View> */}
           </View>
 
           <View style={styles.buttonContainer}>
