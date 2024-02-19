@@ -1,5 +1,5 @@
-import * as SecureStore from "expo-secure-store";
 import { Feather } from "@expo/vector-icons";
+import * as SecureStore from "expo-secure-store";
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Platform, } from "react-native";
 
