@@ -1,6 +1,6 @@
 // dataRemovalUtils.js
-import * as SQLite from 'expo-sqlite';
 import * as SecureStore from 'expo-secure-store';
+import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase("TwoRoadsV2.db")
 

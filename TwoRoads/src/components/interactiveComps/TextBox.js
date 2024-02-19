@@ -8,7 +8,7 @@ const TextBox = ({ onChangeText, value, placeholder, textInputStyle }) => {
       <TextInput
         style={[styles.textInput, textInputStyle]} // Merge default style with custom style
         onChangeText={onChangeText}
-        multiline={true}
+        multiline
         value={value}
         placeholder={placeholder || "Type here..."}
       />
