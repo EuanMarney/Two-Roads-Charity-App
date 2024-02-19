@@ -1,10 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 import Layout from "../../components/Layout";
-import TextBox from "../../components/interactiveComps/TextBox";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
+import TextBox from "../../components/interactiveComps/TextBox";
 
 import { connectToDatabase, createTables } from "../../database/db";
 import { insertActOfKindness, getAllActsOfKindness } from "../../database/kindnessActs";
