@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { View, TouchableOpacity, Text, TextInput, StyleSheet } from "react-native";
-import { StatusBar } from 'react-native';
 import * as SecureStore from 'expo-secure-store'
+import React, { useState } from "react";
+import { View, TouchableOpacity, Text, TextInput, StyleSheet, StatusBar } from "react-native";
 
 const RegisterScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
