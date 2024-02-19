@@ -1,18 +1,12 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import{ View, StyleSheet, TouchableOpacity, Text, Keyboard } from 'react-native';
 
 const BLeaveTextBox = () => {
-  // const textInputRef = useRef(null);
 
   const dismissedKeyboard = () => {
     Keyboard.dismiss();
   }
 
-  // const handleExitTextInput = () => {
-  //   if (textInputRef.current) {
-  //     textInputRef.current.blur(); // Blur the TextInput to remove focus
-  //   }
-  // };
 
   return (
     <View style={styles.container}>

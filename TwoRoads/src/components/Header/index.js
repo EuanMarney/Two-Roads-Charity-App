@@ -1,9 +1,7 @@
+import * as SecureStore from 'expo-secure-store'
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather'
-import * as SecureStore from 'expo-secure-store'
-
-
 
 const getUsername = async () => {
   try {

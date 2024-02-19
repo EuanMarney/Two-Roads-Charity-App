@@ -1,7 +1,8 @@
+import { NavigationContext } from '@react-navigation/native';
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import WelcomePage from '../path/to/WelcomePage'; // Update the import path accordingly
-import { NavigationContext } from '@react-navigation/native';
+
+import WelcomePage from '../../screens/WelcomePage';
 
 describe('WelcomePage', () => {
   const mockNavigate = jest.fn();

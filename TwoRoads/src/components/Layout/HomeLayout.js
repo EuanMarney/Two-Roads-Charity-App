@@ -1,8 +1,8 @@
 import React from "react";
-import { View, StyleSheet, KeyboardAvoidingView, ScrollView, StatusBar } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 
-import Header from "../Header";
 import Footer from "../Footer";
+import Header from "../Header";
 
 const HomeLayout = ({ children, navigation }) => {
   return (
