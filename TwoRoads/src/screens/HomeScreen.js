@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import HomeLayout from "../components/Layout/HomeLayout";
 
+import HomeLayout from "../components/Layout/HomeLayout";
 
 const HomeScreen = ({ navigation }) => {
   const handlePress = (screenName) => {

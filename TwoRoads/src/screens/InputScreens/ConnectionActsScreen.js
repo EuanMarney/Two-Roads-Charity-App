@@ -9,7 +9,6 @@ import TextBox from "../../components/interactiveComps/TextBox";
 import { connectToDatabase, createTables } from "../../database/db";
 import { insertConnectionAct } from "../../database/connectionActs";
 
-
 const ConnectionActsScreen = () => {
   const [firstConnectionAct, setFirstConnectionAct] = useState("");
   const [secondConnectionAct, setSecondConnectionAct] = useState("");
