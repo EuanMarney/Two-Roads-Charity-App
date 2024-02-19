@@ -1,5 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet, ScrollView, Alert } from "react-native";
+
 import Layout from "../components/Layout";
 import { removeAllUserData } from "../database/dataRemovalUtil";
 
