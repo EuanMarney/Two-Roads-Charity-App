@@ -1,14 +1,12 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Platform,
-} from "react-native";
 import { Feather } from "@expo/vector-icons";
 import * as SecureStore from "expo-secure-store";
+<<<<<<< HEAD
 import stylesheet from "../../components/Styles/stylesheet";
+=======
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Platform, } from "react-native";
+
+>>>>>>> 7c1f40dba76a45735d3025881d73822213f35950
 import LoginHeader from "../../components/Header/LoginHeader";
 
 const PinScreenReg1 = ({ navigation }) => {

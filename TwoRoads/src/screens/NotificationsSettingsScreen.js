@@ -1,8 +1,10 @@
-import React from "react";
-import { useState, setState } from "react";
-import Checkbox from 'expo-checkbox';
 import * as SecureStore from "expo-secure-store";
+import Checkbox from 'expo-checkbox';
+
+import { React, useState } from "react";
+
 import { View, Text, StyleSheet } from "react-native";
+
 import {Picker} from '@react-native-picker/picker';
 
 const NOTIFIACATIONS_STORE_STRING = "notificationsOn";
@@ -55,7 +57,7 @@ SecureStore.getItemAsync(HOURS_STORE_STRING)
 SecureStore.getItemAsync(MINUTES_STORE_STRING)
     .then((value) => {
         console.log("loaded value " + value);
-        if (value == null) {
+        if (value === null) {
             setStoredMinutes("00 mins");
         }
         else {
@@ -105,44 +107,51 @@ const onCheckBoxPress = () => {
 
     var toStoreValue = value;
 
-    if (isHours) {
-        var toStoreLocation = HOURS_STORE_STRING;
-        setStoredHours(value);
-    }
-    else {
-        var toStoreLocation = MINUTES_STORE_STRING;
-        setStoredMinutes(value);
-    }
+let toStoreLocation;
 
-    SecureStore.setItemAsync(toStoreLocation, toStoreValue)
-    .then(() => {console.log("stored notifcations setting " + toStoreValue);})
-    .catch(() => {console.log("error storing notifications settings");})
+if (isHours) {
+    toStoreLocation = HOURS_STORE_STRING;
+    setStoredHours(value);
+} else {
+    toStoreLocation = MINUTES_STORE_STRING;
+    setStoredMinutes(value);
+}
+
+SecureStore.setItemAsync(toStoreLocation, toStoreValue)
+    .then(() => {
+        console.log("Stored notifications setting " + toStoreValue);
+    })
+    .catch(() => {
+        console.log("Error storing notifications settings");
+    });
 
  };
 
- var hours = []
+ let hours = []
 
- for (var i = 0; i < 24; i++) {
+ for (let i = 0; i < 24; i++) {
+    let hour;
     if (i < 10) {
-        var hour = "0" + i + " hours"
-    }
-    else {
-        var hour = i + " hours";
+        hour = "0" + i + " hours";
+    } else {
+        hour = i + " hours";
     }
     hours.push(<Picker.Item label={hour} value={hour} key={hour} />)
- }
+}
 
- var mins = []
 
- for (var i = 0; i < 60; i+=15) {
-    if (i == 0) {
-        var min = "00 mins";
+let mins = [];
+
+for (let i = 0; i < 60; i += 15) {
+    let min;
+    if (i === 0) {
+        min = "00 mins";
+    } else {
+        min = i + " mins";
     }
-    else {
-        var min = i + " mins";
-    }
-    mins.push(<Picker.Item label={min} value={min} key={min} />)
- }
+    mins.push(<Picker.Item label={min} value={min} key={min} />);
+}
+
 
 
 

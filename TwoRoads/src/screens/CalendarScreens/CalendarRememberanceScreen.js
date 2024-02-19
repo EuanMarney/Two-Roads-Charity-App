@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
+
+// eslint-disable-next-line import/order
 import { connectToDatabase } from '../../database/db';
-import { getHedonicMomentsForDate } from '../../database/hedonicMoments';
 import { getConnectionActsForDate } from '../../database/connectionActs';
 import { getGratitudeDiaryForDate } from '../../database/gratitudeDiary';
+import { getHedonicMomentsForDate } from '../../database/hedonicMoments';
 import { getKindnessActsForDate } from '../../database/kindnessActs';
 
 const CalendarRememberanceScreen = ({ route }) => {

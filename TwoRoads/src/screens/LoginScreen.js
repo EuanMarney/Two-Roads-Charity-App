@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Platform,
-} from "react-native";
 import { Feather } from "@expo/vector-icons";
 import stylesheet from '../components/Styles/stylesheet';
 import * as SecureStore from "expo-secure-store";
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from "react-native";
+
 import LoginHeader from "../components/Header/LoginHeader";
 
 const LoginScreen = ({ navigation }) => {

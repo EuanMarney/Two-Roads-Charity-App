@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { View, TouchableOpacity, Text, TextInput, StyleSheet } from "react-native";
 import { StatusBar } from 'react-native';
 import stylesheet from '../../components/Styles/stylesheet';
+=======
+>>>>>>> 7c1f40dba76a45735d3025881d73822213f35950
 import * as SecureStore from 'expo-secure-store'
+import React, { useState } from "react";
+import { View, TouchableOpacity, Text, TextInput, StyleSheet, StatusBar } from "react-native";
 
 const RegisterScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
