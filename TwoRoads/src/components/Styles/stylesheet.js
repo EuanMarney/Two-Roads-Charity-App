@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import backgroundImg from "../../assets/background.png";
 
 //Colour Pallete
 const blue = "#3892E5";
@@ -7,6 +8,7 @@ const indigo = "#AA9CFC";
 const light_green = "#C1F6A2";
 const mauve = "#DA9CFC";
 const purple = "#592E83";
+
 
 //Get Screen Dimensions
 const { width } = Dimensions.get('window');
@@ -110,7 +112,7 @@ const styles = StyleSheet.create(
           numbersContainer: {
             flexDirection: "row",
             flexWrap: "wrap",
-            justifyContent: "space-around",
+            justifyContent: "justify-between",
             width: 300,
           },
 
@@ -269,7 +271,7 @@ const styles = StyleSheet.create(
             padding: 0,
           },
 
-          icon: {
+          iconCog: {
             fontSize: 25,
             color: "#FFF",
           },
@@ -278,21 +280,31 @@ const styles = StyleSheet.create(
 
           // Home Screen
 
+          homeView: {
+            flex: 1,
+          },
+
           homeLayoutScrollStyle: {
             backgroundColor: white
           },
 
+          backgroundImage: {
+            width: "100%",
+            height: "100%",
+          },
+
           homeLayoutContainer: {
             flex: 1,
-            flexDirection: "column"
+            flexDirection: "column",
           },
 
           content: {
-            flex: 1
+            flex: 1,
           },
 
           headerContainer: {
             alignItems: "center",
+            paddingTop: 10,
             marginBottom: -30, // Adjust the marginBottom for padding
           },
 
@@ -310,14 +322,14 @@ const styles = StyleSheet.create(
           buttonContainer: {
             flex: 1,
             justifyContent: "center",
-            paddingHorizontal: "1%",
-            marginTop: 10, // Adjust the marginTop to bring buttons closer to text
+            paddingHorizontal: "2%",
+            marginTop: "6%", // Adjust the marginTop to bring buttons closer to text
           },
           customButton: {
             marginBottom: "5%",
-            borderRadius: "6%",
+            borderRadius: "7.5%",
             paddingVertical: "7.5%",
-            paddingHorizontal: 10,
+            paddingHorizontal: "5%",
             alignItems: "center",
             justifyContent: "center",
             shadowColor: "#000",

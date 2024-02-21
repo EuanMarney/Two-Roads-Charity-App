@@ -38,7 +38,7 @@ return (
         <View style={stylesheet.headerWithIconContainer}>
           <Text style={stylesheet.headerText}>Mind Yourself</Text>
           <TouchableOpacity onPress={handleSettingsPress}>
-            <Feather name="settings" style={stylesheet.icon} />
+            <Feather name="settings" style={stylesheet.iconCog} />
           </TouchableOpacity>
         </View>
  
