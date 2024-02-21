@@ -2,10 +2,11 @@ import { StyleSheet, Dimensions } from "react-native";
 
 //Colour Pallete
 const blue = "#3892E5";
-const seashell = "#FFF1EB";
+const white = "#F0F8FF";
 const indigo = "#AA9CFC";
 const light_green = "#C1F6A2";
 const mauve = "#DA9CFC";
+const purple = "#592E83";
 
 //Get Screen Dimensions
 const { width } = Dimensions.get('window');
@@ -18,13 +19,13 @@ const styles = StyleSheet.create(
             flexGrow: 1,
             justifyContent: "center",
             alignContent: "center",
-            backgroundColor: seashell,
+            backgroundColor: white,
           },
         
           title: {
             fontSize: width * 0.06, // Adjust the multiplier for different font size
             fontWeight: 'bold',
-            fontFamily: 'LoraBold',
+            fontFamily: 'NunitoBold',
             color: '#2c3e50', // Dark shade for better contrast
             textAlign: 'center',
             marginTop: "5%",
@@ -39,7 +40,7 @@ const styles = StyleSheet.create(
 
           description: {
             fontSize: width * 0.04, // Smaller than title
-            fontFamily: 'LoraRegular',
+            fontFamily: 'Nunito',
             textAlign: 'center',
             color: '#34495e', // Slightly lighter than title for hierarchy
             marginBottom: "5%",
@@ -56,7 +57,7 @@ const styles = StyleSheet.create(
         
           buttonText: {
             textAlign: 'center',
-            fontFamily: 'NunitoBold',
+            fontFamily: 'Nunito',
             color: "white",
             fontSize: width * 0.05, // Responsive font size for the button
             fontWeight: 'bold',
@@ -70,7 +71,7 @@ const styles = StyleSheet.create(
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: seashell,
+            backgroundColor: white,
           },
 
           titleLogin: {
@@ -163,7 +164,7 @@ const styles = StyleSheet.create(
 
           usernameContainer: {
             flex: 1,
-            backgroundColor: seashell,
+            backgroundColor: white,
             alignItems: 'center',
             justifyContent: 'center',
             padding: 10,
@@ -171,7 +172,7 @@ const styles = StyleSheet.create(
 
           usernameTitle: {
             fontSize: 30,
-            fontFamily: "LoraBold",
+            fontFamily: "NunitoBold",
             marginBottom: 20,
           },
 
@@ -197,7 +198,146 @@ const styles = StyleSheet.create(
             fontFamily: "NunitoBold"
           },
 
+          // ---------------------------------------------------------------------------- //
+
+          // Header 
+
+          headerComponentContainer: {
+            flexDirection: "column",
+            backgroundColor: "#FFF",
+            height: "15%",
+          },
+
+          headerBlueRectangle: {
+            backgroundColor: purple,
+            height: "100%",
+            justifyContent: "flex-end",
+            padding: "3.5%",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 4,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 4,
+            elevation: 5,
+          },
+
+          headerWithIconContainer: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          },
+
+          headerText: {
+            fontSize: 20,
+            fontFamily: "Nunito",
+            letterSpacing: 2,
+            color: "#FFF",
+            marginBottom: 0.5,
+          },
+
+          headerInlineContainer: {
+            flexDirection: "row",
+            alignItems: "flex-end",
+          },
+
+          subHeaderText: {
+            fontSize: 16,
+            fontFamily: "NunitoBold",
+            letterSpacing: 0.5,
+            color: "#FFF",
+            marginTop: 0.5,
+            marginBottom: 0.5,
+          },
+
+          dateContainer: {
+            flex: 1,
+            alignItems: "flex-end",
+          },
+
+          dateText: {
+            fontSize: 12,
+            fontFamily: "Nunito",
+            color: "#FFF",
+          },
+
+          headerTitle: {
+            fontSize: 20,
+            fontWeight: "bold",
+            textAlign: "center",
+            padding: 0,
+          },
+
+          icon: {
+            fontSize: 25,
+            color: "#FFF",
+          },
+
+          // ---------------------------------------------------------------------------- //
+
+          // Home Screen
+
+          homeLayoutScrollStyle: {
+            backgroundColor: white
+          },
+
+          homeLayoutContainer: {
+            flex: 1,
+            flexDirection: "column"
+          },
+
+          content: {
+            flex: 1
+          },
+
+          headerContainer: {
+            alignItems: "center",
+            marginBottom: -30, // Adjust the marginBottom for padding
+          },
+
+          homeHeader: {
+            marginTop: 20,
+            color: "#000",
+            fontFamily: "NunitoBold",
+            fontSize: 24,
+            fontStyle: "normal",
+            fontWeight: "400",
+            lineHeight: 30, // Set a numeric value for lineHeight
+            paddingBottom: 35,
+          },
+
+          buttonContainer: {
+            flex: 1,
+            justifyContent: "center",
+            paddingHorizontal: "1%",
+            marginTop: 10, // Adjust the marginTop to bring buttons closer to text
+          },
+          customButton: {
+            marginBottom: "5%",
+            borderRadius: "6%",
+            paddingVertical: "7.5%",
+            paddingHorizontal: 10,
+            alignItems: "center",
+            justifyContent: "center",
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.25,
+            shadowRadius: 4,
+            elevation: 5,
+          },
+          homeButtonText: {
+            color: "black",
+            fontFamily: "Nunito",
+            letterSpacing: 3,
+            fontSize: 16,
+          },
+
+          // ---------------------------------------------------------------------------- //
+
+
     }
+
 
 )
 
