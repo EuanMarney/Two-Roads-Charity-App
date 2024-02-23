@@ -7,9 +7,7 @@ const Layout = ({ children }) => {
   return (
 
       <View style={styles.container}>
-          <ScrollView style={styles.scrollStyle}>
           <View style={styles.content}>{children}</View>
-          </ScrollView>
         <Footer />
       </View>
 

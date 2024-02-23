@@ -20,33 +20,31 @@ const HomeScreen = ({ navigation }) => {
   ];
 
   return (
-    <HomeLayout navigation={navigation}>
 
-      <View style={stylesheet.homeView}>
+      <HomeLayout navigation={navigation}>
 
-        <ImageBackground source={backgroundImg} style={stylesheet.backgroundImage}>
+        <View style={stylesheet.homeView}>
 
-        <View style={stylesheet.headerContainer}>
-          <Text style={stylesheet.homeHeader}>Daily Practices</Text>
+          {/* <View style={stylesheet.headerContainer}>
+            <Text style={stylesheet.homeHeader}>Daily Practices</Text>
+          </View> */}
+
+          <View style={stylesheet.buttonContainer}>
+            {buttons.map((button, index) => (
+              <TouchableOpacity
+                key={index}
+                style={[stylesheet.customButton, { backgroundColor: button.color }]}
+                onPress={() => handlePress(button.title)}
+              >
+                <Text style={stylesheet.homeButtonText}>{button.title}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+
         </View>
 
-        <View style={stylesheet.buttonContainer}>
-          {buttons.map((button, index) => (
-            <TouchableOpacity
-              key={index}
-              style={[stylesheet.customButton, { backgroundColor: button.color }]}
-              onPress={() => handlePress(button.title)}
-            >
-              <Text style={stylesheet.homeButtonText}>{button.title}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
+      </HomeLayout>
 
-        </ImageBackground>
-
-      </View>
-
-    </HomeLayout>
   );
 };
 

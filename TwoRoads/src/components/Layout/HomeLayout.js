@@ -11,9 +11,10 @@ const HomeLayout = ({ children, navigation }) => {
   return (
     <View style={stylesheet.homeLayoutContainer}>
       <Header navigation={navigation} />
-      {/* <ScrollView style={stylesheet.homeLayoutScrollStyle}> */}
-      <View style={stylesheet.content}>{children}</View>
-      {/* </ScrollView> */}
+      <ScrollView style={stylesheet.homeLayoutScrollStyle}>
+        <View style={stylesheet.content}>{children}</View>
+      </ScrollView>
+      <ImageBackground source={backgroundImg} style={stylesheet.backgroundImage} />
       <Footer />
     </View>
   );

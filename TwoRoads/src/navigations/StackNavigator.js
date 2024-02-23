@@ -26,6 +26,9 @@ import CalendarRememberanceScreen from "../screens/CalendarScreens/CalendarRemem
 //settings screen imports
 import SettingsScreen from "../screens/SettingsScreen";
 import NotificationsSettingsScreen from "../screens/NotificationsSettingsScreen";
+
+//styling sheet import
+import stylesheet from "../components/Styles/stylesheet";
 /* eslint-enable import/order */
 
 const Stack = createNativeStackNavigator();
@@ -39,8 +42,8 @@ const StackNavigator = () => {
       <Stack.Screen name="PinScreenReg1" options={{headerShown: false}} component={PinScreenReg1}/>
       <Stack.Screen name="PinScreenReg2" options={{headerShown: false}} component={PinScreenReg2}/>
       <Stack.Screen name="Home" options={{headerShown: false, gestureEnabled: false}} component={HomeScreen} />
-      <Stack.Screen name="Gratitude Diary" component={GratitudeDiaryScreen} />
-      <Stack.Screen name="Acts of Kindness" component={KindnessActsScreen} />
+      <Stack.Screen name="Gratitude Diary" options={{headerShown: false, presentation: "fullScreenModal"}} component={GratitudeDiaryScreen} />
+      <Stack.Screen name="Acts of Kindness" options={{headerShown: false, presentation: "fullScreenModal"}} component={KindnessActsScreen} />
       <Stack.Screen name="Hedonic Moments" component={HedonicMomentsScreen} />
       <Stack.Screen name="Acts of Connection" component={ConnectionActsScreen}/>
       <Stack.Screen name="Daily Mindfulness" component={DailyMindfulnessScreen}/>

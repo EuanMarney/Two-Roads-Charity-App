@@ -16,6 +16,14 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create(
     {
 
+        // Stack Navigator Styling
+
+        navigatorStyles: {
+          
+        },  
+
+        // ---------------------------------------------------------------------------- //
+
         // Welcome Page Styles
         container: {
             flexGrow: 1,
@@ -202,7 +210,7 @@ const styles = StyleSheet.create(
 
           // ---------------------------------------------------------------------------- //
 
-          // Header 
+          // Header (Home and Input Screens)
 
           headerComponentContainer: {
             flexDirection: "column",
@@ -210,11 +218,11 @@ const styles = StyleSheet.create(
             height: "15%",
           },
 
-          headerBlueRectangle: {
+          headerRectangle: {
             backgroundColor: purple,
             height: "100%",
             justifyContent: "flex-end",
-            padding: "3.5%",
+            padding: "4%",
             shadowColor: "#000",
             shadowOffset: {
               width: 0,
@@ -285,10 +293,17 @@ const styles = StyleSheet.create(
           },
 
           homeLayoutScrollStyle: {
-            backgroundColor: white
+            paddingTop: "5%",
+            backgroundColor: "transparent"
           },
 
           backgroundImage: {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: -1,
             width: "100%",
             height: "100%",
           },
@@ -304,14 +319,15 @@ const styles = StyleSheet.create(
 
           headerContainer: {
             alignItems: "center",
-            paddingTop: 10,
-            marginBottom: -30, // Adjust the marginBottom for padding
+            paddingTop: 30,
+            marginBottom: -10, // Adjust the marginBottom for padding
           },
 
           homeHeader: {
             marginTop: 20,
             color: "#000",
             fontFamily: "NunitoBold",
+            letterSpacing: 2,
             fontSize: 24,
             fontStyle: "normal",
             fontWeight: "400",

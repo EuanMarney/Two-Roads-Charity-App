@@ -8,6 +8,7 @@ import TextBox from "../../components/interactiveComps/TextBox";
 
 import { connectToDatabase, createTables } from "../../database/db";
 import { insertActOfKindness, getAllActsOfKindness } from "../../database/kindnessActs";
+import InputScreenHeader from "../../components/Header/inputScreenHeader";
 
 
 const KindnessActsScreen = () => {
@@ -52,11 +53,12 @@ const handleSubmit = async () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
+      <InputScreenHeader />
       <Layout>
         <ScrollView>
-          <Text style={styles.headerText}>
+          {/* <Text style={styles.headerText}>
             This is the Acts of Kindness page
-          </Text>
+          </Text> */}
 
           {/* Adding TextBox component*/}
           <View style={styles.rowContainer}>

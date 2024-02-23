@@ -32,11 +32,11 @@ const Header = ({ title, navigation }) => {
   }, []);
 
 
-return (
+  return (
     <View style={stylesheet.headerComponentContainer}>
-      <View style={stylesheet.headerBlueRectangle}>
+      <View style={stylesheet.headerRectangle}>
         <View style={stylesheet.headerWithIconContainer}>
-          <Text style={stylesheet.headerText}>Mind Yourself</Text>
+          <Text style={stylesheet.headerText}>Daily Practices</Text>
           <TouchableOpacity onPress={handleSettingsPress}>
             <Feather name="settings" style={stylesheet.iconCog} />
           </TouchableOpacity>

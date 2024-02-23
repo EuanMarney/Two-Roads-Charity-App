@@ -4,11 +4,13 @@ import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } fr
 
 import stylesheet from "../../components/Styles/stylesheet";
 import Layout from "../../components/Layout";
+import HomeLayout from "../../components/Layout/HomeLayout";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
 import TextBox from "../../components/interactiveComps/TextBox";
 
 import { connectToDatabase, createTables } from "../../database/db";
 import { insertGratitudeDiaryEntry } from "../../database/gratitudeDiary";
+import InputScreenHeader from "../../components/Header/inputScreenHeader";
 
 const GratitudeDiaryScreen = () => {
   const [firstReason, setFirstReason] = useState("");
@@ -59,11 +61,12 @@ const GratitudeDiaryScreen = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
+      <InputScreenHeader />
       <Layout>
         <ScrollView>
-          <Text style={styles.headerText}>
+          {/* <Text style={styles.headerText}>
             This is the Gratitude Diary page
-          </Text>
+          </Text> */}
 
           {/* Adding TextBox component*/}
           <View style={styles.rowContainer}>
