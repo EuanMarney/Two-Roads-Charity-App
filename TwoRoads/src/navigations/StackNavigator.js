@@ -44,9 +44,9 @@ const StackNavigator = () => {
       <Stack.Screen name="Home" options={{headerShown: false, gestureEnabled: false}} component={HomeScreen} />
       <Stack.Screen name="Gratitude Diary" options={{headerShown: false, presentation: "fullScreenModal"}} component={GratitudeDiaryScreen} />
       <Stack.Screen name="Acts of Kindness" options={{headerShown: false, presentation: "fullScreenModal"}} component={KindnessActsScreen} />
-      <Stack.Screen name="Hedonic Moments" component={HedonicMomentsScreen} />
-      <Stack.Screen name="Acts of Connection" component={ConnectionActsScreen}/>
-      <Stack.Screen name="Daily Mindfulness" component={DailyMindfulnessScreen}/>
+      <Stack.Screen name="Hedonic Moments" options={{headerShown: false, presentation: "fullScreenModal"}} component={HedonicMomentsScreen} />
+      <Stack.Screen name="Acts of Connection" options={{headerShown: false, presentation: "fullScreenModal"}} component={ConnectionActsScreen}/>
+      <Stack.Screen name="Daily Mindfulness" options={{headerShown: false, presentation: "fullScreenModal"}} component={DailyMindfulnessScreen}/>
       <Stack.Screen name="Settings" component={SettingsScreen}/>
       <Stack.Screen name="Calendar" component={CalendarScreen}/>
       <Stack.Screen name="CalendarRememberance" component={CalendarRememberanceScreen}/>

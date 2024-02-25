@@ -1,12 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import Layout from "../../components/Layout";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
 import TextBox from "../../components/interactiveComps/TextBox";
 import { connectToDatabase, createTables } from "../../database/db";
 import { insertHedonicMoment, getAllHedonicMoments } from "../../database/hedonicMoments";
+import InputScreenHeader from "../../components/Header/inputScreenHeader";
+// import backgroundImage from "../../assets/hedonicBackground.png";
 
 const HedonicMomentsScreen = () => {
   const [firstMoment, setFirstMoment] = useState("");
@@ -60,6 +62,7 @@ const HedonicMomentsScreen = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
+      <InputScreenHeader />
       <Layout>
         <ScrollView>
           <Text style={styles.headerText}>

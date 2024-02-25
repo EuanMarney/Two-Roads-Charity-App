@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 
+import stylesheet from "../../components/Styles/stylesheet";
 import Layout from "../../components/Layout";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
 import TextBox from "../../components/interactiveComps/TextBox";
@@ -53,9 +54,9 @@ const handleSubmit = async () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
-      <InputScreenHeader />
+      <InputScreenHeader headerStyles={{backgroundColor: "#AA9CFC"}}/>
       <Layout>
-        <ScrollView>
+        <ScrollView style={stylesheet.inputScrollView}>
           {/* <Text style={styles.headerText}>
             This is the Acts of Kindness page
           </Text> */}

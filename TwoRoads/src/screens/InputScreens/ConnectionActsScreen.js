@@ -2,12 +2,14 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 
+import stylesheet from "../../components/Styles/stylesheet";
 import Layout from "../../components/Layout";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
 import TextBox from "../../components/interactiveComps/TextBox";
 
 import { connectToDatabase, createTables } from "../../database/db";
 import { insertConnectionAct } from "../../database/connectionActs";
+import InputScreenHeader from "../../components/Header/inputScreenHeader";
 
 const ConnectionActsScreen = () => {
   const [firstConnectionAct, setFirstConnectionAct] = useState("");
@@ -49,11 +51,12 @@ const ConnectionActsScreen = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
+      <InputScreenHeader />
       <Layout>
-        <ScrollView>
-          <Text style={styles.headerText}>
+        <ScrollView style={stylesheet.inputScrollView}>
+          {/* <Text style={styles.headerText}>
             This is the Acts of Connection page
-          </Text>
+          </Text> */}
 
           {/* Adding TextBox component*/}
           <View style={styles.rowContainer}>

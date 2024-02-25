@@ -16,12 +16,6 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create(
     {
 
-        // Stack Navigator Styling
-
-        navigatorStyles: {
-          
-        },  
-
         // ---------------------------------------------------------------------------- //
 
         // Welcome Page Styles
@@ -97,7 +91,7 @@ const styles = StyleSheet.create(
           },
 
           circle: {
-            width: "5%",
+            width: 20,
             flexDirection: "column",
             height: 20,
             // Android Border Issue Fix
@@ -149,7 +143,7 @@ const styles = StyleSheet.create(
           },
 
           forgotText: {
-            marginTop: "10%",
+            marginTop: "5%",
             color: "blue",
             fontFamily: "Nunito",
           },
@@ -158,7 +152,7 @@ const styles = StyleSheet.create(
             backgroundColor: blue,
             padding: 15,
             borderRadius: 30,
-            justifyContent: "center",
+            justifyContent: "space-evenly",
             alignItems: "center",
             margin: 10,
           },
@@ -166,6 +160,11 @@ const styles = StyleSheet.create(
           submitText: {
             fontFamily: "Nunito",
             color: "white",
+          },
+
+          loginImage: {
+            aspectRatio: 3,
+            resizeMode: "contain",
           },
 
           // ---------------------------------------------------------------------------- //
@@ -210,7 +209,12 @@ const styles = StyleSheet.create(
 
           // ---------------------------------------------------------------------------- //
 
-          // Header (Home and Input Screens)
+          // Header (Home, Input, Login Screens)
+
+          loginHeaderContainer: {
+            justifyContent: "center",
+            alignItems: "center"
+          },  
 
           headerComponentContainer: {
             flexDirection: "column",
@@ -282,6 +286,31 @@ const styles = StyleSheet.create(
           iconCog: {
             fontSize: 25,
             color: "#FFF",
+          },
+
+          // ---------------------------------------------------------------------------- //
+
+          // Footer
+
+          footerContainer: {
+            height: "8%",
+            backgroundColor: "#FFF",
+            borderTopWidth: 1,
+            borderTopColor: "#EAEAEA",
+            justifyContent: "center",
+            alignItems: "center",
+          },
+
+          footerText: {
+            fontSize: 16,
+            color: "#333",
+            textAlign: "center",
+          },
+
+          footerImage: {
+            width: '100%',
+            height: '100%',
+            resizeMode: 'contain',
           },
 
           // ---------------------------------------------------------------------------- //
@@ -362,6 +391,71 @@ const styles = StyleSheet.create(
           },
 
           // ---------------------------------------------------------------------------- //
+
+          //Input Screen Elements
+
+          textBoxContainer: {
+            padding: 10,
+          },
+
+          textBoxInput: {
+            backgroundColor: "white",
+            borderRadius: 5,
+            width: "100%",
+            minHeight: 60,
+            paddingTop: 20,
+            fontFamily: "Nunito"
+          },
+
+          inputScrollView: {
+            paddingTop: "5%",
+            backgroundColor: "transparent"
+          },
+
+          inputScreePaddedText: {
+            fontFamily: "Nunito",
+            paddingLeft: "3%",
+            paddingTop: "1%",
+            paddingBottom: "1%",
+            color: 'white',
+            letterSpacing: 1.5
+          },
+
+          inputScreenRowContainer: {
+            flexDirection: "row", // Arrange components horizontally
+            justifyContent: "space-between", // Distribute space between components
+            alignItems: "center", // Align items vertically
+            marginBottom: 10, // Adjust margin bottom as needed
+          },
+
+          inputScreenTextBoxContainer: {
+            flex: 1, // Take remaining space in the row
+          },
+
+          inputScreenButtonContainer: {
+            flexDirection: "row",
+            justifyContent: "center",
+            paddingBottom: "10%",
+          },
+
+          //Gratitude Diary
+
+          textBoxGroupContainers: {
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: "5%",
+            paddingTop: "5%",
+            paddingBottom: "5%",
+            backgroundColor: "#3892E5",
+            borderTopRightRadius: 20,
+            borderBottomLeftRadius: 20,
+            width: "95%",
+          },
+
+          
 
 
     }

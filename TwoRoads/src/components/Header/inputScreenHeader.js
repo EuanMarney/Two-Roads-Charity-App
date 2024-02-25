@@ -4,7 +4,7 @@ import stylesheet from "../Styles/stylesheet";
 import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
 
-const InputScreenHeader = () => {
+const InputScreenHeader = ({headerStyles}) => {
 
     const navigation = useNavigation();
     const route = useRoute();
@@ -15,7 +15,7 @@ const InputScreenHeader = () => {
 
     return(
         <View style={stylesheet.headerComponentContainer}>
-            <View style={stylesheet.headerRectangle}>
+            <View style={[stylesheet.headerRectangle, headerStyles]}>
                 <View style={stylesheet.headerWithIconContainer}>
                     <Text style={stylesheet.headerText}>{route.name}</Text>
                     <TouchableOpacity onPress={handleCrossPress}>
