@@ -62,15 +62,15 @@ const GratitudeDiaryScreen = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
-      <InputScreenHeader headerStyles={{backgroundColor: "#3892E5"}} />
       <Layout>
+        <InputScreenHeader headerStyles={{backgroundColor: "#3892E5"}} />
         <ScrollView style={stylesheet.inputScrollView}>
 
           {/* Adding TextBox component*/}
           <View style={stylesheet.textBoxGroupContainers}>
-            <View style={stylesheet.inputScreenRowContainer}>
+            <View style={stylesheet.rowContainer}>
               <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.inputScreePaddedText}>First thing that I am grateful for</Text>
+                <Text style={stylesheet.paddedText}>First thing that I am grateful for</Text>
                 <TextBox
                     onChangeText={(text) => setFirstReason(text)}
                     value={firstReason}
@@ -80,9 +80,9 @@ const GratitudeDiaryScreen = () => {
               </View>
             </View>
 
-            <View style={stylesheet.inputScreenRowContainer}>
+            <View style={stylesheet.rowContainer}>
               <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.inputScreePaddedText}>Why this first thing happened?</Text>
+                <Text style={stylesheet.paddedText}>Why this first thing happened?</Text>
                 <TextBox
                     onChangeText={(text) => setFirstWhy(text)}
                     value={firstWhy}
@@ -94,9 +94,9 @@ const GratitudeDiaryScreen = () => {
           </View>
 
           <View style={stylesheet.textBoxGroupContainers} >
-            <View style={stylesheet.inputScreenRowContainer}>
+            <View style={stylesheet.rowContainer}>
               <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.inputScreePaddedText}>Second thing that I am grateful for</Text>
+                <Text style={stylesheet.paddedText}>Second thing that I am grateful for</Text>
                 <TextBox
                     onChangeText={(text) => setSecondReason(text)}
                     value={secondReason}
@@ -106,9 +106,9 @@ const GratitudeDiaryScreen = () => {
               </View>
             </View>
 
-            <View style={stylesheet.inputScreenRowContainer}>
+            <View style={stylesheet.rowContainer}>
               <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.inputScreePaddedText}>Why this second thing happened?</Text>
+                <Text style={stylesheet.paddedText}>Why this second thing happened?</Text>
                 <TextBox
                     onChangeText={(text) => setSecondWhy(text)}
                     value={secondWhy}
@@ -120,9 +120,9 @@ const GratitudeDiaryScreen = () => {
           </View>
 
           <View style={stylesheet.textBoxGroupContainers}>
-            <View style={stylesheet.inputScreenRowContainer}>
+            <View style={stylesheet.rowContainer}>
               <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.inputScreePaddedText}>Third thing that I am grateful for</Text>
+                <Text style={stylesheet.paddedText}>Third thing that I am grateful for</Text>
                 <TextBox
                     onChangeText={(text) => setThirdReason(text)}
                     value={thirdReason}
@@ -132,9 +132,9 @@ const GratitudeDiaryScreen = () => {
               </View>
             </View>
 
-            <View style={stylesheet.inputScreenRowContainer}>
+            <View style={stylesheet.rowContainer}>
               <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.inputScreePaddedText}>Why this third thing happened?</Text>
+                <Text style={stylesheet.paddedText}>Why this third thing happened?</Text>
                 <TextBox
                     onChangeText={(text) => setThirdWhy(text)}
                     value={thirdWhy}
@@ -155,7 +155,9 @@ const GratitudeDiaryScreen = () => {
 
         </ScrollView>
         <ImageBackground source={backgroundImage} style={stylesheet.backgroundImage}/>
+
       </Layout>
+
     </KeyboardAvoidingView>
   );
 };

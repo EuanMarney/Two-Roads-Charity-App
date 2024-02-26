@@ -323,6 +323,7 @@ const styles = StyleSheet.create(
 
           homeLayoutScrollStyle: {
             paddingTop: "5%",
+            paddingBottom: "5%",
             backgroundColor: "transparent"
           },
 
@@ -395,6 +396,7 @@ const styles = StyleSheet.create(
           //Input Screen Elements
 
           textBoxContainer: {
+            flex: 1,
             padding: 10,
           },
 
@@ -412,7 +414,7 @@ const styles = StyleSheet.create(
             backgroundColor: "transparent"
           },
 
-          inputScreePaddedText: {
+          paddedText: {
             fontFamily: "Nunito",
             paddingLeft: "3%",
             paddingTop: "1%",
@@ -421,7 +423,7 @@ const styles = StyleSheet.create(
             letterSpacing: 1.5
           },
 
-          inputScreenRowContainer: {
+          rowContainer: {
             flexDirection: "row", // Arrange components horizontally
             justifyContent: "space-between", // Distribute space between components
             alignItems: "center", // Align items vertically
@@ -438,8 +440,6 @@ const styles = StyleSheet.create(
             paddingBottom: "10%",
           },
 
-          //Gratitude Diary
-
           textBoxGroupContainers: {
             flex: 1,
             flexDirection: "column",
@@ -452,6 +452,12 @@ const styles = StyleSheet.create(
             backgroundColor: "#3892E5",
             borderTopRightRadius: 20,
             borderBottomLeftRadius: 20,
+            shadowColor: "black",
+            shadowOpacity: 0.25,
+            shadowOffset: {
+              width: 0,
+              height: 4
+            },
             width: "95%",
           },
 
