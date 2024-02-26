@@ -1,6 +1,7 @@
 import * as SecureStore from 'expo-secure-store'
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import stylesheet from "../Styles/stylesheet";
 import Feather from 'react-native-vector-icons/Feather'
 
 const getUsername = async () => {
@@ -31,90 +32,27 @@ const Header = ({ title, navigation }) => {
   }, []);
 
 
-return (
-    <View style={styles.headerContainer}>
-      <View style={styles.blueRectangle}>
-        <View style={styles.headerWithIconContainer}>
-          <Text style={styles.headerText}>Mind Yourself</Text>
+  return (
+    <View style={stylesheet.headerComponentContainer}>
+      <View style={stylesheet.headerRectangle}>
+        <View style={stylesheet.headerWithIconContainer}>
+          <Text style={stylesheet.headerText}>Daily Practices</Text>
           <TouchableOpacity onPress={handleSettingsPress}>
-            <Feather name="settings" style={styles.icon} />
+            <Feather name="settings" style={stylesheet.iconCog} />
           </TouchableOpacity>
         </View>
  
-        <View style={styles.inlineContainer}>
-          <Text style={styles.subHeaderText}>{username}</Text>
-          <View style={styles.dateContainer}>
-            <Text style={styles.dateText}>{formattedDate}</Text>
+        <View style={stylesheet.headerInlineContainer}>
+          <Text style={stylesheet.subHeaderText}>{username}</Text>
+          <View style={stylesheet.dateContainer}>
+            <Text style={stylesheet.dateText}>{formattedDate}</Text>
           </View>
         </View>
       </View>
-      <Text style={styles.headerTitle}>{title}</Text>
+      <Text style={stylesheet.headerTitle}>{title}</Text>
     </View>
   );
 };
- 
-const styles = StyleSheet.create({
-  headerContainer: {
-    flexDirection: "column",
-    backgroundColor: "#FFF",
-    height: "15%",
-  },
-  blueRectangle: {
-    backgroundColor: "#0395CC",
-    height: "100%",
-    justifyContent: "flex-end",
-    padding: "3.5%",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  headerWithIconContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  headerText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#FFF",
-    marginBottom: 0.5,
-  },
-  inlineContainer: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-  },
-  subHeaderText: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#FFF",
-    marginTop: 0.5,
-    marginBottom: 0.5,
-  },
-  dateContainer: {
-    flex: 1,
-    alignItems: "flex-end",
-  },
-  dateText: {
-    fontSize: 12,
-    fontWeight: "normal",
-    color: "#FFF",
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "center",
-    padding: 0,
-  },
-  icon: {
-    fontSize: 25,
-    color: "#FFF",
-  },
-});
  
 export default Header;
  

@@ -1,32 +1,23 @@
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, ImageBackground, ScrollView } from "react-native";
+import stylesheet from "../Styles/stylesheet";
+
+import backgroundImg from "../../assets/background.png";
 
 import Footer from "../Footer";
 import Header from "../Header";
 
 const HomeLayout = ({ children, navigation }) => {
   return (
-    <View style={styles.container}>
+    <View style={stylesheet.homeLayoutContainer}>
       <Header navigation={navigation} />
-      <ScrollView style={styles.scrollStyle}>
-        <View style={styles.content}>{children}</View>
+      <ScrollView style={stylesheet.homeLayoutScrollStyle}>
+        <View style={stylesheet.content}>{children}</View>
       </ScrollView>
+      <ImageBackground source={backgroundImg} style={stylesheet.backgroundImage} />
       <Footer />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  scrollStyle: {
-    backgroundColor: "white",
-  },
-  container: {
-    flex: 1,
-    flexDirection: "column",
-  },
-  content: {
-    flex: 1,
-  },
-});
 
 export default HomeLayout;
