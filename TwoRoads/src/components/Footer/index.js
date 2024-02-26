@@ -1,36 +1,16 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image } from "react-native";
+import stylesheet from "../Styles/stylesheet";
 
 const Footer = () => {
   return (
-    <View style={styles.footerContainer}>
+    <View style={stylesheet.footerContainer}>
           <Image
         source={require('../../assets/twoRoads.png')}
-        style={styles.image}
+        style={stylesheet.footerImage}
       />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  footerContainer: {
-    height: "8%",
-    backgroundColor: "#FFF",
-    borderTopWidth: 1,
-    borderTopColor: "#EAEAEA",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  footerText: {
-    fontSize: 16,
-    color: "#333",
-    textAlign: "center",
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'contain',
-  },
-});
 
 export default Footer;

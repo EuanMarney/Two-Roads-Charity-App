@@ -1,22 +1,24 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
-import { MaterialIcons } from '@expo/vector-icons'; // Assuming you're using Expo and have installed @expo/vector-icons
+
+const today = new Date().toISOString().split('T')[0];
 
 export default function CalendarScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Calendar
-        current={'2024-01-01'}
-        minDate={'2022-01-01'}
-        maxDate={'2026-01-31'}  
+        current={today}
+        minDate='2022-01-01'
+        maxDate='2026-01-31' 
         onDayPress={(day) => {navigation.navigate('CalendarRememberance', 
         { selectedDate: day.dateString });
         }}
-        monthFormat={'yyyy MMMM'}
+        monthFormat='yyyy MMMM'
         onMonthChange={(month) => { console.log('month changed', month) }}
-        renderArrow={(direction) => (<Arrow direction={direction} />)} // Custom arrow rendering
-        enableSwipeMonths={true}
+        renderArrow={(direction) => (<Arrow direction={direction} />)}
+        enableSwipeMonths
       />
     </View>
   );
@@ -31,7 +33,6 @@ const styles = StyleSheet.create({
 });
 
 function Arrow({ direction }) {
-  // Determine the icon based on the direction
   const iconName = direction === 'left' ? 'arrow-back' : 'arrow-forward';
   return (
     <TouchableOpacity>

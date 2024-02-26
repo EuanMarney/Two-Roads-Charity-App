@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, Text, TextInput, StyleSheet } from "react-native";
-import { StatusBar } from 'react-native';
+import stylesheet from '../../components/Styles/stylesheet';
 import * as SecureStore from 'expo-secure-store'
+import { View, TouchableOpacity, Text, TextInput, StatusBar } from "react-native";
 
 const RegisterScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -11,58 +11,25 @@ const RegisterScreen = ({ navigation }) => {
   }
 
   const handlePress = () => {
-    console.log(username)
     saveUsername(username)
     navigation.navigate('PinScreenReg1')
   };
 
   return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Welcome</Text>
+      <View style={stylesheet.usernameContainer}>
+        <Text style={stylesheet.usernameTitle}>Welcome</Text>
         <TextInput
-          style={styles.input}
+          style={stylesheet.usernameInput}
           placeholder="Enter Username"
           value={username}
           onChangeText={setUsername}
         />
-        <TouchableOpacity style={styles.button} onPress={handlePress}>
-          <Text style={styles.buttonText}>Submit</Text>
+        <TouchableOpacity style={stylesheet.usernameButton} onPress={handlePress}>
+          <Text style={stylesheet.usernameButtonText}>Submit</Text>
         </TouchableOpacity>
         <StatusBar style="auto" />
       </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  input: {
-    width: '80%',
-    borderWidth: 1,
-    borderColor: '#ddd',
-    padding: 10,
-    marginBottom: 20,
-    borderRadius: 5,
-  },
-  button: {
-    backgroundColor: '#007bff',
-    padding: 15,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-});
 
 export default RegisterScreen;

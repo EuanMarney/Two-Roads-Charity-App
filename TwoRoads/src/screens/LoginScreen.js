@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Platform,
-} from "react-native";
-import { Svg, Path } from "react-native-svg"; // For custom icons
 import { Feather } from "@expo/vector-icons";
+import stylesheet from '../components/Styles/stylesheet';
 import * as SecureStore from "expo-secure-store";
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from "react-native";
+
 import LoginHeader from "../components/Header/LoginHeader";
 
 const LoginScreen = ({ navigation }) => {
@@ -20,7 +15,7 @@ const LoginScreen = ({ navigation }) => {
     const keys = ["username", "pin"]; // Replace with your actual keys
     keys.forEach(async (key) => {
       const value = await SecureStore.getItemAsync(key);
-      console.log(key, value);
+      console.log(key, value, "LoginScreen line 22");
     });
   };
 
@@ -39,7 +34,6 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const getUsername = async () => {
-    console.log("username =", await SecureStore.getItemAsync("username"));
     return await SecureStore.getItemAsync("username");
   };
 
@@ -71,7 +65,6 @@ const LoginScreen = ({ navigation }) => {
 
   const handleSubmit = () => {
     if (pinLogin.length === 6) {
-      console.log(pinLogin);
       comparePin(pinLogin);
     } else {
       alert("Please enter a 6-digit pin");
@@ -86,7 +79,7 @@ const LoginScreen = ({ navigation }) => {
         <View
           key={i}
           style={[
-            styles.circle,
+            stylesheet.circle,
             { backgroundColor: i < pinLogin.length ? "black" : "transparent" },
           ]}
         />,
@@ -96,126 +89,45 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={stylesheet.loginContainer}>
       <LoginHeader />
 
-      <Text style={styles.title}>Enter your 6-digit passnumber</Text>
-      <View style={styles.circleContainer}>{renderCircles()}</View>
+      <Text style={stylesheet.titleLogin}>Enter your 6-digit passcode</Text>
+      <View style={stylesheet.circleContainer}>{renderCircles()}</View>
 
-      <View style={styles.numbersContainer}>
+      <View style={stylesheet.numbersContainer}>
         {Array.from({ length: 9 }, (_, i) => i + 1).map((num) => (
           <TouchableOpacity
             key={num}
-            style={styles.number}
+            style={stylesheet.number}
             onPress={() => handlePress(num.toString())}
           >
-            <Text style={styles.numberText}>{num}</Text>
+            <Text style={stylesheet.numberText}>{num}</Text>
           </TouchableOpacity>
         ))}
 
-        <TouchableOpacity style={styles.icon} onPress={() => handleDelete()}>
+        <TouchableOpacity style={stylesheet.icon} onPress={() => handleDelete()}>
           <Feather name="delete" size={30} color="black" />
         </TouchableOpacity>
 
         <TouchableOpacity
           key="0"
-          style={[styles.number, { marginLeft: 30 }]}
+          style={[stylesheet.number, { marginLeft: 30 }]}
           onPress={() => handlePress("0")}
         >
-          <Text style={styles.numberText}>0</Text>
+          <Text style={stylesheet.numberText}>0</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Submit</Text>
+        <TouchableOpacity style={stylesheet.buttonLogin} onPress={handleSubmit}>
+          <Text style={stylesheet.submitText}>Submit</Text>
         </TouchableOpacity>
       </View>
 
       <TouchableOpacity onPress={() => navigation.navigate("RegisterScreen")}>
-        <Text style={styles.forgotText}>Create an account</Text>
+        <Text style={stylesheet.forgotText}>Create an account</Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#FFFFFF",
-  },
-  title: {
-    fontSize: 18,
-    marginBottom: "8%",
-    marginTop: "5%",
-  },
-  circleContainer: {
-    flexDirection: "row",
-    marginBottom: "5%",
-  },
-  circle: {
-    width: "5%",
-    height: 20,
-    // Android Border Issue Fix
-    ...Platform.select({
-      ios: {
-        borderRadius: "100%",
-      },
-      android: {
-        borderRadius: 100,
-      },
-      default: {
-        borderRadius: 100,
-      },
-    }),
-    marginHorizontal: 5,
-    borderWidth: 1,
-    borderColor: "black",
-  },
-  numbersContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    width: 300,
-  },
-  number: {
-    width: 75,
-    height: 75,
-    borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 12,
-    borderWidth: 1,
-    borderColor: "black",
-  },
-  numberText: {
-    fontSize: 24,
-  },
-  icon: {
-    marginLeft: 15,
-    width: 60,
-    height: 75,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 5,
-  },
-  forgotText: {
-    marginTop: 20,
-    color: "blue",
-  },
-  submitButtonText: {
-    marginTop: 20,
-    color: "black",
-    fontSize: 18,
-  },
-  button: {
-    backgroundColor: "#007bff",
-    padding: 15,
-    borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 10,
-  },
-});
 
 export default LoginScreen;

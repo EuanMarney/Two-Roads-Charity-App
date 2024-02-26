@@ -1,14 +1,4 @@
-// This file contains logic to interact with the HedonicMoments table in the database
 
-/**
- * Inserts a new hedonic moment entry into the database.
- * @param {SQLite.WebSQLDatabase} db - The database connection object.
- * @param {string} date - The date of the hedonic moment entry.
- * @param {string} firstMoment - The text for the first hedonic moment.
- * @param {string} secondMoment - The text for the second hedonic moment.
- * @param {string} thirdMoment - The text for the third hedonic moment.
- * @param {string} fourthMoment - The text for the fourth hedonic moment.
- */
 export const insertHedonicMoment = (
   db,
   date,
@@ -43,46 +33,42 @@ export const insertHedonicMoment = (
       if (onError) onError(error);
     },
     () => {
-      console.log("Transaction success");
+      console.log("Transaction success, hedonicMoments.js line 36");
     },
   );
 };
 
-/**
- * Retrieves all hedonic moment entries from the database.
- * @param {SQLite.WebSQLDatabase} db - The database connection object.
- * @param {function} onSuccess - Callback function that is called with the query results.
- * @param {function} onError - Callback function that is called in case of an error.
- */
-export const getAllHedonicMoments = (db, onSuccess, onError) => {
-  const selectQuery = `
-    SELECT * FROM HedonicMoments;
-  `;
-
-  db.transaction(
-    (tx) => {
+// Inside your db.js or a similar database utility file
+export const getAllHedonicMoments = async (db) => {
+  return new Promise((resolve, reject) => {
+    db.transaction((tx) => {
       tx.executeSql(
-        selectQuery,
+        `SELECT * FROM HedonicMoments`, // Replace tableName with your actual table name
         [],
-        (_, resultSet) => {
-          const moments = [];
-          for (let i = 0; i < resultSet.rows.length; i++) {
-            moments.push(resultSet.rows.item(i));
-          }
-          if (onSuccess) onSuccess(moments);
+        (_, { rows }) => resolve(rows._array),
+        (_, error) => {
+          console.error('Failed to fetch all hedonic moments:', error);
+          reject(error);
+        }
+      );
+    });
+  });
+};
+
+export const getHedonicMomentsForDate = async (db, selectedDate) => {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'SELECT * FROM HedonicMoments WHERE date = ?;',
+        [selectedDate],
+        (_, { rows: { _array } }) => {
+          resolve(_array);
         },
         (_, error) => {
-          if (onError) onError(error);
-          return false; // Returning false rolls back the transaction
-        },
+          reject(error);
+          return true; // To stop the propagation of the error
+        }
       );
-    },
-    (error) => {
-      console.error("Transaction error: ", error);
-      if (onError) onError(error);
-    },
-    () => {
-      console.log("Transaction success");
-    },
-  );
+    });
+  });
 };
