@@ -18,6 +18,11 @@ export default function App() {
         // Load fonts
         await Font.loadAsync({
           Arial: require("./src/assets/fonts/arial.ttf"),
+          LoraRegular: require("./src/assets/fonts/Lora-Regular.ttf"),
+          LoraBold: require("./src/assets/fonts/Lora-Bold.ttf"),
+          Nunito: require("./src/assets/fonts/Nunito-ExtraLight.ttf"),
+          NunitoSemiBold: require("./src/assets/fonts/Nunito-SemiBold.ttf"),
+          NunitoBold: require("./src/assets/fonts/Nunito-Bold.ttf")
         });
 
         // initialize database
