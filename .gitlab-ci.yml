@@ -5,7 +5,7 @@ build-job:
     - docker
   stage: build
   script:
-    - npm install
+    - npm install eslint-plugin-react@latest --save-dev
     - npx eslint --fix --ext .js,.jsx .
 
 
