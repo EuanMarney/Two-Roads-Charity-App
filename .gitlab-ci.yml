@@ -5,7 +5,7 @@ build-job:
     - docker
   stage: build
   script:
-    - npm install -D eslint eslint-config-prettier eslint-config-universe
+    - npm install
     - npx eslint --fix --ext .js,.jsx .
 
 
