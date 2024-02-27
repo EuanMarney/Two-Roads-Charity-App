@@ -1,23 +1,19 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import Footer from "../Footer";
 
 const Layout = ({ children }) => {
   return (
-
-      <View style={styles.container}>
-        <View style={styles.content}>{children}</View>
-        <Footer />
-      </View>
-
+    <View style={styles.container}>
+      <View style={styles.content}>{children}</View>
+      <Footer />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollStyle: {
-    backgroundColor: "white",
-  },
   container: {
     flex: 1,
     flexDirection: "column",

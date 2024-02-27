@@ -1,37 +1,37 @@
-import { Feather } from '@expo/vector-icons';
-import * as SecureStore from 'expo-secure-store'
+import { Feather } from "@expo/vector-icons";
+import * as SecureStore from "expo-secure-store";
+// eslint-disable-next-line no-unused-vars
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import stylesheet from "../../components/Styles/stylesheet";
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-import LoginHeader from '../../components/Header/LoginHeader';
+import LoginHeader from "../../components/Header/LoginHeader";
 
 const PinScreenReg2 = ({ navigation }) => {
-  const [pinv2, setPin] = useState('');
+  const [pinv2, setPin] = useState("");
 
   const getPin = async () => {
     try {
-        return await SecureStore.getItemAsync('pin');
-        } catch (e) {
-        console.error('Error finding pin', e)
-        }   
+      return await SecureStore.getItemAsync("pin");
+    } catch (e) {
+      console.error("Error finding pin", e);
     }
+  };
 
   const comparePin = async (enteredPin) => {
     try {
-        const storedPin = await getPin();
-        if (enteredPin === storedPin){
-            navigation.navigate('Home')
-            alert("Account Created")
-        } else {
-            alert('those pins did not match')
-            clearPin();
-        }
-
-    } catch(e) {
-        console.error('Error comparing pins', e)
+      const storedPin = await getPin();
+      if (enteredPin === storedPin) {
+        navigation.navigate("Home");
+        alert("Account Created");
+      } else {
+        alert("those pins did not match");
+        clearPin();
+      }
+    } catch (e) {
+      console.error("Error comparing pins", e);
     }
-  }
+  };
 
   const handlePress = (num) => {
     if (pinv2.length < 6) {
@@ -49,9 +49,9 @@ const PinScreenReg2 = ({ navigation }) => {
 
   const handleSubmit = () => {
     if (pinv2.length === 6) {
-      comparePin(pinv2)
+      comparePin(pinv2);
     } else {
-      alert('Please enter a 6-digit pin');
+      alert("Please enter a 6-digit pin");
       setPin(pinv2.substring(0, pinv2.length - 6));
     }
   };
@@ -64,9 +64,9 @@ const PinScreenReg2 = ({ navigation }) => {
           key={i}
           style={[
             stylesheet.circle,
-            { backgroundColor: i < pinv2.length ? 'black' : 'transparent' },
+            { backgroundColor: i < pinv2.length ? "black" : "transparent" },
           ]}
-        />
+        />,
       );
     }
     return circles;
@@ -74,10 +74,11 @@ const PinScreenReg2 = ({ navigation }) => {
 
   return (
     <View style={stylesheet.loginContainer}>
-
       <LoginHeader />
 
-      <Text style={stylesheet.titleLogin}>Enter your 6-digit passcode again</Text>
+      <Text style={stylesheet.titleLogin}>
+        Enter your 6-digit passcode again
+      </Text>
       <View style={stylesheet.circleContainer}>{renderCircles()}</View>
       <View style={stylesheet.numbersContainer}>
         {Array.from({ length: 9 }, (_, i) => i + 1).map((num) => (
@@ -90,14 +91,17 @@ const PinScreenReg2 = ({ navigation }) => {
           </TouchableOpacity>
         ))}
 
-        <TouchableOpacity style={stylesheet.icon} onPress={() => handleDelete()}>
-            <Feather name="delete" size={30} color="black" />
+        <TouchableOpacity
+          style={stylesheet.icon}
+          onPress={() => handleDelete()}
+        >
+          <Feather name="delete" size={30} color="black" />
         </TouchableOpacity>
 
         <TouchableOpacity
-          key='0'
+          key="0"
           style={[stylesheet.number, { marginLeft: 30 }]}
-          onPress={() => handlePress('0')}
+          onPress={() => handlePress("0")}
         >
           <Text style={stylesheet.numberText}>0</Text>
         </TouchableOpacity>
@@ -105,8 +109,10 @@ const PinScreenReg2 = ({ navigation }) => {
           <Text style={stylesheet.submitText}>Submit</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => console.log('Implement password recovery')}>
-      <Text style={stylesheet.forgotText}>I can't log in</Text>
+      <TouchableOpacity
+        onPress={() => console.log("Implement password recovery")}
+      >
+        <Text style={stylesheet.forgotText}>I can&apos;t log in</Text>
       </TouchableOpacity>
     </View>
   );

@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput } from "react-native";
 import stylesheet from "../Styles/stylesheet";
 
 // TextBox.js - Add a style prop for custom styles
