@@ -28,7 +28,6 @@ import SettingsScreen from "../screens/SettingsScreen";
 import NotificationsSettingsScreen from "../screens/NotificationsSettingsScreen";
 
 //styling sheet import
-import stylesheet from "../components/Styles/stylesheet";
 /* eslint-enable import/order */
 
 const Stack = createNativeStackNavigator();

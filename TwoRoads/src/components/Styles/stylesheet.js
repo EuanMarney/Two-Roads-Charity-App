@@ -1,12 +1,11 @@
-import { StyleSheet, Dimensions } from "react-native";
-import backgroundImg from "../../assets/background.png";
+import {StyleSheet, Dimensions, Platform} from "react-native";
 
 //Colour Pallete
 const blue = "#3892E5";
 const white = "#F0F8FF";
-const indigo = "#AA9CFC";
-const light_green = "#C1F6A2";
-const mauve = "#DA9CFC";
+//const indigo = "#AA9CFC";
+//const light_green = "#C1F6A2";
+//const mauve = "#DA9CFC";
 const purple = "#592E83";
 
 

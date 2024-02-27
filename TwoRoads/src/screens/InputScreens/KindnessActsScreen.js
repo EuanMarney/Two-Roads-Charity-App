@@ -1,16 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
 
-import stylesheet from "../../components/Styles/stylesheet";
+import backgroundImage from "../../assets/kindnessBackground.png";
+import InputScreenHeader from "../../components/Header/inputScreenHeader";
 import Layout from "../../components/Layout";
+import stylesheet from "../../components/Styles/stylesheet";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
 import TextBox from "../../components/interactiveComps/TextBox";
-import backgroundImage from "../../assets/kindnessBackground.png";
-
 import { connectToDatabase, createTables } from "../../database/db";
 import { insertActOfKindness, getAllActsOfKindness } from "../../database/kindnessActs";
-import InputScreenHeader from "../../components/Header/inputScreenHeader";
 
 
 const KindnessActsScreen = () => {
