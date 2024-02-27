@@ -1,6 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
-import PropTypes from 'prop-types'; // Import PropTypes
 
 import LoginHeader from "../components/Header/LoginHeader";
 import stylesheet from "../components/Styles/stylesheet";
@@ -10,6 +10,8 @@ const handleDataRemoval = async () => {
   await removeAllUserData();
   console.log("data removed");
 };
+
+// Get the full screen width
 
 const WelcomePage = ({ navigation }) => {
   return (
@@ -45,7 +47,7 @@ const WelcomePage = ({ navigation }) => {
               borderColor: "#3498db",
               borderWidth: 2,
             },
-          ]}
+          ]} // borderWidth should be a number, not a string
           onPress={() => {
             Alert.alert(
               "Confirm New Account",
@@ -60,7 +62,7 @@ const WelcomePage = ({ navigation }) => {
                   text: "Yes",
                   onPress: () => {
                     navigation.navigate("RegisterScreen");
-                    handleDataRemoval();
+                    handleDataRemoval(); // remove all data from the device
                   },
                 },
               ],
@@ -77,9 +79,4 @@ const WelcomePage = ({ navigation }) => {
   );
 };
 
-WelcomePage.propTypes = {
-  navigation: PropTypes.object.isRequired, 
-};
-
 export default WelcomePage;
-
