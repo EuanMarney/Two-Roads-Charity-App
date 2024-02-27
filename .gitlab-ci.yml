@@ -6,6 +6,7 @@ build-job:
   stage: build
   script:
     - npm install eslint-plugin-react@latest --save-dev
+    - npm install @react-native-community/eslint-config --save-dev
     - npx eslint --fix --ext .js,.jsx .
 
 
