@@ -4,6 +4,7 @@ import { View, StyleSheet, Button } from 'react-native';
 
 export default function App() {
   const [sounds, setSounds] = useState({});
+  const [currentSound, setCurrentSound] = useState(null); // This will now store the sound object that is currently playing
 
   async function loadSound(audioFile, key) {
     console.log(`Loading Sound: ${key}`);
@@ -13,20 +14,27 @@ export default function App() {
 
   async function playSound(key) {
     console.log(`Playing Sound: ${key}`);
+
+    //stop audio overlapping
+    if (currentSound) {
+      await currentSound.stopAsync();
+    }
+
     const soundToPlay = sounds[key];
     if (soundToPlay) {
       await soundToPlay.playAsync();
+      setCurrentSound(soundToPlay); 
     }
   }
 
   useEffect(() => {
-    // Load all sounds
+  
     loadSound(require('../assets/audio/ChocolateMeditation.mp3'), 'chocolateMeditation');
     loadSound(require('../assets/audio/Med1.mp3'), 'Med1');
     loadSound(require('../assets/audio/Med2.mp3'), 'Med2');
 
     return () => {
-      // Unload all sounds
+      
       Object.values(sounds).forEach(sound => {
         if (sound) {
           console.log('Unloading Sound');
@@ -53,4 +61,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
