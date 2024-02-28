@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { ImageBackground, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
 
@@ -20,38 +21,37 @@ const GratitudeDiaryScreen = () => {
   const [thirdWhy, setThirdWhy] = useState("");
 
   const navigation = useNavigation();
-  
+
   const handleSubmit = async () => {
     try {
-    const db = await connectToDatabase();
-    await createTables(db);
+      const db = await connectToDatabase();
+      await createTables(db);
 
-    const today = new Date();
-    const formattedDate = today.toISOString().slice(0, 10);
-  
-    insertGratitudeDiaryEntry(
-      db,
-      formattedDate,
-      firstReason,
-      secondReason,
-      thirdReason,
-      firstWhy,
-      secondWhy,
-      thirdWhy,
-    );
+      const today = new Date();
+      const formattedDate = today.toISOString().slice(0, 10);
 
-        setFirstReason("");
-        setSecondReason("");
-        setThirdReason("");
-        setFirstWhy("");
-        setSecondWhy("");
-        setThirdWhy("");
+      insertGratitudeDiaryEntry(
+        db,
+        formattedDate,
+        firstReason,
+        secondReason,
+        thirdReason,
+        firstWhy,
+        secondWhy,
+        thirdWhy,
+      );
 
-        navigation.navigate("Home");
-        
-      } catch (error) {
-        console.error("Error handling connection acts: ", error);
-      }
+      setFirstReason("");
+      setSecondReason("");
+      setThirdReason("");
+      setFirstWhy("");
+      setSecondWhy("");
+      setThirdWhy("");
+
+      navigation.navigate("Home");
+    } catch (error) {
+      console.error("Error handling connection acts: ", error);
+    }
   };
 
   return (
@@ -61,58 +61,35 @@ const GratitudeDiaryScreen = () => {
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
       <Layout>
-        <InputScreenHeader headerStyles={{backgroundColor: "#3892E5"}} />
+        <InputScreenHeader headerStyles={{ backgroundColor: "#3892E5" }} />
         <ScrollView style={stylesheet.inputScrollView}>
-
-          {/* Adding TextBox component*/}
+          {/* Adding TextBox component */}
           <View style={stylesheet.textBoxGroupContainers}>
             <View style={stylesheet.rowContainer}>
               <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.paddedText}>First thing that I am grateful for</Text>
+                <Text style={stylesheet.paddedText}>
+                  First thing that I am grateful for
+                </Text>
                 <TextBox
-                    onChangeText={(text) => setFirstReason(text)}
-                    value={firstReason}
-                    placeholder="Describe the first thing..."
-                    textInputStyle={{ borderColor: '#634AFA' }} // Custom border color
-                  />
+                  onChangeText={(text) => setFirstReason(text)}
+                  value={firstReason}
+                  placeholder="Describe the first thing..."
+                  textInputStyle={{ borderColor: "#634AFA" }} // Custom border color
+                />
               </View>
             </View>
 
             <View style={stylesheet.rowContainer}>
               <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.paddedText}>Why this first thing happened?</Text>
+                <Text style={stylesheet.paddedText}>
+                  Why this first thing happened?
+                </Text>
                 <TextBox
-                    onChangeText={(text) => setFirstWhy(text)}
-                    value={firstWhy}
-                    placeholder="Why did this happen..."
-                    textInputStyle={{ borderColor: '#634AFA' }} // Custom border color
-                  />
-              </View>
-            </View>
-          </View>
-
-          <View style={stylesheet.textBoxGroupContainers} >
-            <View style={stylesheet.rowContainer}>
-              <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.paddedText}>Second thing that I am grateful for</Text>
-                <TextBox
-                    onChangeText={(text) => setSecondReason(text)}
-                    value={secondReason}
-                    placeholder="Describe the second thing..."
-                    textInputStyle={{ borderColor: '#634AFA' }} // Custom border color
-                  />
-              </View>
-            </View>
-
-            <View style={stylesheet.rowContainer}>
-              <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.paddedText}>Why this second thing happened?</Text>
-                <TextBox
-                    onChangeText={(text) => setSecondWhy(text)}
-                    value={secondWhy}
-                    placeholder="Why did this happen..."
-                    textInputStyle={{ borderColor: '#634AFA' }} // Custom border color
-                  />
+                  onChangeText={(text) => setFirstWhy(text)}
+                  value={firstWhy}
+                  placeholder="Why did this happen..."
+                  textInputStyle={{ borderColor: "#634AFA" }} // Custom border color
+                />
               </View>
             </View>
           </View>
@@ -120,42 +97,76 @@ const GratitudeDiaryScreen = () => {
           <View style={stylesheet.textBoxGroupContainers}>
             <View style={stylesheet.rowContainer}>
               <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.paddedText}>Third thing that I am grateful for</Text>
+                <Text style={stylesheet.paddedText}>
+                  Second thing that I am grateful for
+                </Text>
                 <TextBox
-                    onChangeText={(text) => setThirdReason(text)}
-                    value={thirdReason}
-                    placeholder="Describe the third thing..."
-                    textInputStyle={{ borderColor: '#634AFA' }} // Custom border color
-                  />
+                  onChangeText={(text) => setSecondReason(text)}
+                  value={secondReason}
+                  placeholder="Describe the second thing..."
+                  textInputStyle={{ borderColor: "#634AFA" }} // Custom border color
+                />
               </View>
             </View>
 
             <View style={stylesheet.rowContainer}>
               <View style={stylesheet.inputScreenTextBoxContainer}>
-                <Text style={stylesheet.paddedText}>Why this third thing happened?</Text>
+                <Text style={stylesheet.paddedText}>
+                  Why this second thing happened?
+                </Text>
                 <TextBox
-                    onChangeText={(text) => setThirdWhy(text)}
-                    value={thirdWhy}
-                    placeholder="Why did this happen.."
-                    textInputStyle={{ borderColor: '#634AFA' }} // Custom border color
-                  />
+                  onChangeText={(text) => setSecondWhy(text)}
+                  value={secondWhy}
+                  placeholder="Why did this happen..."
+                  textInputStyle={{ borderColor: "#634AFA" }} // Custom border color
+                />
+              </View>
+            </View>
+          </View>
+
+          <View style={stylesheet.textBoxGroupContainers}>
+            <View style={stylesheet.rowContainer}>
+              <View style={stylesheet.inputScreenTextBoxContainer}>
+                <Text style={stylesheet.paddedText}>
+                  Third thing that I am grateful for
+                </Text>
+                <TextBox
+                  onChangeText={(text) => setThirdReason(text)}
+                  value={thirdReason}
+                  placeholder="Describe the third thing..."
+                  textInputStyle={{ borderColor: "#634AFA" }} // Custom border color
+                />
+              </View>
+            </View>
+
+            <View style={stylesheet.rowContainer}>
+              <View style={stylesheet.inputScreenTextBoxContainer}>
+                <Text style={stylesheet.paddedText}>
+                  Why this third thing happened?
+                </Text>
+                <TextBox
+                  onChangeText={(text) => setThirdWhy(text)}
+                  value={thirdWhy}
+                  placeholder="Why did this happen.."
+                  textInputStyle={{ borderColor: "#634AFA" }} // Custom border color
+                />
               </View>
             </View>
           </View>
 
           <View style={stylesheet.inputScreenButtonContainer}>
-          <SubmitButton
+            <SubmitButton
               title="Submit"
               onPress={handleSubmit}
-              buttonStyle={{ backgroundColor: '#634AFA' }} // Custom background color
+              buttonStyle={{ backgroundColor: "#634AFA" }} // Custom background color
             />
           </View>
-
         </ScrollView>
-        <ImageBackground source={backgroundImage} style={stylesheet.backgroundImage}/>
-
+        <ImageBackground
+          source={backgroundImage}
+          style={stylesheet.backgroundImage}
+        />
       </Layout>
-
     </KeyboardAvoidingView>
   );
 };

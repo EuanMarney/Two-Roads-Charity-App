@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { ImageBackground, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
 
@@ -25,7 +26,6 @@ const HedonicMomentsScreen = () => {
       const db = await connectToDatabase();
       await createTables(db);
 
-
       const today = new Date();
       const formattedDate = today.toISOString().slice(0, 10);
 
@@ -35,7 +35,7 @@ const HedonicMomentsScreen = () => {
         firstMoment,
         secondMoment,
         thirdMoment,
-        fourthMoment
+        fourthMoment,
       );
 
       setFirstMoment("");
@@ -45,16 +45,11 @@ const HedonicMomentsScreen = () => {
 
       navigation.navigate("Home");
 
-
-    const alldata = await getAllHedonicMoments(db);
-    console.log(alldata);
-
+      const alldata = await getAllHedonicMoments(db);
+      console.log(alldata);
     } catch (error) {
       console.error("Error adding hedonic moments: ", error);
     }
-
-
-
   };
 
   return (
@@ -64,11 +59,15 @@ const HedonicMomentsScreen = () => {
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
       <Layout>
-        <InputScreenHeader headerStyles={{backgroundColor: "#DA9CFC"}}/>
+        <InputScreenHeader headerStyles={{ backgroundColor: "#DA9CFC" }} />
         <ScrollView style={stylesheet.inputScrollView}>
-
           {/* Adding TextBox component and BLeaveTextBox */}
-          <View style={[stylesheet.textBoxGroupContainers, {backgroundColor: "#DA9CFC"}]}>
+          <View
+            style={[
+              stylesheet.textBoxGroupContainers,
+              { backgroundColor: "#DA9CFC" },
+            ]}
+          >
             <View style={stylesheet.rowContainer}>
               <View style={stylesheet.textBoxContainer}>
                 <Text style={stylesheet.paddedText}>First Hedonic moment</Text>
@@ -117,9 +116,11 @@ const HedonicMomentsScreen = () => {
           <View style={stylesheet.inputScreenButtonContainer}>
             <SubmitButton onPress={handleSubmit} title="Submit" />
           </View>
-
         </ScrollView>
-        <ImageBackground source={backgroundImage} style={stylesheet.backgroundImage}/>
+        <ImageBackground
+          source={backgroundImage}
+          style={stylesheet.backgroundImage}
+        />
       </Layout>
     </KeyboardAvoidingView>
   );

@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 
 import { connectToDatabase, createTables } from "./src/database/db";
@@ -22,7 +23,7 @@ export default function App() {
           LoraBold: require("./src/assets/fonts/Lora-Bold.ttf"),
           Nunito: require("./src/assets/fonts/Nunito-ExtraLight.ttf"),
           NunitoSemiBold: require("./src/assets/fonts/Nunito-SemiBold.ttf"),
-          NunitoBold: require("./src/assets/fonts/Nunito-Bold.ttf")
+          NunitoBold: require("./src/assets/fonts/Nunito-Bold.ttf"),
         });
 
         // initialize database
