@@ -5,8 +5,10 @@ build-job:
     - docker
   stage: build
   script:
-    - npm install -D eslint eslint-config-prettier eslint-config-universe
-    - npx eslint /builds/team-project-h/2023/sh29/sh29-main/TwoRoads/App.js /builds/team-project-h/2023/sh29/sh29-main/TwoRoads/src
+    - npm install eslint-plugin-react@latest --save-dev
+    - npm install @react-native-community/eslint-config --save-dev
+    - npx eslint --fix --ext .js,.jsx .
+
 
 tests:
   tags:

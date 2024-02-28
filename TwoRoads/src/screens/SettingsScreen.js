@@ -1,22 +1,29 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
-import { View, TouchableOpacity, Text, StyleSheet, ScrollView, Alert } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Alert,
+} from "react-native";
 
 import Layout from "../components/Layout";
 import { removeAllUserData } from "../database/dataRemovalUtil";
 
 const SettingsScreen = ({ navigation }) => {
-
   const navigateToNotifications = () => {
-    navigation.navigate('NotificationsSettingsScreen')
-  }
+    navigation.navigate("NotificationsSettingsScreen");
+  };
 
   const navigateToWelcome = () => {
-    navigation.navigate('WelcomePage')
-  }
+    navigation.navigate("WelcomePage");
+  };
 
   const handleDataRemoval = async () => {
     await removeAllUserData();
-    console.log("removing all user data, SettingsScreen line 18")
+    console.log("removing all user data, SettingsScreen line 18");
   };
 
   return (
@@ -26,7 +33,6 @@ const SettingsScreen = ({ navigation }) => {
           <Text style={styles.headerText}>Settings</Text>
         </View>
         <View style={styles.buttonContainer}>
-
           {/* Notifications Settings Button */}
           <TouchableOpacity
             style={[styles.customButton, { backgroundColor: "#FF6B6B" }]}
@@ -45,18 +51,21 @@ const SettingsScreen = ({ navigation }) => {
                 [
                   {
                     text: "No",
-                    onPress: () => console.log("User canceled account creation"),
-                    style: "cancel"
+                    onPress: () =>
+                      console.log("User canceled account creation"),
+                    style: "cancel",
                   },
-                  { 
-                    text: "Yes", onPress: () => {navigateToWelcome();
-                    handleDataRemoval();}
-                  }
+                  {
+                    text: "Yes",
+                    onPress: () => {
+                      navigateToWelcome();
+                      handleDataRemoval();
+                    },
+                  },
                 ],
-                { cancelable: false }
+                { cancelable: false },
               );
             }}
-            
           >
             <Text style={styles.buttonText}>Reset Data</Text>
           </TouchableOpacity>
@@ -69,22 +78,22 @@ const SettingsScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   layoutStyle: {
     flex: 1,
-    backgroundColor: 'blue',
+    backgroundColor: "blue",
   },
   scrollViewContent: {
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   headerContainer: {
     alignItems: "center",
-    marginBottom: 20, 
+    marginBottom: 20,
   },
   headerText: {
     color: "#000",
     fontFamily: "Arial",
     fontSize: 24,
     fontWeight: "bold",
-    lineHeight: 28, 
+    lineHeight: 28,
     paddingVertical: 20,
   },
   buttonContainer: {

@@ -1,5 +1,6 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 // SubmitButton.js - Add a buttonStyle prop for custom styles
 const SubmitButton = ({ title, onPress, buttonStyle }) => {
@@ -14,17 +15,17 @@ const styles = StyleSheet.create({
   button: {
     width: "50%",
     height: 35,
-    backgroundColor: '#BB4AFA', // Change this color to match your design
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#BB4AFA", // Change this color to match your design
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 8,
   },
-  
+
   text: {
-    color: '#FFF',
+    color: "#FFF",
     fontSize: 14,
-    fontStyle: 'normal',
-    fontWeight: '800',
+    fontStyle: "normal",
+    fontWeight: "800",
     lineHeight: 26, // Adjust line height as needed
   },
 });

@@ -1,29 +1,29 @@
-import { useEffect, useState } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
-import { Audio } from 'expo-av';
+import { useEffect, useState } from "react";
+import { View, StyleSheet, Button } from "react-native";
+import { Audio } from "expo-av";
 
 export default function App() {
-  const [sound, setSound] = useState();
+  const [soundObject, setSoundObject] = useState();
 
   async function playSound() {
-    console.log('Loading Sound');
+    console.log("Loading Sound");
     const { sound } = await Audio.Sound.createAsync(
-      require('../assets/audio/ChocolateMeditation.mp3')
+      require("../assets/audio/ChocolateMeditation.mp3"),
     );
-    setSound(sound);
+    setSoundObject(sound);
 
-    console.log('Playing Sound');
-    await sound.playAsync();
+    console.log("Playing Sound");
+    await soundObject.playAsync();
   }
 
   useEffect(() => {
-    return sound
+    return soundObject
       ? () => {
-          console.log('Unloading Sound');
-          sound.unloadAsync();
+          console.log("Unloading Sound");
+          soundObject.unloadAsync();
         }
       : undefined;
-  }, [sound]);
+  }, [soundObject]);
 
   return (
     <View style={styles.container}>
@@ -34,10 +34,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
-  
 });

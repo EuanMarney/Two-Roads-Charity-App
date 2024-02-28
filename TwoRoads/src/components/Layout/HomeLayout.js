@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { View, ImageBackground, ScrollView } from "react-native";
 import stylesheet from "../Styles/stylesheet";
@@ -14,7 +15,10 @@ const HomeLayout = ({ children, navigation }) => {
       <ScrollView style={stylesheet.homeLayoutScrollStyle}>
         <View style={stylesheet.content}>{children}</View>
       </ScrollView>
-      <ImageBackground source={backgroundImg} style={stylesheet.backgroundImage} />
+      <ImageBackground
+        source={backgroundImg}
+        style={stylesheet.backgroundImage}
+      />
       <Footer />
     </View>
   );

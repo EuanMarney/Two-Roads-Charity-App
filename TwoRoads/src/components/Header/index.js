@@ -1,36 +1,36 @@
-import * as SecureStore from 'expo-secure-store'
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import * as SecureStore from "expo-secure-store";
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import Feather from "react-native-vector-icons/Feather";
 import stylesheet from "../Styles/stylesheet";
-import Feather from 'react-native-vector-icons/Feather'
 
 const getUsername = async () => {
   try {
-    return await SecureStore.getItemAsync('username');
+    return await SecureStore.getItemAsync("username");
   } catch (e) {
     console.error("error getting user name", e);
   }
 };
- 
+
 const Header = ({ title, navigation }) => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const currentDate = new Date();
   const options = { weekday: "long", month: "short", day: "numeric" };
   const formattedDate = currentDate.toLocaleDateString("en-US", options);
- 
+
   const handleSettingsPress = () => {
-    navigation.navigate('Settings');
+    navigation.navigate("Settings");
   };
- 
+
   useEffect(() => {
     const fetchUsername = async () => {
       const retrievedUsername = await getUsername();
-      setUsername(retrievedUsername || 'Guest');
+      setUsername(retrievedUsername || "Guest");
     };
- 
+
     fetchUsername();
   }, []);
-
 
   return (
     <View style={stylesheet.headerComponentContainer}>
@@ -41,7 +41,7 @@ const Header = ({ title, navigation }) => {
             <Feather name="settings" style={stylesheet.iconCog} />
           </TouchableOpacity>
         </View>
- 
+
         <View style={stylesheet.headerInlineContainer}>
           <Text style={stylesheet.subHeaderText} testID='username-display'>{username}</Text>
           <View style={stylesheet.dateContainer}>
@@ -53,6 +53,5 @@ const Header = ({ title, navigation }) => {
     </View>
   );
 };
- 
+
 export default Header;
- 
