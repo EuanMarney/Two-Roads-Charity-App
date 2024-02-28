@@ -1,10 +1,10 @@
+import { NavigationContainer } from "@react-navigation/native";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useState, useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
 
-import StackNavigator from "./src/navigations/StackNavigator";
 import { connectToDatabase, createTables } from "./src/database/db";
+import StackNavigator from "./src/navigations/StackNavigator";
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);

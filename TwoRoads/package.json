@@ -12,6 +12,7 @@
     "dependencies": {
         "@expo/vector-icons": "^13.0.0",
         "@react-native-community/masked-view": "^0.1.11",
+        "@react-native-picker/picker": "2.4.10",
         "@react-navigation/drawer": "^6.6.6",
         "@react-navigation/native": "^6.1.9",
         "@react-navigation/native-stack": "^6.9.17",
@@ -20,6 +21,8 @@
         "@rneui/themed": "^4.0.0-rc.8",
         "expo": "~49.0.15",
         "expo-asset": "~8.10.1",
+        "expo-av": "~13.4.1",
+        "expo-checkbox": "~2.4.0",
         "expo-font": "~11.4.0",
         "expo-secure-store": "~12.3.1",
         "expo-splash-screen": "~0.20.5",
@@ -36,15 +39,13 @@
         "react-native-screens": "~3.22.0",
         "react-native-svg": "13.9.0",
         "react-native-vector-icons": "^10.0.3",
-        "react-navigation": "^5.0.0",
-        "expo-checkbox": "~2.4.0",
-        "@react-native-picker/picker": "2.4.10",
-        "expo-av": "~13.4.1"
+        "react-navigation": "^5.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.20.0",
         "@testing-library/jest-native": "^5.4.3",
         "@testing-library/react-native": "^12.4.3",
+        "eslint-config-universe": "^12.0.0",
         "jest-expo": "~49.0.0"
     },
     "jest": {
@@ -54,4 +55,4 @@
         ]
     },
     "private": true
-}  
+}

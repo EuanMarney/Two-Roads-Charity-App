@@ -1,11 +1,11 @@
 import React from "react";
 import { View, ImageBackground, ScrollView } from "react-native";
-import stylesheet from "../Styles/stylesheet";
+
 
 import backgroundImg from "../../assets/background.png";
-
 import Footer from "../Footer";
 import Header from "../Header";
+import stylesheet from "../Styles/stylesheet";
 
 const HomeLayout = ({ children, navigation }) => {
   return (
