@@ -3,9 +3,9 @@ import * as SecureStore from "expo-secure-store";
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import stylesheet from "../components/Styles/stylesheet";
 
 import LoginHeader from "../components/Header/LoginHeader";
+import stylesheet from '../components/Styles/stylesheet';
 
 const LoginScreen = ({ navigation }) => {
   const [pinLogin, setPin] = useState("");

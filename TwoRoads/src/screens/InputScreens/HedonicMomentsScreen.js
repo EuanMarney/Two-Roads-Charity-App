@@ -1,26 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import {
-  ImageBackground,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import { ImageBackground, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
 
-import stylesheet from "../../components/Styles/stylesheet";
+import backgroundImage from "../../assets/hedonicBackground.png";
+import InputScreenHeader from "../../components/Header/inputScreenHeader";
 import Layout from "../../components/Layout";
+import stylesheet from "../../components/Styles/stylesheet";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
 import TextBox from "../../components/interactiveComps/TextBox";
 import { connectToDatabase, createTables } from "../../database/db";
-import {
-  insertHedonicMoment,
-  getAllHedonicMoments,
-} from "../../database/hedonicMoments";
-import InputScreenHeader from "../../components/Header/inputScreenHeader";
-import backgroundImage from "../../assets/hedonicBackground.png";
+import { insertHedonicMoment, getAllHedonicMoments } from "../../database/hedonicMoments";
 
 const HedonicMomentsScreen = () => {
   const [firstMoment, setFirstMoment] = useState("");

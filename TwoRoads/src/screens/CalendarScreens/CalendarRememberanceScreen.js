@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView } from "react-native";
 
-import { connectToDatabase } from "../../database/db";
-import { getConnectionActsForDate } from "../../database/connectionActs";
-import { getGratitudeDiaryForDate } from "../../database/gratitudeDiary";
-import { getHedonicMomentsForDate } from "../../database/hedonicMoments";
-import { getKindnessActsForDate } from "../../database/kindnessActs";
+// eslint-disable-next-line import/order
+import { getConnectionActsForDate } from '../../database/connectionActs';
+import { connectToDatabase } from '../../database/db';
+import { getGratitudeDiaryForDate } from '../../database/gratitudeDiary';
+import { getHedonicMomentsForDate } from '../../database/hedonicMoments';
+import { getKindnessActsForDate } from '../../database/kindnessActs';
 
 const CalendarRememberanceScreen = ({ route }) => {
   const [data, setData] = useState({

@@ -1,14 +1,8 @@
-// eslint-disable-next-line no-unused-vars
+import * as SecureStore from 'expo-secure-store'
 import React, { useState } from "react";
-import * as SecureStore from "expo-secure-store";
-import {
-  View,
-  TouchableOpacity,
-  Text,
-  TextInput,
-  StatusBar,
-} from "react-native";
-import stylesheet from "../../components/Styles/stylesheet";
+import { View, TouchableOpacity, Text, TextInput, StatusBar } from "react-native";
+
+import stylesheet from '../../components/Styles/stylesheet';
 
 const RegisterScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");

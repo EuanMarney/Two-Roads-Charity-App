@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { View, StyleSheet, Button } from "react-native";
-import { Audio } from "expo-av";
+import { Audio } from 'expo-av';
+import { useEffect, useState } from 'react';
+import { View, StyleSheet, Button } from 'react-native';
 
 export default function App() {
   const [soundObject, setSoundObject] = useState();

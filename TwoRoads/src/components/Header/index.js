@@ -1,8 +1,8 @@
-import * as SecureStore from "expo-secure-store";
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import Feather from "react-native-vector-icons/Feather";
+import * as SecureStore from 'expo-secure-store'
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import Feather from 'react-native-vector-icons/Feather'
+
 import stylesheet from "../Styles/stylesheet";
 
 const getUsername = async () => {

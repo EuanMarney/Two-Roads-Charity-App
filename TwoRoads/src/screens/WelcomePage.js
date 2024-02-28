@@ -1,6 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
+import React from 'react';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 
 import LoginHeader from "../components/Header/LoginHeader";
 import stylesheet from "../components/Styles/stylesheet";
@@ -10,8 +9,6 @@ const handleDataRemoval = async () => {
   await removeAllUserData();
   console.log("data removed");
 };
-
-// Get the full screen width
 
 const WelcomePage = ({ navigation }) => {
   return (

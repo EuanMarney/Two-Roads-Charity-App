@@ -1,11 +1,10 @@
-import { Feather } from "@expo/vector-icons";
-import * as SecureStore from "expo-secure-store";
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import stylesheet from "../../components/Styles/stylesheet";
+import { Feather } from '@expo/vector-icons';
+import * as SecureStore from 'expo-secure-store'
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-import LoginHeader from "../../components/Header/LoginHeader";
+import LoginHeader from '../../components/Header/LoginHeader';
+import stylesheet from "../../components/Styles/stylesheet";
 
 const PinScreenReg2 = ({ navigation }) => {
   const [pinv2, setPin] = useState("");

@@ -27,7 +27,8 @@ import CalendarRememberanceScreen from "../screens/CalendarScreens/CalendarRemem
 import SettingsScreen from "../screens/SettingsScreen";
 import NotificationsSettingsScreen from "../screens/NotificationsSettingsScreen";
 
-// styling sheet import
+//styling sheet import
+/* eslint-enable import/order */
 
 const Stack = createNativeStackNavigator();
 
