@@ -8,7 +8,6 @@ const white = "#F0F8FF";
 //const mauve = "#DA9CFC";
 const purple = "#592E83";
 
-
 //Get Screen Dimensions
 const { width } = Dimensions.get('window');
 
@@ -51,7 +50,7 @@ const styles = StyleSheet.create(
         
           button: {
             backgroundColor: blue, // A calming blue color for the button
-            borderRadius: "10%", // Rounded corners
+            borderRadius: width * 10, // Rounded corners
             paddingVertical: "2.5%",
             paddingHorizontal: "5%",
             marginHorizontal: "5%",
@@ -96,7 +95,7 @@ const styles = StyleSheet.create(
             // Android Border Issue Fix
             ...Platform.select({
               ios: {
-                borderRadius: "100%",
+                borderRadius: width,
               },
               android: {
                 borderRadius: 100,
@@ -198,7 +197,7 @@ const styles = StyleSheet.create(
             backgroundColor: blue,
             padding: 12,
             paddingHorizontal: 20,
-            borderRadius: "10%",
+            borderRadius: width * 0.1,
           },
 
           usernameButtonText: {
@@ -372,7 +371,7 @@ const styles = StyleSheet.create(
           },
           customButton: {
             marginBottom: "5%",
-            borderRadius: "7.5%",
+            borderRadius: width * 0.75,
             paddingVertical: "7.5%",
             paddingHorizontal: "5%",
             alignItems: "center",
