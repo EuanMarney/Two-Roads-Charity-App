@@ -1,6 +1,6 @@
+import { Audio } from 'expo-av';
 import { useEffect, useState } from 'react';
 import { View, StyleSheet, Button } from 'react-native';
-import { Audio } from 'expo-av';
 
 export default function App() {
   const [sound, setSound] = useState();

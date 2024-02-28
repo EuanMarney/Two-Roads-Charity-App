@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 
 import LoginHeader from '../components/Header/LoginHeader';
 import stylesheet from '../components/Styles/stylesheet';
@@ -9,9 +9,6 @@ const handleDataRemoval = async () => {
   await removeAllUserData();
   console.log("data removed")
 };
-
-// Get the full screen width
-const { width } = Dimensions.get('window');
 
 const WelcomePage = ({ navigation }) => {
   return (
