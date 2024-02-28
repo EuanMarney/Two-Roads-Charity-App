@@ -1,11 +1,8 @@
-import * as SecureStore from "expo-secure-store";
-import Checkbox from 'expo-checkbox';
-
-import { React, useState } from "react";
-
-import { View, Text, StyleSheet } from "react-native";
-
 import {Picker} from '@react-native-picker/picker';
+import Checkbox from 'expo-checkbox';
+import * as SecureStore from "expo-secure-store";
+import { React, useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 const NOTIFIACATIONS_STORE_STRING = "notificationsOn";
 const NOTIFICATIONS_ON = "yes";
@@ -25,7 +22,7 @@ const loadValues = () => {
     SecureStore.getItemAsync(NOTIFIACATIONS_STORE_STRING)
     .then((value) => {
         console.log("loaded value " + value);
-        if (value == NOTIFICATIONS_ON) {
+        if (value === NOTIFICATIONS_ON) {
             console.log("enabling notifications");
             setCheckBoxColor("green");
             setIsChecked(true);
@@ -75,7 +72,7 @@ loadValues();
 
 const onCheckBoxPress = () => {
     console.log("checkbox pressed");
-    var checked = isChecked; // i don't like this but if i try to use isChecked it fails, probably due to async fun
+    const checked = isChecked; // i don't like this but if i try to use isChecked it fails, probably due to async fun
     setIsChecked(!isChecked);
     
     console.log(isChecked);
@@ -86,12 +83,13 @@ const onCheckBoxPress = () => {
     else {
         setCheckBoxColor("green");
     }
-    
+
+    let toStore;
     if (!checked) {
-        var toStore = NOTIFICATIONS_ON;
+        toStore = NOTIFICATIONS_ON;
     }
     else {
-        var toStore = NOTIFICATIONS_OFF;
+        toStore = NOTIFICATIONS_OFF;
     }
 
     SecureStore.setItemAsync(NOTIFIACATIONS_STORE_STRING, toStore)
@@ -105,7 +103,7 @@ const onCheckBoxPress = () => {
     console.log(value);
     console.log(isHours);
 
-    var toStoreValue = value;
+    const toStoreValue = value;
 
 let toStoreLocation;
 
@@ -127,7 +125,7 @@ SecureStore.setItemAsync(toStoreLocation, toStoreValue)
 
  };
 
- let hours = []
+ const hours = []
 
  for (let i = 0; i < 24; i++) {
     let hour;
@@ -140,7 +138,7 @@ SecureStore.setItemAsync(toStoreLocation, toStoreValue)
 }
 
 
-let mins = [];
+const mins = [];
 
 for (let i = 0; i < 60; i += 15) {
     let min;

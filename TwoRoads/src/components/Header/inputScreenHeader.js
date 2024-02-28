@@ -1,8 +1,8 @@
-import { View, TouchableOpacity, Text, StyleSheet, ImageBackground } from "react-native"; 
+import { useNavigation , useRoute } from "@react-navigation/native";
+import { View, TouchableOpacity, Text } from "react-native";
 import Feather from 'react-native-vector-icons/Feather'
+
 import stylesheet from "../Styles/stylesheet";
-import { useNavigation } from "@react-navigation/native";
-import { useRoute } from "@react-navigation/native";
 
 const InputScreenHeader = ({headerStyles}) => {
 
