@@ -11,10 +11,6 @@ import SubmitButton from "../../components/interactiveComps/SubmitButton";
 import TextBox from "../../components/interactiveComps/TextBox";
 import { connectToDatabase, createTables } from "../../database/db";
 import { insertActOfKindness, getAllActsOfKindness } from "../../database/kindnessActs";
-<<<<<<< HEAD
-=======
-
->>>>>>> 015b05748414344972ae95ea13ee852c5171ed6b
 
 const KindnessActsScreen = () => {
   const [firstKindAct, setFirstKindAct] = useState("");
