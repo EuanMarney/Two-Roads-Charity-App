@@ -1,7 +1,9 @@
-import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
-import Header from '../../components/Header';
 import * as SecureStore from 'expo-secure-store';
+import React from 'react';
+
+import Header from '../../components/Header';
+
 
 jest.mock('expo-secure-store');
 

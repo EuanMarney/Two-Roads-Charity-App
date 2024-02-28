@@ -1,6 +1,7 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { render, fireEvent } from '@testing-library/react-native';
+import React from 'react';
+
 import InputScreenHeader from '../../components/Header/inputScreenHeader';
 
 jest.mock('@react-navigation/native', () => ({

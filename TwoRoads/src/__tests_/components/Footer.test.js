@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
 import { render } from "@testing-library/react-native";
+import React from "react";
+
 import Footer from "../../components/Footer";
 
 // The test checks if the Footer component renders correctly.

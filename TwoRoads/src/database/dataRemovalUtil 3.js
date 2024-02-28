@@ -1,11 +1,6 @@
 // dataRemovalUtils.js
-<<<<<<< HEAD
-import * as SQLite from "expo-sqlite";
-import * as SecureStore from "expo-secure-store";
-=======
 import * as SecureStore from 'expo-secure-store';
 import * as SQLite from 'expo-sqlite';
->>>>>>> origin/fix/eslint-pipeline-previous-config
 
 const db = SQLite.openDatabase("TwoRoadsV2.db");
 

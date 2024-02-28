@@ -1,11 +1,11 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// eslint-disable-next-line no-unused-vars
 import React from "react";
 
+/* eslint-disable import/order */
 import HomeScreen from "../screens/HomeScreen";
-import WelcomePage from "../screens/WelcomePage";
+import WelcomePage from '../screens/WelcomePage';
 
-// input screen imports
+//input screen imports
 import ConnectionActsScreen from "../screens/InputScreens/ConnectionActsScreen";
 import GratitudeDiaryScreen from "../screens/InputScreens/GratitudeDiaryScreen";
 import HedonicMomentsScreen from "../screens/InputScreens/HedonicMomentsScreen";
@@ -13,17 +13,17 @@ import KindnessActsScreen from "../screens/InputScreens/KindnessActsScreen";
 
 import DailyMindfulnessScreen from "../screens/DailyMindfulnessScreen";
 
-// registration and login screen imports
+//registration and login screen imports
 import LoginScreen from "../screens/LoginScreen";
 import PinScreenReg1 from "../screens/RegisterScreens/PinScreenReg1";
 import PinScreenReg2 from "../screens/RegisterScreens/PinScreenReg2";
 import RegisterScreen from "../screens/RegisterScreens/RegisterUnameScreen";
 
-// calendar screen imports
+//calendar screen imports
 import CalendarScreen from "../screens/CalendarScreens/CalendarScreen";
 import CalendarRememberanceScreen from "../screens/CalendarScreens/CalendarRememberanceScreen";
 
-// settings screen imports
+//settings screen imports
 import SettingsScreen from "../screens/SettingsScreen";
 import NotificationsSettingsScreen from "../screens/NotificationsSettingsScreen";
 
