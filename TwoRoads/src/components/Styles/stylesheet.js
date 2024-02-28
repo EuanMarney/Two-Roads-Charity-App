@@ -1,5 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 import backgroundImg from "../../assets/background.png";
+import { Platform } from 'react-native';
 
 //Colour Pallete
 const blue = "#3892E5";
