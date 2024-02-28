@@ -12,11 +12,11 @@ const InputScreenHeader = ({ headerStyles }) => {
   };
 
   return (
-    <View style={stylesheet.headerComponentContainer}>
+    <View style={stylesheet.headerComponentContainer} testID="input-screen-header">
       <View style={[stylesheet.headerRectangle, headerStyles]}>
         <View style={stylesheet.headerWithIconContainer}>
           <Text style={stylesheet.headerText}>{route.name}</Text>
-          <TouchableOpacity onPress={handleCrossPress}>
+          <TouchableOpacity onPress={handleCrossPress} testID="cross-button">
             <Feather name="x" style={stylesheet.iconCog} />
           </TouchableOpacity>
         </View>
