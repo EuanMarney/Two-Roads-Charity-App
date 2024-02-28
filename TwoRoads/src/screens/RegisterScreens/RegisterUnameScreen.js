@@ -5,7 +5,7 @@ import { View, TouchableOpacity, Text, TextInput, StatusBar } from "react-native
 import stylesheet from '../../components/Styles/stylesheet';
 
 const RegisterScreen = ({ navigation }) => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
 
   // Renamed the parameter to avoid shadowing the `username` state variable
   const saveUsername = async (newUsername) => {

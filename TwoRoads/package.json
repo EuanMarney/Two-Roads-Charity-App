@@ -46,7 +46,10 @@
         "@testing-library/jest-native": "^5.4.3",
         "@testing-library/react-native": "^12.4.3",
         "eslint-config-universe": "^12.0.0",
+<<<<<<< HEAD
         "jest": "^29.7.0",
+=======
+>>>>>>> 015b05748414344972ae95ea13ee852c5171ed6b
         "jest-expo": "~49.0.0"
     },
     "jest": {

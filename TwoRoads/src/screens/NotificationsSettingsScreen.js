@@ -72,10 +72,10 @@ const NotificationsSettingsScreen = () => {
 
     if (checked) {
       setCheckBoxColor("gray");
-    } else {
-      setCheckBoxColor("green");
+    } 
+    else {
+        setCheckBoxColor("green");
     }
-
 
     let toStore;
     if (!checked) {
@@ -132,7 +132,6 @@ const NotificationsSettingsScreen = () => {
     }
     hours.push(<Picker.Item label={hour} value={hour} key={hour} />);
   }
-
 
 
 const mins = [];
