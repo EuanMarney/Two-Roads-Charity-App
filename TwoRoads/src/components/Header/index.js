@@ -7,53 +7,51 @@ import stylesheet from "../Styles/stylesheet";
 
 const getUsername = async () => {
   try {
-    return await SecureStore.getItemAsync('username');
+    return await SecureStore.getItemAsync("username");
   } catch (e) {
     console.error("error getting user name", e);
   }
 };
- 
+
 const Header = ({ title, navigation }) => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const currentDate = new Date();
   const options = { weekday: "long", month: "short", day: "numeric" };
   const formattedDate = currentDate.toLocaleDateString("en-US", options);
- 
+
   const handleSettingsPress = () => {
-    navigation.navigate('Settings');
+    navigation.navigate("Settings");
   };
- 
+
   useEffect(() => {
     const fetchUsername = async () => {
       const retrievedUsername = await getUsername();
-      setUsername(retrievedUsername || 'Guest');
+      setUsername(retrievedUsername || "Guest");
     };
- 
+
     fetchUsername();
   }, []);
-
 
   return (
     <View style={stylesheet.headerComponentContainer}>
       <View style={stylesheet.headerRectangle}>
         <View style={stylesheet.headerWithIconContainer}>
-          <Text style={stylesheet.headerText}>Daily Practices</Text>
-          <TouchableOpacity onPress={handleSettingsPress}>
+          <Text style={stylesheet.headerText} testID='header-component'>Daily Practices</Text>
+          <TouchableOpacity onPress={handleSettingsPress} testID='settings-button'>
             <Feather name="settings" style={stylesheet.iconCog} />
           </TouchableOpacity>
         </View>
- 
+
         <View style={stylesheet.headerInlineContainer}>
-          <Text style={stylesheet.subHeaderText}>{username}</Text>
+          <Text style={stylesheet.subHeaderText} testID='username-display'>{username}</Text>
           <View style={stylesheet.dateContainer}>
-            <Text style={stylesheet.dateText}>{formattedDate}</Text>
+            <Text style={stylesheet.dateText} testID='date'>{formattedDate}</Text>
           </View>
         </View>
       </View>
-      <Text style={stylesheet.headerTitle}>{title}</Text>
+      <Text style={stylesheet.headerTitle}testID='header-title'>{title}</Text>
     </View>
   );
 };
- 
+
 export default Header;
- 

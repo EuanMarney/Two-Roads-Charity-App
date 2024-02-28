@@ -1,6 +1,6 @@
 import {StyleSheet, Dimensions, Platform} from "react-native";
 
-//Colour Pallete
+// Colour Pallete
 const blue = "#3892E5";
 const white = "#F0F8FF";
 //const indigo = "#AA9CFC";

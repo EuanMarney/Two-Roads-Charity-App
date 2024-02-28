@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 
@@ -20,33 +21,29 @@ const HomeScreen = ({ navigation }) => {
   ];
 
   return (
-
-      <HomeLayout navigation={navigation}>
-
-        <View style={stylesheet.homeView}>
-
-          {/* <View style={stylesheet.headerContainer}>
+    <HomeLayout navigation={navigation}>
+      <View style={stylesheet.homeView}>
+        {/* <View style={stylesheet.headerContainer}>
             <Text style={stylesheet.homeHeader}>Daily Practices</Text>
           </View> */}
 
-          <View style={stylesheet.buttonContainer}>
-            {buttons.map((button, index) => (
-              <TouchableOpacity
-                key={index}
-                style={[stylesheet.customButton, { backgroundColor: button.color }]}
-                onPress={() => handlePress(button.title)}
-              >
-                <Text style={stylesheet.homeButtonText}>{button.title}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-
+        <View style={stylesheet.buttonContainer}>
+          {buttons.map((button, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[
+                stylesheet.customButton,
+                { backgroundColor: button.color },
+              ]}
+              onPress={() => handlePress(button.title)}
+            >
+              <Text style={stylesheet.homeButtonText}>{button.title}</Text>
+            </TouchableOpacity>
+          ))}
         </View>
-
-      </HomeLayout>
-
+      </View>
+    </HomeLayout>
   );
 };
 
 export default HomeScreen;
-

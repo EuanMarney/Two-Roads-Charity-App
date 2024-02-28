@@ -1,5 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import * as SecureStore from "expo-secure-store";
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
@@ -106,7 +107,10 @@ const LoginScreen = ({ navigation }) => {
           </TouchableOpacity>
         ))}
 
-        <TouchableOpacity style={stylesheet.icon} onPress={() => handleDelete()}>
+        <TouchableOpacity
+          style={stylesheet.icon}
+          onPress={() => handleDelete()}
+        >
           <Feather name="delete" size={30} color="black" />
         </TouchableOpacity>
 

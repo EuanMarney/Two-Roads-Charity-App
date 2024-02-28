@@ -1,5 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import * as SecureStore from "expo-secure-store";
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
@@ -9,8 +10,8 @@ import stylesheet from "../../components/Styles/stylesheet";
 const PinScreenReg1 = ({ navigation }) => {
   const [pin, setPin] = useState("");
 
-  const savePin = async (pin) => {
-    await SecureStore.setItemAsync("pin", pin);
+  const savePin = async (newPin) => {
+    await SecureStore.setItemAsync("pin", newPin);
   };
 
   const handlePress = (num) => {
@@ -66,7 +67,10 @@ const PinScreenReg1 = ({ navigation }) => {
           </TouchableOpacity>
         ))}
 
-        <TouchableOpacity style={stylesheet.icon} onPress={() => handleDelete()}>
+        <TouchableOpacity
+          style={stylesheet.icon}
+          onPress={() => handleDelete()}
+        >
           <Feather name="delete" size={30} color="black" />
         </TouchableOpacity>
 
@@ -84,7 +88,7 @@ const PinScreenReg1 = ({ navigation }) => {
       <TouchableOpacity
         onPress={() => console.log("Implement password recovery")}
       >
-        <Text style={stylesheet.forgotText}>I can't log in</Text>
+        <Text style={stylesheet.forgotText}>I can&apos;t log in</Text>
       </TouchableOpacity>
     </View>
   );

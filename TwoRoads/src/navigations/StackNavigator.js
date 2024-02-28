@@ -35,21 +35,71 @@ const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="WelcomePage">
-      <Stack.Screen name="LoginScreen" options={{headerShown: false}} component={LoginScreen}/>
-      <Stack.Screen name="WelcomePage" options={{headerShown: false}} component={WelcomePage} />
-      <Stack.Screen name="RegisterScreen" options={{headerShown: false}} component={RegisterScreen}/>
-      <Stack.Screen name="PinScreenReg1" options={{headerShown: false}} component={PinScreenReg1}/>
-      <Stack.Screen name="PinScreenReg2" options={{headerShown: false}} component={PinScreenReg2}/>
-      <Stack.Screen name="Home" options={{headerShown: false, gestureEnabled: false}} component={HomeScreen} />
-      <Stack.Screen name="Gratitude Diary" options={{headerShown: false, presentation: "fullScreenModal"}} component={GratitudeDiaryScreen} />
-      <Stack.Screen name="Acts of Kindness" options={{headerShown: false, presentation: "fullScreenModal"}} component={KindnessActsScreen} />
-      <Stack.Screen name="Hedonic Moments" options={{headerShown: false, presentation: "fullScreenModal"}} component={HedonicMomentsScreen} />
-      <Stack.Screen name="Acts of Connection" options={{headerShown: false, presentation: "fullScreenModal"}} component={ConnectionActsScreen}/>
-      <Stack.Screen name="Daily Mindfulness" options={{headerShown: false, presentation: "fullScreenModal"}} component={DailyMindfulnessScreen}/>
-      <Stack.Screen name="Settings" component={SettingsScreen}/>
-      <Stack.Screen name="Calendar" component={CalendarScreen}/>
-      <Stack.Screen name="CalendarRememberance" component={CalendarRememberanceScreen}/>
-      <Stack.Screen name="NotificationsSettingsScreen" component={NotificationsSettingsScreen}/>
+      <Stack.Screen
+        name="LoginScreen"
+        options={{ headerShown: false }}
+        component={LoginScreen}
+      />
+      <Stack.Screen
+        name="WelcomePage"
+        options={{ headerShown: false }}
+        component={WelcomePage}
+      />
+      <Stack.Screen
+        name="RegisterScreen"
+        options={{ headerShown: false }}
+        component={RegisterScreen}
+      />
+      <Stack.Screen
+        name="PinScreenReg1"
+        options={{ headerShown: false }}
+        component={PinScreenReg1}
+      />
+      <Stack.Screen
+        name="PinScreenReg2"
+        options={{ headerShown: false }}
+        component={PinScreenReg2}
+      />
+      <Stack.Screen
+        name="Home"
+        options={{ headerShown: false, gestureEnabled: false }}
+        component={HomeScreen}
+      />
+      <Stack.Screen
+        name="Gratitude Diary"
+        options={{ headerShown: false, presentation: "fullScreenModal" }}
+        component={GratitudeDiaryScreen}
+      />
+      <Stack.Screen
+        name="Acts of Kindness"
+        options={{ headerShown: false, presentation: "fullScreenModal" }}
+        component={KindnessActsScreen}
+      />
+      <Stack.Screen
+        name="Hedonic Moments"
+        options={{ headerShown: false, presentation: "fullScreenModal" }}
+        component={HedonicMomentsScreen}
+      />
+      <Stack.Screen
+        name="Acts of Connection"
+        options={{ headerShown: false, presentation: "fullScreenModal" }}
+        component={ConnectionActsScreen}
+      />
+      <Stack.Screen
+        name="Daily Mindfulness"
+        options={{ headerShown: false, presentation: "fullScreenModal" }}
+        component={DailyMindfulnessScreen}
+      />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen name="Calendar" component={CalendarScreen} />
+      <Stack.Screen
+        name="CalendarRememberance"
+        component={CalendarRememberanceScreen}
+      />
+      <Stack.Screen
+        name="NotificationsSettingsScreen"
+        component={NotificationsSettingsScreen}
+      />
     </Stack.Navigator>
   );
 };

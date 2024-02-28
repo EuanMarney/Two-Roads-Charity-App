@@ -5,7 +5,7 @@ export const connectToDatabase = () => {
   return SQLite.openDatabase("TwoRoadsV2.db");
 };
 
-//tables to be created here
+// tables to be created here
 export const createTables = (db) => {
   const hedonicMomentsQuery = `
     CREATE TABLE IF NOT EXISTS HedonicMoments (
@@ -61,14 +61,17 @@ export const createTables = (db) => {
       thirdConnection TEXT
     );
   `;
-  
-  db.transaction(tx => {
-    tx.executeSql(hedonicMomentsQuery);
-    tx.executeSql(userPreferencesQuery);
-    tx.executeSql(actsOfKindnessQuery);
-    tx.executeSql(gratitudeDiaryQuery);
-    tx.executeSql(actsOfConnectionQuery);
-  }, (error) => {
-    console.error("Error creating tables: ", error);
-  });
+
+  db.transaction(
+    (tx) => {
+      tx.executeSql(hedonicMomentsQuery);
+      tx.executeSql(userPreferencesQuery);
+      tx.executeSql(actsOfKindnessQuery);
+      tx.executeSql(gratitudeDiaryQuery);
+      tx.executeSql(actsOfConnectionQuery);
+    },
+    (error) => {
+      console.error("Error creating tables: ", error);
+    },
+  );
 };
