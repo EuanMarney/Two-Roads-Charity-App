@@ -5,6 +5,9 @@ node_modules/
 package-lock.json
 package.json
 
+# gitlab
+.gitlab/
+
 # Expo
 .expo/
 dist/
