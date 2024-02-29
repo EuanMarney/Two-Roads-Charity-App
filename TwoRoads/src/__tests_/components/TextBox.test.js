@@ -29,5 +29,4 @@ describe("TextBox", () => {
         expect(inputElement).toBeTruthy();
     });
 
-    // Add more tests as needed
 });

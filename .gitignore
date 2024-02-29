@@ -1,6 +1,13 @@
 # dependencies
 node_modules/
 
+# package locks
+package-lock.json
+package.json
+
+# gitlab
+.gitlab/
+
 # Expo
 .expo/
 dist/
