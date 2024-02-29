@@ -1,11 +1,9 @@
 // dataRemovalUtils.js
 import * as SecureStore from "expo-secure-store";
-import * as SQLite from "expo-sqlite";
-
-const db = SQLite.openDatabase("TwoRoadsV2.db");
+import {connectToDatabase} from "./db";
 
 // SQLite data removal
-export const dropAllTables = async () => {
+export const dropAllTables = async (db) => {
   const tables = [
     "HedonicMoments",
     "UserPreferences",
@@ -41,5 +39,6 @@ export const clearSecureStore = async () => {
 // Combined data removal
 export const removeAllUserData = async () => {
   await clearSecureStore();
-  await dropAllTables(); // Adjust based on your choice
+  const db = await connectToDatabase();
+  await dropAllTables(db); // Adjust based on your choice
 };
