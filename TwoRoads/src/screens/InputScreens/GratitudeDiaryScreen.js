@@ -59,10 +59,11 @@ const GratitudeDiaryScreen = () => {
       style={stylesheet.inputScreenTextBoxContainer}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+      testID="keyboard-avoiding-view"
     >
       <Layout>
         <InputScreenHeader headerStyles={{ backgroundColor: "#3892E5" }} />
-        <ScrollView style={stylesheet.inputScrollView}>
+        <ScrollView style={stylesheet.inputScrollView} testID="gratitude-diary-screen">
           {/* Adding TextBox component */}
           <View style={stylesheet.textBoxGroupContainers}>
             <View style={stylesheet.rowContainer}>
@@ -147,24 +148,26 @@ const GratitudeDiaryScreen = () => {
                 <TextBox
                   onChangeText={(text) => setThirdWhy(text)}
                   value={thirdWhy}
-                  placeholder="Why did this happen.."
+                  placeholder="Why did this happen..."
                   textInputStyle={{ borderColor: "#634AFA" }} // Custom border color
                 />
               </View>
             </View>
           </View>
 
-          <View style={stylesheet.inputScreenButtonContainer}>
+          <View style={stylesheet.inputScreenButtonContainer} testID="submit-button">
             <SubmitButton
               title="Submit"
               onPress={handleSubmit}
               buttonStyle={{ backgroundColor: "#634AFA" }} // Custom background color
+              testID="submit-button"
             />
           </View>
         </ScrollView>
         <ImageBackground
           source={backgroundImage}
           style={stylesheet.backgroundImage}
+          testID="background-image"
         />
       </Layout>
     </KeyboardAvoidingView>

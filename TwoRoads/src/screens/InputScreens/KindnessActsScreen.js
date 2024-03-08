@@ -55,7 +55,7 @@ const KindnessActsScreen = () => {
     >
       <Layout>
         <InputScreenHeader headerStyles={{ backgroundColor: "#AA9CFC" }} />
-        <ScrollView style={stylesheet.inputScrollView}>
+        <ScrollView style={stylesheet.inputScrollView} testID="kindness-acts-screen">
           {/* <Text style={styles.headerText}>
             This is the Acts of Kindness page
           </Text> */}
@@ -110,7 +110,7 @@ const KindnessActsScreen = () => {
             </View>
           </View>
 
-          <View style={stylesheet.inputScreenButtonContainer}>
+          <View style={stylesheet.inputScreenButtonContainer} testID="submit-button">
             <SubmitButton
               title="Submit"
               onPress={handleSubmit}
@@ -121,6 +121,7 @@ const KindnessActsScreen = () => {
         <ImageBackground
           source={backgroundImage}
           style={stylesheet.backgroundImage}
+          testID="background-image"
         />
       </Layout>
     </KeyboardAvoidingView>

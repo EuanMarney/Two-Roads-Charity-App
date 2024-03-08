@@ -22,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <HomeLayout navigation={navigation}>
-      <View style={stylesheet.homeView}>
+      <View style={stylesheet.homeView} testID="home-screen">
         {/* <View style={stylesheet.headerContainer}>
             <Text style={stylesheet.homeHeader}>Daily Practices</Text>
           </View> */}
