@@ -50,10 +50,11 @@ const ConnectionActsScreen = () => {
       style={stylesheet.inputScreenTextBoxContainer}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+      testID="keyboard-avoiding-view"
     >
       <InputScreenHeader headerStyles={{ backgroundColor: "#FABB4A" }} />
       <Layout>
-        <ScrollView style={stylesheet.inputScrollView}>
+        <ScrollView style={stylesheet.inputScrollView} testID="connection-acts-screen">
           {/* <Text style={styles.headerText}>
             This is the Acts of Connection page
           </Text> */}
@@ -108,17 +109,19 @@ const ConnectionActsScreen = () => {
             </View>
           </View>
 
-          <View style={stylesheet.inputScreenButtonContainer}>
+          <View style={stylesheet.inputScreenButtonContainer} testID="submit-button">
             <SubmitButton
               title="Submit"
               onPress={handleSubmit}
               buttonStyle={{ backgroundColor: "#FABB4A" }}
+              testID="submit-button"
             />
           </View>
         </ScrollView>
         <ImageBackground
           source={backgroundImage}
           style={stylesheet.backgroundImage}
+          testID="background-image"
         />
       </Layout>
     </KeyboardAvoidingView>
