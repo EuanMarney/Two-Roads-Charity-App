@@ -73,7 +73,7 @@ export default function App() {
         <Button title="Play Sound 1" onPress={() => playSound('chocolateMeditation')} />
         <Button title="Play Sound 2" onPress={() => playSound('Med1')} />
         <Button title="Play Sound 3" onPress={() => playSound('Med2')} />
-      <TrackPlayer />
+      <TrackPlayer onPause={pauseAudio} onPlay={resumeAudio} isPlaying={!!isPlaying}/>
     </Layout>
   );
 }
