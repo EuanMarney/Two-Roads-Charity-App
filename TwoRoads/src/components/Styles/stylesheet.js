@@ -459,7 +459,36 @@ const styles = StyleSheet.create(
             width: "95%",
           },
 
-          
+          // ---------------------------------------------------------------------------- //
+
+          //Track Player
+
+          trackPlayerContainer: {
+            width: width * 1.25,
+            height: width * 0.5,
+            borderRadius: width/4,
+            backgroundColor: purple,
+            position: "absolute",
+            bottom: -(width * 0.25),
+            overflow: "hidden",
+            alignSelf: "center",
+          },
+
+          trackPlayerIconContainer: {
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            position: 'absolute',
+            bottom: width * 0.33,
+            width: width,
+            marginLeft: "10%",
+            marginRight: "10%" 
+          },
+
+          trackPlayerIcons: {
+            color: "white",
+            fontSize: 25
+          }
 
 
     }

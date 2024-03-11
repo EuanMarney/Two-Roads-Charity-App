@@ -1,10 +1,18 @@
 import { Audio } from 'expo-av';
 import { useEffect, useState } from 'react';
 import { View, StyleSheet, Button } from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
+
+import stylesheet from '../components/Styles/stylesheet';
+import Layout from '../components/Layout';
+import InputScreenHeader from '../components/Header/inputScreenHeader';
+import TrackPlayer from '../components/Footer/TrackPlayer';
 
 export default function App() {
-  const [sounds, setSounds] = useState({});
-  const [currentSound, setCurrentSound] = useState(null); // This will now store the sound object that is currently playing
+
+  const [sounds, setSounds] = useState();
+  const [currentSound, setCurrentSound] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   async function loadSound(audioFile, key) {
     console.log(`Loading Sound: ${key}`);
@@ -24,6 +32,21 @@ export default function App() {
     if (soundToPlay) {
       await soundToPlay.playAsync();
       setCurrentSound(soundToPlay); 
+      setIsPlaying(true);
+    }
+  }
+
+  async function pauseAudio() {
+    if(currentSound && isPlaying) {
+      await currentSound.pauseAsync();
+      setIsPlaying(false);
+    }
+  }
+
+  async function resumeAudio() {
+    if(currentSound && !isPlaying) {
+      await currentSound.playAsync();
+      setIsPlaying(true);
     }
   }
 
@@ -45,19 +68,12 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Button title="Play Sound 1" onPress={() => playSound('chocolateMeditation')} />
-      <Button title="Play Sound 2" onPress={() => playSound('Med1')} />
-      <Button title="Play Sound 3" onPress={() => playSound('Med2')} />
-    </View>
+    <Layout>
+      <InputScreenHeader />
+        <Button title="Play Sound 1" onPress={() => playSound('chocolateMeditation')} />
+        <Button title="Play Sound 2" onPress={() => playSound('Med1')} />
+        <Button title="Play Sound 3" onPress={() => playSound('Med2')} />
+      <TrackPlayer />
+    </Layout>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-});
