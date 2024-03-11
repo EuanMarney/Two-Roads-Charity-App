@@ -4,12 +4,11 @@ import {
   View,
   TouchableOpacity,
   Text,
-  StyleSheet,
-  ScrollView,
   Alert,
 } from "react-native";
 
 import Layout from "../components/Layout";
+import stylesheet from "../components/Styles/stylesheet";
 import { removeAllUserData } from "../database/dataRemovalUtil";
 
 const SettingsScreen = ({ navigation }) => {
@@ -27,23 +26,19 @@ const SettingsScreen = ({ navigation }) => {
   };
 
   return (
-    <Layout style={styles.layoutStyle}>
-      <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Settings</Text>
-        </View>
-        <View style={styles.buttonContainer}>
+    <Layout style={stylesheet.homeView}>
+        <View style={[stylesheet.buttonContainer, {justifyContent: "flex-start", paddingTop: "5%"}]}>
           {/* Notifications Settings Button */}
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={[styles.customButton, { backgroundColor: "#FF6B6B" }]}
             onPress={navigateToNotifications}
           >
             <Text style={styles.buttonText}>Notfications Settings</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           {/* Reset Data Button */}
           <TouchableOpacity
-            style={[styles.customButton, { backgroundColor: "#D32F2F" }]}
+            style={[stylesheet.customButton, { backgroundColor: "#FF0F0F"}]}
             onPress={() => {
               Alert.alert(
                 "Remove all Data?",
@@ -67,55 +62,11 @@ const SettingsScreen = ({ navigation }) => {
               );
             }}
           >
-            <Text style={styles.buttonText}>Reset Data</Text>
+            <Text style={[stylesheet.homeButtonText, {color: "white", fontFamily: "NunitoBold"}]}>Reset Data</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
     </Layout>
   );
 };
-
-const styles = StyleSheet.create({
-  layoutStyle: {
-    flex: 1,
-    backgroundColor: "blue",
-  },
-  scrollViewContent: {
-    flexGrow: 1,
-    justifyContent: "center",
-  },
-  headerContainer: {
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  headerText: {
-    color: "#000",
-    fontFamily: "Arial",
-    fontSize: 24,
-    fontWeight: "bold",
-    lineHeight: 28,
-    paddingVertical: 20,
-  },
-  buttonContainer: {
-    paddingHorizontal: 22,
-  },
-  customButton: {
-    marginBottom: 20,
-    borderRadius: 20,
-    paddingVertical: 32,
-    paddingHorizontal: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 16,
-  },
-});
 
 export default SettingsScreen;

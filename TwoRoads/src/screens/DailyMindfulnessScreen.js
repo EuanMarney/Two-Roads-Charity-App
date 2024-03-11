@@ -1,9 +1,10 @@
 import { Audio } from 'expo-av';
 import { useEffect, useState } from 'react';
-import { View, StyleSheet, Button, TouchableOpacity, Text } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import LottieView from 'lottie-react-native';
 
+import backgroundImage from '../assets/mindfulnessBackground.png';
 import stylesheet from '../components/Styles/stylesheet';
 import Layout from '../components/Layout';
 import InputScreenHeader from '../components/Header/inputScreenHeader';
@@ -93,38 +94,35 @@ export default function App() {
     {
       id: "chocolateMeditation",
       title: "Chocolate Meditation",
-      description: "Focus on the tase, smell, and texture of chocolate to bring awareness to the moment"
-  
+      description: "Focus on the tase, smell, and texture of chocolate to bring awareness to the moment",
+      animationPath: require("../assets/animations/meditation.json"),
     },
     { 
       id: "Med1",
       title: "Mindfulness of Body and Breath",
       description: "Pay attention to different parts of your body to achieve a state of relaxation",
+      animationPath: require("../assets/animations/mindful.json"),
     },
     { 
       id: "Med2",
       title: "The Three Minute Breathing Space",
       description: "Practice deep breathing to calm your mind and reduce stress",
+      animationPath: require("../assets/animations/breathing.json"),
     }
   ]
 
   return (
     <Layout>
-      <InputScreenHeader headerStyles={{backgroundColor: "#82ED46"}}/>
+      <InputScreenHeader headerStyles={{backgroundColor: "#820263"}}/>
         <View style={stylesheet.dailyMindfulnessButtonContainer}>
-
-          <CarouselComp entries={entries} onActivityPress={() => playSound(entries.id)} />
-
-          {/* {buttons.map((button, index) => (
-            <TouchableOpacity
-              key={index}
-              style={[stylesheet.dailyMindfulnessButtons, {backgroundColor: "transparent"}]}
-              onPress={() => playSound(button.title)}>
-                <Text style={stylesheet.dailyMindfulnessText}>{button.title}</Text>
-            </TouchableOpacity>
-          ))} */}
+          <CarouselComp entries={entries} onActivityPress={(id) => playSound(id)} />
         </View>
       <TrackPlayer onPause={pauseAudio} onPlay={resumeAudio} onRewind={rewindAudio} onFastForward={fastForwardAudio} isPlaying={!!isPlaying}/>
+      <ImageBackground
+          source={backgroundImage}
+          style={stylesheet.backgroundImage}
+          testID="background-image"
+        />
     </Layout>
   );
 }

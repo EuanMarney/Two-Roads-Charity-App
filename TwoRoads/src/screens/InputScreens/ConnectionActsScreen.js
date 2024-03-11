@@ -52,7 +52,7 @@ const ConnectionActsScreen = () => {
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
       testID="keyboard-avoiding-view"
     >
-      <InputScreenHeader headerStyles={{ backgroundColor: "#FABB4A" }} />
+      <InputScreenHeader headerStyles={{ backgroundColor: "#008F85" }} />
       <Layout>
         <ScrollView style={stylesheet.inputScrollView} testID="connection-acts-screen">
           {/* <Text style={styles.headerText}>
@@ -63,7 +63,7 @@ const ConnectionActsScreen = () => {
           <View
             style={[
               stylesheet.textBoxGroupContainers,
-              { backgroundColor: "#FABB4A" },
+              { backgroundColor: "#008F85" },
             ]}
           >
             <View style={stylesheet.rowContainer}>
@@ -75,7 +75,7 @@ const ConnectionActsScreen = () => {
                   onChangeText={(text) => setFirstConnectionAct(text)}
                   value={firstConnectionAct}
                   placeholder="Describe the first act..."
-                  textInputStyle={{ borderColor: "#FABB4A" }}
+                  textInputStyle={{ borderColor: "#008F85" }}
                 />
               </View>
             </View>
@@ -89,7 +89,7 @@ const ConnectionActsScreen = () => {
                   onChangeText={(text) => setSecondConnectionAct(text)}
                   value={secondConnectionAct}
                   placeholder="Describe the second act..."
-                  textInputStyle={{ borderColor: "#FABB4A" }}
+                  textInputStyle={{ borderColor: "#008F85" }}
                 />
               </View>
             </View>
@@ -103,7 +103,7 @@ const ConnectionActsScreen = () => {
                   onChangeText={(text) => setThirdConnectionAct(text)}
                   value={thirdConnectionAct}
                   placeholder="Describe the third act..."
-                  textInputStyle={{ borderColor: "#FABB4A" }}
+                  textInputStyle={{ borderColor: "#008F85" }}
                 />
               </View>
             </View>
@@ -113,7 +113,7 @@ const ConnectionActsScreen = () => {
             <SubmitButton
               title="Submit"
               onPress={handleSubmit}
-              buttonStyle={{ backgroundColor: "#FABB4A" }}
+              buttonStyle={{ backgroundColor: "#008F85" }}
               testID="submit-button"
             />
           </View>

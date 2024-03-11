@@ -60,13 +60,13 @@ const HedonicMomentsScreen = () => {
       testID="keyboard-avoiding-view"
     >
       <Layout>
-        <InputScreenHeader headerStyles={{ backgroundColor: "#DA9CFC" }} />
+        <InputScreenHeader headerStyles={{ backgroundColor: "#A613CE" }} />
         <ScrollView style={stylesheet.inputScrollView} testID="hedonic-moments-screen">
           {/* Adding TextBox component and BLeaveTextBox */}
           <View
             style={[
               stylesheet.textBoxGroupContainers,
-              { backgroundColor: "#DA9CFC" },
+              { backgroundColor: "#A613CE" },
             ]}
           >
             <View style={stylesheet.rowContainer}>
@@ -115,7 +115,10 @@ const HedonicMomentsScreen = () => {
           </View>
 
           <View style={stylesheet.inputScreenButtonContainer} testID="submit-button">
-            <SubmitButton onPress={handleSubmit} title="Submit" />
+            <SubmitButton 
+              onPress={handleSubmit} 
+              buttonStyle={{backgroundColor: "#A613CE"}}
+              title="Submit" />
           </View>
         </ScrollView>
         <ImageBackground

@@ -4,6 +4,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import LottieView from 'lottie-react-native';
 
 import stylesheet from "../Styles/stylesheet";
+import { Button } from "@rneui/base";
 
 const {width : screenWidth} = Dimensions.get('window');
 
@@ -12,11 +13,16 @@ const CarouselComp = ({entries, onActivityPress}) => {
     const renderItem = ({item, index}) => {
         return(
             <View style={stylesheet.cardContainer}>
-                <Text style={stylesheet.cardTitle}>{item.title}</Text>
-                <Text style={stylesheet.cardText}>{item.description}</Text>
-                <TouchableOpacity style={stylesheet.dailyMindfulnessButtons} onPress={() => onActivityPress(item.id)}>
-                    <Text style={stylesheet.buttonText}>Play</Text>
-                </TouchableOpacity>
+                <View style={stylesheet.animationContainer}>
+                    <LottieView source={item.animationPath} autoPlay loop/>
+                </View>
+                <View style={stylesheet.cardTextContainer}>
+                    <Text style={stylesheet.cardTitle}>{item.title}</Text>
+                    <Text style={stylesheet.cardText}>{item.description}</Text>
+                    <TouchableOpacity style={stylesheet.dailyMindfulnessButtons} onPress={() => onActivityPress(item.id)}>
+                        <Text style={stylesheet.buttonText}>Play</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     };
@@ -27,7 +33,8 @@ const CarouselComp = ({entries, onActivityPress}) => {
                 flexDirection: "row",
                 width: screenWidth,
                 justifyContent: "center",
-                alignItems: "center"
+                position: "absolute",
+                
             }}
             width={screenWidth * 0.8}
             height={screenWidth * 2}
