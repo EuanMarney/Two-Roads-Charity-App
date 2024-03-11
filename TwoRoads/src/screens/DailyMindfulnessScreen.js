@@ -1,18 +1,21 @@
 import { Audio } from 'expo-av';
 import { useEffect, useState } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet, Button, TouchableOpacity, Text } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import LottieView from 'lottie-react-native';
 
 import stylesheet from '../components/Styles/stylesheet';
 import Layout from '../components/Layout';
 import InputScreenHeader from '../components/Header/inputScreenHeader';
 import TrackPlayer from '../components/Footer/TrackPlayer';
+import CarouselComp from '../components/interactiveComps/Carousel';
 
 export default function App() {
 
   const [sounds, setSounds] = useState();
   const [currentSound, setCurrentSound] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const rewindFastForwardAmount = 10000;
 
   async function loadSound(audioFile, key) {
     console.log(`Loading Sound: ${key}`);
@@ -50,6 +53,25 @@ export default function App() {
     }
   }
 
+  async function rewindAudio() {
+    if(currentSound && isPlaying) {
+      const status = await currentSound.getStatusAsync();
+      const newPosition = Math.max(0, status.positionMillis - rewindFastForwardAmount);
+      await currentSound.setPositionAsync(newPosition);
+    }
+  }
+
+  async function fastForwardAudio() {
+    if(currentSound && isPlaying) {
+      const status = await currentSound.getStatusAsync();
+      const newPosition = Math.max(0, status.positionMillis + rewindFastForwardAmount);
+      if(newPosition < status.durationMillis) {
+        await currentSound.setPositionAsync(newPosition);
+      }
+    }
+  }
+
+
   useEffect(() => {
   
     loadSound(require('../assets/audio/ChocolateMeditation.mp3'), 'chocolateMeditation');
@@ -67,13 +89,42 @@ export default function App() {
     };
   }, []);
 
+  const entries = [
+    {
+      id: "chocolateMeditation",
+      title: "Chocolate Meditation",
+      description: "Focus on the tase, smell, and texture of chocolate to bring awareness to the moment"
+  
+    },
+    { 
+      id: "Med1",
+      title: "Mindfulness of Body and Breath",
+      description: "Pay attention to different parts of your body to achieve a state of relaxation",
+    },
+    { 
+      id: "Med2",
+      title: "The Three Minute Breathing Space",
+      description: "Practice deep breathing to calm your mind and reduce stress",
+    }
+  ]
+
   return (
     <Layout>
-      <InputScreenHeader />
-        <Button title="Play Sound 1" onPress={() => playSound('chocolateMeditation')} />
-        <Button title="Play Sound 2" onPress={() => playSound('Med1')} />
-        <Button title="Play Sound 3" onPress={() => playSound('Med2')} />
-      <TrackPlayer onPause={pauseAudio} onPlay={resumeAudio} isPlaying={!!isPlaying}/>
+      <InputScreenHeader headerStyles={{backgroundColor: "#82ED46"}}/>
+        <View style={stylesheet.dailyMindfulnessButtonContainer}>
+
+          <CarouselComp entries={entries} onActivityPress={() => playSound(entries.id)} />
+
+          {/* {buttons.map((button, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[stylesheet.dailyMindfulnessButtons, {backgroundColor: "transparent"}]}
+              onPress={() => playSound(button.title)}>
+                <Text style={stylesheet.dailyMindfulnessText}>{button.title}</Text>
+            </TouchableOpacity>
+          ))} */}
+        </View>
+      <TrackPlayer onPause={pauseAudio} onPlay={resumeAudio} onRewind={rewindAudio} onFastForward={fastForwardAudio} isPlaying={!!isPlaying}/>
     </Layout>
   );
 }

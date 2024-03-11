@@ -459,6 +459,33 @@ const styles = StyleSheet.create(
             width: "95%",
           },
 
+          dailyMindfulnessButtonContainer: {
+
+          },
+
+          dailyMindfulnessButtons: {
+            paddingVertical: "7.5%",
+            paddingHorizontal: "1%",
+            alignItems: "center",
+            justifyContent: "center",
+          },
+
+          dailyMindfulnessText: {
+            color: "black",
+            fontFamily: "Nunito",
+            letterSpacing: 2,
+            fontSize: 15
+          },
+
+          animationBackground: {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: -1,
+          },
+
           // ---------------------------------------------------------------------------- //
 
           //Track Player
@@ -488,9 +515,45 @@ const styles = StyleSheet.create(
           trackPlayerIcons: {
             color: "white",
             fontSize: 25
-          }
+          },
 
+          // ---------------------------------------------------------------------------- //
 
+          //Carousel Component
+
+          carouselContainer: {
+
+          },
+
+          cardContainer: {
+            backgroundColor: "white",
+            borderRadius: width * 0.1,
+            width: width * 0.8 - 10,
+            height: width * 1.35,
+            padding: 20,
+            alignItems: "center",
+            justifyContent: "center",
+            shadowColor: "black",
+            shadowOpacity: 0.25,
+            shadowOffset: {
+              width: 0,
+              height: 0.4,
+            },
+
+          },
+
+          cardTitle: {
+            fontFamily: "NunitoBold",
+            fontSize: 20,
+            marginBottom: 10,
+            textAlign: "center"
+          },
+          
+          cardText: {
+            fontFamily: "Nunito",
+            fontSize: 16,
+            textAlign: "center",
+          },
     }
 
 
