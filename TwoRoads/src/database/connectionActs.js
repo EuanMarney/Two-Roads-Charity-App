@@ -37,7 +37,6 @@ export const insertConnectionAct = (
       }
     },
     () => {
-      console.log("Transaction success, hedonicMoments.js line 36");
     },
   );
 };

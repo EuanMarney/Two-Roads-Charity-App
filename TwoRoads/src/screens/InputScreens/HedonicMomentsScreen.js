@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { ImageBackground, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
+import * as Haptics from "expo-haptics"
 
 import backgroundImage from "../../assets/hedonicBackground.png";
 import InputScreenHeader from "../../components/Header/inputScreenHeader";
@@ -10,7 +11,7 @@ import stylesheet from "../../components/Styles/stylesheet";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
 import TextBox from "../../components/interactiveComps/TextBox";
 import { connectToDatabase, createTables } from "../../database/db";
-import { insertHedonicMoment, getAllHedonicMoments } from "../../database/hedonicMoments";
+import { insertHedonicMoment } from "../../database/hedonicMoments";
 
 const HedonicMomentsScreen = () => {
   const [firstMoment, setFirstMoment] = useState("");
@@ -43,10 +44,8 @@ const HedonicMomentsScreen = () => {
       setThirdMoment("");
       setFourthMoment("");
 
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
       navigation.navigate("Home");
-
-      const alldata = await getAllHedonicMoments(db);
-      console.log(alldata);
     } catch (error) {
       console.error("Error adding hedonic moments: ", error);
     }

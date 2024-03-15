@@ -34,16 +34,11 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
-  const getUsername = async () => {
-    return await SecureStore.getItemAsync("username");
-  };
 
   const comparePin = async (enteredPin) => {
     try {
       const storedPin = await getPin();
-      const username = await getUsername();
       if (enteredPin === storedPin) {
-        alert("welcome " + username);
         navigation.navigate("Home");
       } else {
         alert("Pin does not match one in our database");

@@ -37,7 +37,6 @@ export const insertActOfKindness = (
       }
     },
     () => {
-      console.log("Transaction success, hedonicMoments.js line 36");
     },
   );
 };
@@ -46,7 +45,7 @@ export const getAllActsOfKindness = async (db) => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        "SELECT * FROM ActsOfKindness", // Replace tableName with your actual table name
+        "SELECT * FROM ActsOfKindness", 
         [],
         (_, { rows }) => resolve(rows._array),
         (_, error) => {
