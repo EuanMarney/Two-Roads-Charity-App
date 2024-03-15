@@ -60,6 +60,7 @@ const PinScreenReg2 = ({ navigation }) => {
     for (let i = 0; i < 6; i++) {
       circles.push(
         <View
+        testID='circle'
           key={i}
           style={[
             stylesheet.circle,
@@ -82,6 +83,7 @@ const PinScreenReg2 = ({ navigation }) => {
       <View style={stylesheet.numbersContainer}>
         {Array.from({ length: 9 }, (_, i) => i + 1).map((num) => (
           <TouchableOpacity
+          testID='number'
             key={num}
             style={stylesheet.number}
             onPress={() => handlePress(num.toString())}
@@ -101,6 +103,7 @@ const PinScreenReg2 = ({ navigation }) => {
           key="0"
           style={[stylesheet.number, { marginLeft: 30 }]}
           onPress={() => handlePress("0")}
+          testID='number'
         >
           <Text style={stylesheet.numberText}>0</Text>
         </TouchableOpacity>

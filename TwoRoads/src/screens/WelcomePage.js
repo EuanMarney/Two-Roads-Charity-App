@@ -30,6 +30,7 @@ const WelcomePage = ({ navigation }) => {
 
       <View>
         <TouchableOpacity
+          testID="login-button"
           style={stylesheet.button}
           onPress={() => navigation.navigate("LoginScreen")}
         >
@@ -37,6 +38,7 @@ const WelcomePage = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
+          testID="register-button"
           style={[
             stylesheet.button,
             {

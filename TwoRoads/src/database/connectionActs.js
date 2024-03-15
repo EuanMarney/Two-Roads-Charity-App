@@ -26,7 +26,7 @@ export const insertConnectionAct = (
           if (onError) {
             onError(error);
           }
-          return false; // Returning false rolls back the transaction
+          return false;
         },
       );
     },
@@ -46,7 +46,7 @@ export const getAllActsOfConnection = (db) => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        "SELECT * FROM ActsOfConnection", // Replace tableName with your actual table name
+        "SELECT * FROM ActsOfConnection", 
         [],
         (_, { rows }) => resolve(rows._array),
         (_, error) => {
@@ -69,7 +69,7 @@ export const getConnectionActsForDate = async (db, selectedDate) => {
         },
         (_, error) => {
           reject(error);
-          return true; // To stop the propagation of the error
+          return true; 
         },
       );
     });

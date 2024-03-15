@@ -15,17 +15,14 @@ const HomeScreen = ({ navigation }) => {
     { title: "Gratitude Diary", color: "#3892E5" },
     { title: "Acts of Kindness", color: "#AA9CFC" },
     { title: "Hedonic Moments", color: "#DA9CFC" },
-    { title: "Acts of Connection", color: "#FABB4A" },
-    { title: "Daily Mindfulness", color: "#82ED46" },
+    { title: "Acts of Connection", color: "#70FFC8" },
+    { title: "Daily Mindfulness", color: "#FB0EC0" },
     { title: "Calendar", color: "#664AFA" },
   ];
 
   return (
     <HomeLayout navigation={navigation}>
-      <View style={stylesheet.homeView}>
-        {/* <View style={stylesheet.headerContainer}>
-            <Text style={stylesheet.homeHeader}>Daily Practices</Text>
-          </View> */}
+      <View style={stylesheet.homeView} testID="home-screen">
 
         <View style={stylesheet.buttonContainer}>
           {buttons.map((button, index) => (

@@ -1,8 +1,9 @@
-import React from 'react';
 import { render } from '@testing-library/react-native';
-import HomeLayout from '../../components/Layout/HomeLayout';
+import React from 'react';
 import { Text } from 'react-native';
+
 import background from '../../assets/background.png';
+import HomeLayout from '../../components/Layout/HomeLayout';
 
 // Mock child components and assets
 jest.mock('../../components/Header', () => 'Header');
