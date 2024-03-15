@@ -62,7 +62,7 @@ const GratitudeDiaryScreen = () => {
       testID="keyboard-avoiding-view"
     >
       <Layout>
-        <InputScreenHeader headerStyles={{ backgroundColor: "#3892E5" }} />
+        <InputScreenHeader headerStyles={{ backgroundColor: "#1A73C7" }} />
         <ScrollView style={stylesheet.inputScrollView} testID="gratitude-diary-screen">
           {/* Adding TextBox component */}
           <View style={stylesheet.textBoxGroupContainers}>
@@ -159,7 +159,7 @@ const GratitudeDiaryScreen = () => {
             <SubmitButton
               title="Submit"
               onPress={handleSubmit}
-              buttonStyle={{ backgroundColor: "#634AFA" }} // Custom background color
+              buttonStyle={{ backgroundColor: "#1A73C7" }} // Custom background color
               testID="submit-button"
             />
           </View>
