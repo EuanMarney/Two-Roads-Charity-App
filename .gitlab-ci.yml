@@ -20,6 +20,10 @@ build-job:
 tests:
   tags:
     - docker
+  image:
+    name: SH-29_image
+    entrypoint: ["/bin/sh", "-c"]
+
   stage: test
   cache:
     key: ${CI_COMMIT_REF_SLUG}-node-modules
