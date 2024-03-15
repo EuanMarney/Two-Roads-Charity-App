@@ -7,9 +7,14 @@ import stylesheet from "../Styles/stylesheet";
 const InputScreenHeader = ({ headerStyles }) => {
   const navigation = useNavigation();
   const route = useRoute();
+   
 
   const handleCrossPress = () => {
-    navigation.navigate("Home");
+    if(route.name == "CalendarRememberance") {
+      navigation.navigate("CalendarScreen")
+    } else {
+      navigation.navigate("Home");
+    }
   };
 
   return (

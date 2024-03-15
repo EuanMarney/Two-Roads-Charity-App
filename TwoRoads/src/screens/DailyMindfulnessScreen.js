@@ -7,10 +7,10 @@ import LottieView from 'lottie-react-native';
 
 import backgroundImage from '../assets/mindfulnessBackground.png';
 import stylesheet from '../components/Styles/stylesheet';
-import Layout from '../components/Layout';
 import InputScreenHeader from '../components/Header/inputScreenHeader';
 import TrackPlayer from '../components/Footer/TrackPlayer';
 import CarouselComp from '../components/interactiveComps/Carousel';
+import DailyLayout from '../components/Layout/MindfulnessLayout';
 /* eslint-enable import/order */
 
 export default function App() {
@@ -114,7 +114,7 @@ export default function App() {
   ]
 
   return (
-    <Layout>
+    <DailyLayout>
       <InputScreenHeader headerStyles={{backgroundColor: "#820263"}}/>
         <View style={stylesheet.dailyMindfulnessButtonContainer}>
           <CarouselComp entries={entries} onActivityPress={(id) => playSound(id)} />
@@ -125,6 +125,6 @@ export default function App() {
           style={stylesheet.backgroundImage}
           testID="background-image"
         />
-    </Layout>
+    </DailyLayout>
   );
 }
