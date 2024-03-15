@@ -17,7 +17,7 @@ const HomeScreen = ({ navigation }) => {
     { title: "Hedonic Moments", color: "#DA9CFC" },
     { title: "Acts of Connection", color: "#70FFC8" },
     { title: "Daily Mindfulness", color: "#FB0EC0" },
-    // { title: "Calendar", color: "#664AFA" },
+    { title: "Calendar", color: "#664AFA" },
   ];
 
   return (

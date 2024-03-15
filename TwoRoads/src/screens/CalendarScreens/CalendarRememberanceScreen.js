@@ -25,10 +25,7 @@ const CalendarRememberanceScreen = ({ route }) => {
         const moments = await getHedonicMomentsForDate(db, selectedDate);
         const connectionActs = await getConnectionActsForDate(db, selectedDate);
         const kindnessActs = await getKindnessActsForDate(db, selectedDate);
-        const gratitudeDiarys = await getGratitudeDiaryForDate(
-          db,
-          selectedDate,
-        );
+        const gratitudeDiarys = await getGratitudeDiaryForDate(db, selectedDate);
 
         setData({
           moments,
