@@ -1,31 +1,18 @@
-stages:
-  - build
-  - test
+image: node
 
 build-job:
   tags:
     - docker
   stage: build
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}-node-modules
-    paths:
-      - node_modules/
   script:
     - npm install -D eslint eslint-config-prettier eslint-config-universe
     - npx eslint /builds/team-project-h/2023/sh29/sh29-main/TwoRoads/App.js /builds/team-project-h/2023/sh29/sh29-main/TwoRoads/src
-  artifacts:
-    paths:
-      - .eslintcache
 
 tests:
   tags:
     - docker
   stage: test
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}-node-modules
-    paths:
-      - TwoRoads/node_modules/
   script:
     - cd TwoRoads/
-    - npm ci
+    - npm install
     - npm run test
