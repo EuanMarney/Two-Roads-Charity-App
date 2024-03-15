@@ -11,7 +11,7 @@ import stylesheet from "../../components/Styles/stylesheet";
 import SubmitButton from "../../components/interactiveComps/SubmitButton";
 import TextBox from "../../components/interactiveComps/TextBox";
 import { connectToDatabase, createTables } from "../../database/db";
-import { insertHedonicMoment, getAllHedonicMoments } from "../../database/hedonicMoments";
+import { insertHedonicMoment } from "../../database/hedonicMoments";
 
 const HedonicMomentsScreen = () => {
   const [firstMoment, setFirstMoment] = useState("");
