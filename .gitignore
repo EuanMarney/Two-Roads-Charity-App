@@ -12,6 +12,7 @@ package.json
 .expo/
 dist/
 web-build/
+eas.json
 
 # Native
 *.orig.*

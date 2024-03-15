@@ -9,12 +9,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tworoadstest.TwoRoads"
     },
     "android": {
+      "package": "com.tworoadstest.TwoRoads"
     },
-    "web": {
-    },
+    "web": {},
     "extra": {
       "eas": {
         "projectId": "ac166e1b-00a1-4b5d-9428-533de972f387"

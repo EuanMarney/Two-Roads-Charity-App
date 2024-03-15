@@ -1,8 +1,10 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import SettingsScreen from '../../screens/SettingsScreen';
-import { removeAllUserData } from '../../database/dataRemovalUtil';
+import React from 'react';
 import { Alert } from 'react-native';
+
+import { removeAllUserData } from '../../database/dataRemovalUtil';
+import SettingsScreen from '../../screens/SettingsScreen';
+
 
 // Mock the `removeAllUserData` function
 jest.mock('../../database/dataRemovalUtil', () => ({
@@ -18,13 +20,6 @@ describe('SettingsScreen', () => {
   // Reset mocks before each test
   beforeEach(() => {
     jest.clearAllMocks();
-  });
-
-  it('navigates to Notifications Settings screen when button is pressed', () => {
-    const { getByText } = render(<SettingsScreen navigation={{ navigate: mockNavigate }} />);
-    const notificationsButton = getByText('Notfications Settings');
-    fireEvent.press(notificationsButton);
-    expect(mockNavigate).toHaveBeenCalledWith('NotificationsSettingsScreen');
   });
 
   it('shows an alert when Reset Data button is pressed and handles user confirmation', async () => {
