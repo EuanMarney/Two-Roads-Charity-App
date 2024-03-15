@@ -25,8 +25,10 @@ const PinScreenReg2 = ({ navigation }) => {
         alert("Account Created");
       } else {
         alert("those pins did not match");
-        clearPin();
-      }
+        await clearPin();
+        const storedPinAfterClear = await SecureStore.getItemAsync("pin");
+        console.log('Stored pin after clear:', storedPinAfterClear);
+        }
     } catch (e) {
       console.error("Error comparing pins", e);
     }
@@ -93,6 +95,7 @@ const PinScreenReg2 = ({ navigation }) => {
         ))}
 
         <TouchableOpacity
+        testID="deleteButton"
           style={stylesheet.icon}
           onPress={() => handleDelete()}
         >
@@ -112,6 +115,7 @@ const PinScreenReg2 = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity
+        testID='ForgottenPwrd'
         onPress={() => console.log("Implement password recovery")}
       >
         <Text style={stylesheet.forgotText}>I can&apos;t log in</Text>

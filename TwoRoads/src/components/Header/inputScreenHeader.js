@@ -10,7 +10,7 @@ const InputScreenHeader = ({ headerStyles }) => {
    
 
   const handleCrossPress = () => {
-    if(route.name == "CalendarRememberance") {
+    if(route.name === "CalendarRememberance") {
       navigation.navigate("CalendarScreen")
     } else {
       navigation.navigate("Home");

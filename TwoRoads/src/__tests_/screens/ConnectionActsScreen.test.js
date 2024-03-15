@@ -1,4 +1,4 @@
-import { render,fireEvent, waitFor} from "@testing-library/react-native";
+import { render,fireEvent } from "@testing-library/react-native";
 import React from "react";
 
 import ConnectionActsScreen from "../../screens/InputScreens/ConnectionActsScreen";
@@ -73,4 +73,24 @@ describe("ConnectionActsScreen", () => {
         expect(backgroundImage).toBeTruthy();
     });
 
+    // Mock the navigation object
+    const mockNavigate = jest.fn();
+    jest.mock('@react-navigation/native', () => ({
+        ...jest.requireActual('@react-navigation/native'),
+        useNavigation: () => ({
+            navigate: mockNavigate,
+        }),
+    }));
+
+    // Mock the database functions
+    jest.mock('../../database/db', () => ({
+        connectToDatabase: jest.fn(),
+        createTables: jest.fn(),
+    }));
+
+    jest.mock('../../database/connectionActs', () => ({
+        insertConnectionAct: jest.fn(),
+    }));
 });
+
+

@@ -2,8 +2,6 @@
 import { Audio } from 'expo-av';
 import { useEffect, useState } from 'react';
 import { View, ImageBackground } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
-import LottieView from 'lottie-react-native';
 
 import backgroundImage from '../assets/mindfulnessBackground.png';
 import stylesheet from '../components/Styles/stylesheet';

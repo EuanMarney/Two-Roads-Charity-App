@@ -72,4 +72,59 @@ describe('PinScreenReg2', () => {
         fireEvent.press(getByText('Submit'));
         expect(global.alert).toHaveBeenCalledWith('Please enter a 6-digit pin');
     });
+
+    it('should alert "those pins did not match" and clear the pin if the entered pin is incorrect', async () => {
+        SecureStore.getItemAsync.mockResolvedValue('654321');  // Mock stored pin as different
+        const { getByText } = render(<PinScreenReg2 navigation={{ navigate: mockNavigate }} />);
+        "123456".split('').forEach(num => {
+            fireEvent.press(getByText(num.toString()));
+        });
+        fireEvent.press(getByText('Submit'));
+    
+        await waitFor(() => {
+            expect(global.alert).toHaveBeenCalledWith('those pins did not match');
+        });
+    }); 
+    
+
+    it('should delete the last digit of the pin when delete is pressed', async () => {
+        const { getByText, findByTestId } = render(<PinScreenReg2 navigation={{ navigate: mockNavigate }} />);
+        "123456".split('').forEach(num => {
+            fireEvent.press(getByText(num.toString()));
+        });  // Add a digit to the pin
+        const deleteButton = await findByTestId('deleteButton');
+        for (let i = 0; i < 6; i++){
+            fireEvent.press(deleteButton);  // Press the delete button
+        };
+
+        fireEvent.press(getByText('Submit'));
+        expect(global.alert).toHaveBeenCalledWith('Please enter a 6-digit pin');
+        
+    });
+
+    it('should add "0" to the pin when the 0 button is pressed', async () => {
+        const { getByText } = render(<PinScreenReg2 navigation={{ navigate: mockNavigate }} />);
+        const zeroButton = getByText('0');
+        for(let i = 0; i < 4; i++){
+        fireEvent.press(zeroButton);  // Press the 0 button
+        }
+        
+        fireEvent.press(getByText('Submit'));
+        expect(global.alert).toHaveBeenCalledWith('Please enter a 6-digit pin');
+    });
+
+    it('should say implemeny passowrd recovery', async () => {
+        const { getByText, findByTestId } = render(<PinScreenReg2 navigation={{ navigate: mockNavigate }} />);
+        "123456".split('').forEach(num => {
+            fireEvent.press(getByText(num.toString()));
+        }); 
+        const zeroButton = getByText('0');
+        for(let i = 0; i < 4; i++){
+        fireEvent.press(zeroButton);  // Press the 0 button
+        }
+
+        const resetPwordButton = await findByTestId('ForgottenPwrd');
+        fireEvent.press(resetPwordButton);
+    });
+    
 });

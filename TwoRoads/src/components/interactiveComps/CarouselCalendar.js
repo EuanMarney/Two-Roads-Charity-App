@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import LottieView from 'lottie-react-native';
-import { View, Text, Dimensions, TouchableOpacity } from "react-native";
+import React from 'react';
+import { Dimensions } from "react-native";
 import Carousel from 'react-native-reanimated-carousel';
-
-import stylesheet from "../Styles/stylesheet";
 
 const {width : screenWidth} = Dimensions.get('window');
 
