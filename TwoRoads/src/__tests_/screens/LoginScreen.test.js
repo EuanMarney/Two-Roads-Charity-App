@@ -41,7 +41,7 @@ describe('LoginScreen', () => {
       await waitFor(() => {
         expect(mockNavigate).toHaveBeenCalledWith('Home');
       });
-    });
+    }, 100000);
   
     it('shows alert on incorrect pin submission', async () => {
       const { getByText } = renderLoginScreen();

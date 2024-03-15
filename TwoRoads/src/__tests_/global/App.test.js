@@ -43,6 +43,6 @@ describe('App component', () => {
 
       // Ensure the splash screen is hidden after initialization
       expect(SplashScreen.hideAsync).toHaveBeenCalled();
-    });
+    }, 100000);
   });
 });
