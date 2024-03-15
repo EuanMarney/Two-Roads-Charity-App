@@ -13,4 +13,5 @@ tests:
     - docker
   stage: test
   script:
-    - echo "Jest tests here"
+    - npm install
+    - npm run test
