@@ -38,17 +38,15 @@ export const insertHedonicMoment = (
       }
     },
     () => {
-      console.log("Transaction success, hedonicMoments.js line 36");
     },
   );
 };
 
-// Inside your db.js or a similar database utility file
 export const getAllHedonicMoments = async (db) => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        "SELECT * FROM HedonicMoments", // Replace tableName with your actual table name
+        "SELECT * FROM HedonicMoments", 
         [],
         (_, { rows }) => resolve(rows._array),
         (_, error) => {
@@ -71,7 +69,7 @@ export const getHedonicMomentsForDate = async (db, selectedDate) => {
         },
         (_, error) => {
           reject(error);
-          return true; // To stop the propagation of the error
+          return true; 
         },
       );
     });

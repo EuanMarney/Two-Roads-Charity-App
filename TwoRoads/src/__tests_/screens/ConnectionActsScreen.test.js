@@ -3,18 +3,15 @@ import React from "react";
 
 import ConnectionActsScreen from "../../screens/InputScreens/ConnectionActsScreen";
 
-// Combine the mocks for useNavigation and useRoute
 jest.mock('@react-navigation/native', () => {
     const actualNav = jest.requireActual('@react-navigation/native');
     return {
         ...actualNav,
         useNavigation: () => ({
             navigate: jest.fn(),
-            // Add other navigation functions that your component uses
         }),
         useRoute: () => ({
             params: {
-                // Mock any params your component might use
             },
         }),
     };
@@ -23,15 +20,12 @@ jest.mock('@react-navigation/native', () => {
 
 
 describe("ConnectionActsScreen", () => {
-    // Test if the ConnectionActsScreen component renders
     it("renders correctly", () => {
             const { getByTestId } = render(<ConnectionActsScreen />);
-            // Ensure that "connection-acts-screen" testID exists in your component
             const connectionActsScreen = getByTestId("connection-acts-screen");
             expect(connectionActsScreen).toBeTruthy();
     });
 
-    // Tests if the text input fields for the first, second, and third connection acts are rendered and accept input correctly.
     it("renders text input fields for the first, second, and third connection acts", () => {
         const { getByPlaceholderText } = render(<ConnectionActsScreen />);
         const firstConnectionAct = getByPlaceholderText("Describe the first act...");
@@ -43,7 +37,6 @@ describe("ConnectionActsScreen", () => {
         expect(thirdConnectionAct).toBeTruthy();
     });
 
-    // Tests if entering text in the connection act input fields correctly updates component state.
     it("updates component state when text is entered in the input fields", () => {
         const { getByPlaceholderText } = render(<ConnectionActsScreen />);
         const firstConnectionAct = getByPlaceholderText("Describe the first act...");

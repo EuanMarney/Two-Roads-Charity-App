@@ -3,6 +3,8 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { ImageBackground, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
 
+import * as Haptics from "expo-haptics"
+
 import backgroundImage from "../../assets/kindnessBackground.png";
 import InputScreenHeader from "../../components/Header/inputScreenHeader";
 import Layout from "../../components/Layout";
@@ -38,10 +40,10 @@ const KindnessActsScreen = () => {
       setSecondKindAct("");
       setThirdKindAct("");
 
+
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
       navigation.navigate("Home");
 
-      const alldata = await getAllActsOfKindness(db);
-      console.log(alldata);
     } catch (error) {
       console.error("Error adding Kindness Acts: ", error);
     }

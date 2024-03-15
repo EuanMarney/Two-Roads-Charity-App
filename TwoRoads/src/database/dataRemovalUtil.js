@@ -41,5 +41,5 @@ export const clearSecureStore = async () => {
 // Combined data removal
 export const removeAllUserData = async () => {
   await clearSecureStore();
-  await dropAllTables(); // Adjust based on your choice
+  await dropAllTables(); 
 };
