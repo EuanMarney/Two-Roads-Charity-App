@@ -1,3 +1,4 @@
+import { color } from "@rneui/base";
 import {StyleSheet, Dimensions, Platform} from "react-native";
 
 // Colour Pallete
@@ -6,7 +7,8 @@ const white = "#F0F8FF";
 //const indigo = "#AA9CFC";
 //const light_green = "#C1F6A2";
 //const mauve = "#DA9CFC";
-const purple = "#592E83";
+const headerPurple = "#592E83";
+const purple = "#820263";
 
 //Get Screen Dimensions
 const { width } = Dimensions.get('window');
@@ -150,9 +152,9 @@ const styles = StyleSheet.create(
             backgroundColor: blue,
             padding: 15,
             borderRadius: 30,
-            justifyContent: "space-evenly",
+            justifyContent: "center",
             alignItems: "center",
-            margin: 10,
+            margin: 12,
           },
 
           submitText: {
@@ -221,7 +223,7 @@ const styles = StyleSheet.create(
           },
 
           headerRectangle: {
-            backgroundColor: purple,
+            backgroundColor: headerPurple,
             height: "100%",
             justifyContent: "flex-end",
             padding: "4%",
@@ -365,14 +367,14 @@ const styles = StyleSheet.create(
 
           buttonContainer: {
             flex: 1,
+            flexDirection: "column",
             justifyContent: "center",
-            paddingHorizontal: "2%",
-            marginTop: "6%", // Adjust the marginTop to bring buttons closer to text
+            paddingHorizontal: "3%",
           },
           customButton: {
             marginBottom: "5%",
-            borderRadius: width * 0.75,
-            paddingVertical: "7.5%",
+            borderRadius: width * 0.05,
+            paddingVertical: "8%",
             paddingHorizontal: "5%",
             alignItems: "center",
             justifyContent: "center",
@@ -447,7 +449,7 @@ const styles = StyleSheet.create(
             marginBottom: "5%",
             paddingTop: "5%",
             paddingBottom: "5%",
-            backgroundColor: "#3892E5",
+            backgroundColor: "#1A73C7",
             borderTopRightRadius: 20,
             borderBottomLeftRadius: 20,
             shadowColor: "black",
@@ -459,9 +461,106 @@ const styles = StyleSheet.create(
             width: "95%",
           },
 
+          dailyMindfulnessButtonContainer: {
+
+          },
+
+          dailyMindfulnessButtons: {
+            paddingVertical: "5%",
+            paddingHorizontal: "10%",
+            borderRadius: width * 0.05,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: purple
+          },
+
+          dailyMindfulnessText: {
+            color: "black",
+            fontFamily: "Nunito",
+            letterSpacing: 2,
+            fontSize: 15
+          },
+
+          // ---------------------------------------------------------------------------- //
+
+          //Track Player
+
+          trackPlayerContainer: {
+            width: width * 1.25,
+            height: width * 0.5,
+            borderRadius: width * 0.75,
+            backgroundColor: purple,
+            position: "absolute",
+            bottom: -(width * 0.25),
+            overflow: "hidden",
+            alignSelf: "center",
+          },
+
+          trackPlayerIconContainer: {
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            position: 'absolute',
+            bottom: width * 0.33,
+            width: width,
+            marginLeft: "10%",
+            marginRight: "10%" 
+          },
+
+          trackPlayerIcons: {
+            color: "white",
+            fontSize: 25
+          },
+
+          // ---------------------------------------------------------------------------- //
+
+          //Carousel Component
+
+          carouselContainer: {
+
+          },
+
+          cardContainer: {
+            flexDirection: "column",
+            backgroundColor: "white",
+            borderRadius: width * 0.1,
+            width: width * 0.8 - 10,
+            height: width * 1.35,
+            padding: 20,
+            alignItems: "center",
+            justifyContent: "center",
+            shadowColor: "black",
+            shadowOpacity: 0.25,
+            shadowOffset: {
+              width: 0,
+              height: 0.4,
+            },
+
+          },
+
+          animationContainer: {
+            flex: 1.5,
+            height: "100%",
+            width: "100%",
+          },
+
+          cardTextContainer: {
+            flex: 1
+          },
+
+          cardTitle: {
+            fontFamily: "NunitoBold",
+            fontSize: 20,
+            marginBottom: 10,
+            textAlign: "center",
+          },
           
-
-
+          cardText: {
+            fontFamily: "Nunito",
+            fontSize: 16,
+            textAlign: "center",
+            paddingBottom: "5%"
+          },
     }
 
 

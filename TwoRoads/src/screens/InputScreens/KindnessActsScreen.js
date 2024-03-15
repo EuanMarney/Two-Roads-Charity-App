@@ -54,7 +54,7 @@ const KindnessActsScreen = () => {
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
       <Layout>
-        <InputScreenHeader headerStyles={{ backgroundColor: "#AA9CFC" }} />
+        <InputScreenHeader headerStyles={{ backgroundColor: "#6143A9" }} />
         <ScrollView style={stylesheet.inputScrollView} testID="kindness-acts-screen">
           {/* <Text style={styles.headerText}>
             This is the Acts of Kindness page
@@ -64,7 +64,7 @@ const KindnessActsScreen = () => {
           <View
             style={[
               stylesheet.textBoxGroupContainers,
-              { backgroundColor: "#AA9CFC" },
+              { backgroundColor: "#6143A9" },
             ]}
           >
             <View style={stylesheet.rowContainer}>
@@ -90,7 +90,7 @@ const KindnessActsScreen = () => {
                   onChangeText={(text) => setSecondKindAct(text)}
                   value={secondKindAct}
                   placeholder="Describe the second act..."
-                  textInputStyle={{ borderColor: "#4A89FA" }} // Custom border color
+                  textInputStyle={{ borderColor: "#573AF8" }} // Custom border color
                 />
               </View>
             </View>
@@ -114,7 +114,7 @@ const KindnessActsScreen = () => {
             <SubmitButton
               title="Submit"
               onPress={handleSubmit}
-              buttonStyle={{ backgroundColor: "#4A89FA" }} // Custom background color
+              buttonStyle={{ backgroundColor: "#6143A9" }} // Custom background color
             />
           </View>
         </ScrollView>
