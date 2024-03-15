@@ -1,13 +1,16 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet, ImageBackground } from "react-native";
 
-// eslint-disable-next-line import/order
+// eslint-disable import/order
+import backgroundImage from "../../assets/background.png"
+import Footer from "../../components/Footer";
 import { getConnectionActsForDate } from '../../database/connectionActs';
 import { connectToDatabase } from '../../database/db';
 import { getGratitudeDiaryForDate } from '../../database/gratitudeDiary';
 import { getHedonicMomentsForDate } from '../../database/hedonicMoments';
 import { getKindnessActsForDate } from '../../database/kindnessActs';
+// eslint-enable import/order
 
 const CalendarRememberanceScreen = ({ route }) => {
   const [data, setData] = useState({
@@ -44,8 +47,9 @@ const CalendarRememberanceScreen = ({ route }) => {
   // TODO : implement logic that will only grab the last entries from the database. otherwise this will get real messey really quick
 
   return (
+    <ImageBackground source={backgroundImage} style={sectionStyles.backgroundImage}>
     <ScrollView>
-      <View style={sectionStyles.gratitudeHeader}>
+      <View style={sectionStyles.hedonicHeader}>
         <Text>Date: {selectedDate}</Text>
         <Text style={sectionStyles.headerText}>Hedonic Moments</Text>
         {data.moments.map(
@@ -64,93 +68,109 @@ const CalendarRememberanceScreen = ({ route }) => {
       </View>
 
       {/* Render Connection Acts */}
-      <View>
-        <Text>Connection Acts </Text>
+      <View style={sectionStyles.connectionHeader}>
+        <Text style={sectionStyles.headerText}>Connection Acts </Text>
         {data.connectionActs.map(
           (
             connectionAct,
             index, // Corrected access to moments via data.moments
           ) => (
             <View key={`connectionAct-${index}`}>
-              <Text>First Connection: {connectionAct.firstConnection}</Text>
-              <Text>Second Connection: {connectionAct.secondConnection}</Text>
-              <Text>Third Connection: {connectionAct.thirdConnection}</Text>
+              <Text style={sectionStyles.entryText}>First Connection: {connectionAct.firstConnection}</Text>
+              <Text style={sectionStyles.entryText}>Second Connection: {connectionAct.secondConnection}</Text>
+              <Text style={sectionStyles.entryText}>Third Connection: {connectionAct.thirdConnection}</Text>
             </View>
           ),
         )}
       </View>
 
       {/* Render Gratitude Diary */}
-      <View>
-        <Text> Gratitude Diary</Text>
+      <View style={sectionStyles.gratitudeHeader}>
+        <Text style={sectionStyles.headerText}> Gratitude Diary</Text>
         {data.gratitudeDiarys.map(
           (
             gratitudeDiary,
             index, // Corrected access to moments via data.moments
           ) => (
             <View key={`gratitudeDiary-${index}`}>
-              <Text>First Grateful: {gratitudeDiary.firstGrateful}</Text>
-              <Text>Second Grateful: {gratitudeDiary.secondGrateful}</Text>
-              <Text>Third Grateful: {gratitudeDiary.thirdGrateful}</Text>
-              <Text>first why: {gratitudeDiary.firstWhy}</Text>
-              <Text>second why: {gratitudeDiary.secondWhy}</Text>
-              <Text>third why: {gratitudeDiary.thirdWhy}</Text>
+              <Text style={sectionStyles.entryText}>First Grateful: {gratitudeDiary.firstGrateful}</Text>
+              <Text style={sectionStyles.entryText}>Second Grateful: {gratitudeDiary.secondGrateful}</Text>
+              <Text style={sectionStyles.entryText}>Third Grateful: {gratitudeDiary.thirdGrateful}</Text>
+              <Text style={sectionStyles.entryText}>first why: {gratitudeDiary.firstWhy}</Text>
+              <Text style={sectionStyles.entryText}>second why: {gratitudeDiary.secondWhy}</Text>
+              <Text style={sectionStyles.entryText}>third why: {gratitudeDiary.thirdWhy}</Text>
             </View>
           ),
         )}
       </View>
 
       {/* Render kindness Acts */}
-      <View>
-        <Text>Kindness Acts </Text>
+      <View style={sectionStyles.kindnessHeader}>
+        <Text style={sectionStyles.headerText}>Kindness Acts </Text>
         {data.kindnessActs.map(
           (
             kindnessAct,
             index, // Corrected access to moments via data.moments
           ) => (
             <View key={`kindnessAct-${index}`}>
-              <Text>First Kindness: {kindnessAct.firstKindness}</Text>
-              <Text>Second Kindness: {kindnessAct.secondKindness}</Text>
-              <Text>Third Kindness: {kindnessAct.thirdKindness}</Text>
+              <Text style={sectionStyles.entryText}>First Kindness: {kindnessAct.firstKindness}</Text>
+              <Text style={sectionStyles.entryText}>Second Kindness: {kindnessAct.secondKindness}</Text>
+              <Text style={sectionStyles.entryText}>Third Kindness: {kindnessAct.thirdKindness}</Text>
             </View>
           ),
         )}
       </View>
     </ScrollView>
+    <Footer/>
+    </ImageBackground>
   );
 };
 
 
 const sectionStyles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1, // Make sure it covers the whole screen
+    width: null, // These width and height settings
+    height: null, // ensure the image covers the whole container
+  },
   gratitudeHeader: {
     backgroundColor: '#3892E5', // The blue from the Gratitude Diary image
-    padding: 10,
+    padding: 16, // Increased padding for spacing from the screen edges
+    alignItems: 'center', // Center items horizontally (along the cross axis)
   },
   kindnessHeader: {
-    backgroundColor: '#820263', // The purple from the Acts of Kindness image
-    padding: 10,
+    backgroundColor: '#AA9CFC', // The purple from the Acts of Kindness image
+    padding: 16,
+    alignItems: 'center',
   },
   hedonicHeader: {
-    backgroundColor: '#592E83', // The darker purple from the Hedonic Moments image
-    padding: 10,
+    backgroundColor: '#DA9CFC', // The darker purple from the Hedonic Moments image
+    padding: 16,
+    alignItems: 'center',
   },
   connectionHeader: {
-    backgroundColor: '#2C7761', // The teal from the Acts of Connection image
-    padding: 10,
+    backgroundColor: '#70FFC8', // The teal from the Acts of Connection image
+    padding: 16,
+    alignItems: 'center',
   },
   entry: {
-    backgroundColor: '#F0F8FF', // Assuming a light color for entries
+    backgroundColor: '#000000', // Assuming a light color for entries
     margin: 5,
     padding: 10,
     borderRadius: 5,
+    // Add padding to the sides for each entry
+    paddingHorizontal: 16,
   },
   entryText: {
-    color: '#FFFFFF', // White text to stand out against the darker background
+    color: '#000000', // White text to stand out against the darker background
+    textAlign: 'center', // Center text horizontally
   },
   headerText: {
     color: '#FFFFFF', // White text for the header
     fontWeight: 'bold',
+    textAlign: 'center', // Center text horizontally
   },
 });
+
 
 export default CalendarRememberanceScreen;
