@@ -1,3 +1,4 @@
+import { color } from "@rneui/base";
 import {StyleSheet, Dimensions, Platform} from "react-native";
 
 // Colour Pallete
@@ -523,8 +524,8 @@ const styles = StyleSheet.create(
             flexDirection: "column",
             backgroundColor: "white",
             borderRadius: width * 0.1,
-            width: width * 0.8 - 10,
-            height: width * 1.35,
+            width: width * 0.9 - 40,
+            height: width * 1.5,
             padding: 20,
             alignItems: "center",
             justifyContent: "center",
@@ -534,7 +535,23 @@ const styles = StyleSheet.create(
               width: 0,
               height: 0.4,
             },
+          },
 
+          calendarCardContainer: {
+            flexDirection: "column",
+            backgroundColor: "white",
+            borderRadius: width * 0.1,
+            width: width * 0.9 - 40,
+            height: width * 1.5,
+            padding: 20,
+            alignItems: "center",
+            justifyContent: "center",
+            shadowColor: "black",
+            shadowOpacity: 0.25,
+            shadowOffset: {
+              width: 0,
+              height: 0.4,
+            },
           },
 
           animationContainer: {
@@ -560,6 +577,26 @@ const styles = StyleSheet.create(
             textAlign: "center",
             paddingBottom: "5%"
           },
+
+          calendarCarouselHeaderText: {
+            justifyContent: "flex-start",
+            paddingBottom: "25%",
+            fontFamily: "Nunito",
+            fontSize: 25,
+          },
+
+          calendarCarouselBodyTextView: {
+            justifyContent: "center",
+            alignContent: "center",
+          },
+
+          entryText: {
+            textAlign: "center",
+            fontFamily: "Nunito",
+            letterSpacing: 2,
+          }
+
+
     }
 
 

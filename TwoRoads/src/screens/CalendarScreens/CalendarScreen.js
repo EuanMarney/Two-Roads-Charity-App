@@ -1,7 +1,7 @@
 
 import { MaterialIcons } from '@expo/vector-icons';
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
 import { getAllActsOfConnection } from '../../database/connectionActs';
@@ -9,6 +9,9 @@ import { connectToDatabase } from '../../database/db';
 import { getAllGratitudeDiaryEntries } from '../../database/gratitudeDiary';
 import { getAllHedonicMoments } from '../../database/hedonicMoments';
 import { getAllActsOfKindness } from '../../database/kindnessActs';
+import InputScreenHeader from '../../components/Header/inputScreenHeader';
+import Layout from '../../components/Layout';
+import { Input } from '@rneui/base';
 
 
 const today = new Date().toISOString().split('T')[0];
@@ -72,8 +75,10 @@ export default function CalendarScreen({ navigation }) {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Calendar
+
+    <Layout>
+        <InputScreenHeader />
+        <Calendar
         current={today}
         minDate='2022-01-01'
         maxDate='2026-01-31'
@@ -90,8 +95,33 @@ export default function CalendarScreen({ navigation }) {
         enableSwipeMonths
         markedDates={markedDates} // Make sure to pass the markedDates to the Calendar
         markingType="multi-dot"
+        style={{
+          height: Dimensions.get('screen').height,
+          
+        }}
       />
-    </View>
+    </Layout>
+
+    // <View style={styles.container}>
+    //   <Calendar
+    //     current={today}
+    //     minDate='2022-01-01'
+    //     maxDate='2026-01-31'
+    //     onDayPress={(day) => {
+    //       navigation.navigate('CalendarRememberance', {
+    //         selectedDate: day.dateString,
+    //       });
+    //     }}
+    //     monthFormat='yyyy MMMM'
+    //     onMonthChange={(month) => {
+    //       console.log('month changed', month);
+    //     }}
+    //     renderArrow={(direction) => <Arrow direction={direction} />}
+    //     enableSwipeMonths
+    //     markedDates={markedDates} // Make sure to pass the markedDates to the Calendar
+    //     markingType="multi-dot"
+    //   />
+    // </View>
   );
 }
 

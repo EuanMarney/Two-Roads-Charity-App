@@ -1,4 +1,3 @@
-import { Button } from "@rneui/base";
 import LottieView from 'lottie-react-native';
 import React from "react";
 import { View, Text, Dimensions, TouchableOpacity } from "react-native";
