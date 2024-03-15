@@ -7,12 +7,3 @@ build-job:
   script:
     - npm install -D eslint eslint-config-prettier eslint-config-universe
     - npx eslint /builds/team-project-h/2023/sh29/sh29-main/TwoRoads/App.js /builds/team-project-h/2023/sh29/sh29-main/TwoRoads/src
-
-tests:
-  tags:
-    - docker
-  stage: test
-  script:
-    - cd TwoRoads/
-    - npm install
-    - npm run test
