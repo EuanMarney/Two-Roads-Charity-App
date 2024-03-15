@@ -15,13 +15,16 @@ const mockDb = {
   }),
 };
 
-beforeEach(() => {
-  mockExecuteSql.mockClear();
-  mockDb.transaction.mockClear();
-});
-
 describe('Connection Acts DB Operations', () => {
+  beforeEach(() => {
+    console.log('Clearing mock functions before each test');
+    mockExecuteSql.mockClear();
+    mockDb.transaction.mockClear();
+  });
+
   it('should attempt to insert a Connection Act', () => {
+    console.log('Starting test for insertConnectionAct');
+
     const onSuccessMock = jest.fn();
     const onErrorMock = jest.fn();
     const date = '2022-03-20';
@@ -39,7 +42,7 @@ describe('Connection Acts DB Operations', () => {
       onErrorMock,
     );
 
-    // Check if executeSql was called correctly
+    console.log('Verifying executeSql was called with the correct parameters');
     expect(mockExecuteSql).toHaveBeenCalledWith(
       `
       INSERT INTO ActsOfConnection (date, firstConnection, secondConnection, thirdConnection)
@@ -52,9 +55,11 @@ describe('Connection Acts DB Operations', () => {
   });
 
   it('should attempt to fetch all Acts of Connection from the database', () => {
+    console.log('Starting test for getAllActsOfConnection');
+
     getAllActsOfConnection(mockDb);
 
-    // Verify that executeSql was called with the correct SQL command
+    console.log('Verifying executeSql was called for fetching all Acts of Connection');
     expect(mockExecuteSql).toHaveBeenCalledWith(
       "SELECT * FROM ActsOfConnection",
       [],
@@ -64,10 +69,13 @@ describe('Connection Acts DB Operations', () => {
   });
 
   it('should attempt to fetch Connection Acts for a given date from the database', () => {
+    console.log('Starting test for getConnectionActsForDate');
+
     const selectedDate = '2022-01-01';
 
     getConnectionActsForDate(mockDb, selectedDate);
 
+    console.log('Verifying executeSql was called for fetching Connection Acts for a date');
     expect(mockExecuteSql).toHaveBeenCalledWith(
       "SELECT * FROM ActsOfConnection WHERE date = ?;",
       [selectedDate],

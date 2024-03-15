@@ -3,18 +3,15 @@ import React from "react";
 
 import ConnectionActsScreen from "../../screens/InputScreens/ConnectionActsScreen";
 
-// Combine the mocks for useNavigation and useRoute
 jest.mock('@react-navigation/native', () => {
     const actualNav = jest.requireActual('@react-navigation/native');
     return {
         ...actualNav,
         useNavigation: () => ({
             navigate: jest.fn(),
-            // Add other navigation functions that your component uses
         }),
         useRoute: () => ({
             params: {
-                // Mock any params your component might use
             },
         }),
     };
@@ -80,4 +77,24 @@ describe("ConnectionActsScreen", () => {
         expect(backgroundImage).toBeTruthy();
     });
 
+    // Mock the navigation object
+    const mockNavigate = jest.fn();
+    jest.mock('@react-navigation/native', () => ({
+        ...jest.requireActual('@react-navigation/native'),
+        useNavigation: () => ({
+            navigate: mockNavigate,
+        }),
+    }));
+
+    // Mock the database functions
+    jest.mock('../../database/db', () => ({
+        connectToDatabase: jest.fn(),
+        createTables: jest.fn(),
+    }));
+
+    jest.mock('../../database/connectionActs', () => ({
+        insertConnectionAct: jest.fn(),
+    }));
 });
+
+
