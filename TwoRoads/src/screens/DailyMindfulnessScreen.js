@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import { Audio } from 'expo-av';
 import { useEffect, useState } from 'react';
 import { View, ImageBackground } from 'react-native';
@@ -10,6 +11,7 @@ import Layout from '../components/Layout';
 import InputScreenHeader from '../components/Header/inputScreenHeader';
 import TrackPlayer from '../components/Footer/TrackPlayer';
 import CarouselComp from '../components/interactiveComps/Carousel';
+/* eslint-enable import/order */
 
 export default function App() {
 
@@ -78,10 +80,10 @@ export default function App() {
     loadSound(require('../assets/audio/ChocolateMeditation.mp3'), 'chocolateMeditation');
     loadSound(require('../assets/audio/Med1.mp3'), 'Med1');
     loadSound(require('../assets/audio/Med2.mp3'), 'Med2');
-
     return () => {
       
       Object.values(sounds).forEach(sound => {
+        console.log(sound);
         if (sound) {
           console.log('Unloading Sound');
           sound.unloadAsync();

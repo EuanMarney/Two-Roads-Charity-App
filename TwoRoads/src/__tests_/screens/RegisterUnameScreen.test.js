@@ -1,7 +1,9 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import RegisterScreen from '../../screens/RegisterScreens/RegisterUnameScreen';
 import * as SecureStore from 'expo-secure-store';
+import React from 'react';
+
+import RegisterScreen from '../../screens/RegisterScreens/RegisterUnameScreen';
+
 
 jest.mock('expo-secure-store', () => ({
     setItemAsync: jest.fn(),

@@ -22,6 +22,7 @@ import RegisterScreen from "../screens/RegisterScreens/RegisterUnameScreen";
 //calendar screen imports
 import CalendarScreen from "../screens/CalendarScreens/CalendarScreen";
 import CalendarRememberanceScreen from "../screens/CalendarScreens/CalendarRememberanceScreen";
+import CalendarLoginScreen from "../screens/CalendarScreens/CalendarLoginScreen";
 
 //settings screen imports
 import SettingsScreen from "../screens/SettingsScreen";
@@ -91,7 +92,8 @@ const StackNavigator = () => {
         component={DailyMindfulnessScreen}
       />
       <Stack.Screen name="Settings" component={SettingsScreen} />
-      <Stack.Screen name="Calendar" component={CalendarScreen} />
+      <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
+      <Stack.Screen name="Calendar" component={CalendarLoginScreen} />
       <Stack.Screen
         name="CalendarRememberance"
         component={CalendarRememberanceScreen}

@@ -1,6 +1,7 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
+import React from 'react';
 import { Keyboard } from 'react-native';
+
 import BLeaveTextBox from '../../components/interactiveComps/ButtonToLeaveTextBox';
 
 jest.mock('react-native', () => {

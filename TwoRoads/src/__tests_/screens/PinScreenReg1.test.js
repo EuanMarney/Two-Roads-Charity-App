@@ -1,6 +1,7 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import * as SecureStore from 'expo-secure-store';
+import React from 'react';
+
 import PinScreenReg1 from '../../screens/RegisterScreens/PinScreenReg1';
 
 jest.mock('expo-secure-store', () => ({

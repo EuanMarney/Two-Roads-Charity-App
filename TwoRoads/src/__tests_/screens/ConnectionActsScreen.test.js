@@ -1,5 +1,6 @@
-import React from "react";
 import { render,fireEvent, waitFor} from "@testing-library/react-native";
+import React from "react";
+
 import ConnectionActsScreen from "../../screens/InputScreens/ConnectionActsScreen";
 
 // Combine the mocks for useNavigation and useRoute
