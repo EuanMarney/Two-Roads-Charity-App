@@ -13,7 +13,7 @@ tests:
     - docker
   stage: test
   script:
-    - cd sh29-main/TwoRoads
+    - cd TwoRoads/
     - npm install
     - npm run test
 
