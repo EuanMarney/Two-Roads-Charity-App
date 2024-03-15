@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { ImageBackground, KeyboardAvoidingView, Platform, ScrollView, Text, View } from "react-native";
+import * as Haptics from 'expo-haptics'
 
 import backgroundImage from "../../assets/connectionsBackground.png";
 import InputScreenHeader from "../../components/Header/inputScreenHeader";
@@ -38,6 +39,8 @@ const ConnectionActsScreen = () => {
       setFirstConnectionAct("");
       setSecondConnectionAct("");
       setThirdConnectionAct("");
+
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
 
       navigation.navigate("Home");
     } catch (error) {

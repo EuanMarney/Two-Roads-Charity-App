@@ -49,7 +49,6 @@ export const insertGratitudeDiaryEntry = (
       }
     },
     () => {
-      console.log("Transaction success, hedonicMoments.js line 36");
     },
   );
 };
@@ -59,7 +58,7 @@ export const getAllGratitudeDiaryEntries = async (db) => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        "SELECT * FROM GratitudeDiary", // Replace tableName with your actual table name
+        "SELECT * FROM GratitudeDiary",
         [],
         (_, { rows }) => resolve(rows._array),
         (_, error) => {

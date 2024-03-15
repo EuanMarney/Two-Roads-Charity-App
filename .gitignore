@@ -8,6 +8,9 @@ package.json
 # gitlab
 .gitlab/
 
+# Testing
+coverage/
+
 # Expo
 .expo/
 dist/

@@ -40,5 +40,5 @@ export const clearSecureStore = async () => {
 export const removeAllUserData = async () => {
   await clearSecureStore();
   const db = await connectToDatabase();
-  await dropAllTables(db); // Adjust based on your choice
+  await dropAllTables(db); 
 };
