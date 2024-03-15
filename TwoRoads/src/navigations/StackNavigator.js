@@ -91,11 +91,23 @@ const StackNavigator = () => {
         options={{ headerShown: false, presentation: "fullScreenModal" }}
         component={DailyMindfulnessScreen}
       />
-      <Stack.Screen name="Settings" component={SettingsScreen} />
-      <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
-      <Stack.Screen name="Calendar" component={CalendarLoginScreen} />
+      <Stack.Screen 
+        name="Settings" 
+        component={SettingsScreen} 
+      />
+      <Stack.Screen 
+        name="CalendarScreen" 
+        options={{headerShown: false}}
+        component={CalendarScreen} 
+      />
+      <Stack.Screen 
+        name="Calendar" 
+        options={{headerTransparent: true}}
+        component={CalendarLoginScreen} 
+      />
       <Stack.Screen
         name="CalendarRememberance"
+        options={{headerShown: false}}
         component={CalendarRememberanceScreen}
       />
       <Stack.Screen
