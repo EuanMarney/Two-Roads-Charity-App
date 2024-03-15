@@ -1,4 +1,3 @@
-import { color } from "@rneui/base";
 import {StyleSheet, Dimensions, Platform} from "react-native";
 
 // Colour Pallete

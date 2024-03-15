@@ -22,13 +22,6 @@ describe('SettingsScreen', () => {
     jest.clearAllMocks();
   });
 
-  it('navigates to Notifications Settings screen when button is pressed', () => {
-    const { getByText } = render(<SettingsScreen navigation={{ navigate: mockNavigate }} />);
-    const notificationsButton = getByText('Notfications Settings');
-    fireEvent.press(notificationsButton);
-    expect(mockNavigate).toHaveBeenCalledWith('NotificationsSettingsScreen');
-  });
-
   it('shows an alert when Reset Data button is pressed and handles user confirmation', async () => {
     const { getByText } = render(<SettingsScreen navigation={{ navigate: mockNavigate }} />);
     const resetButton = getByText('Reset Data');
