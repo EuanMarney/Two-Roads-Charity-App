@@ -27,6 +27,7 @@ export default function CalendarScreen({ navigation }) {
 
         const allEntries = [...moments, ...connectionActs, ...kindnessActs, ...gratitudeDiarys];
 
+        // eslint-disable-next-line prefer-const
         let newMarkedDates = {};
         allEntries.forEach(entry => {
           console.log('Entry:', entry); // This will show each entry
@@ -88,7 +89,7 @@ export default function CalendarScreen({ navigation }) {
         renderArrow={(direction) => <Arrow direction={direction} />}
         enableSwipeMonths
         markedDates={markedDates} // Make sure to pass the markedDates to the Calendar
-        markingType={'multi-dot'}
+        markingType="multi-dot"
       />
     </View>
   );

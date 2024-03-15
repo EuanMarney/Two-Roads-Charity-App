@@ -1,8 +1,10 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import SettingsScreen from '../../screens/WelcomePage';
-import { removeAllUserData } from '../../database/dataRemovalUtil';
+import React from 'react';
 import { Alert } from 'react-native';
+
+import { removeAllUserData } from '../../database/dataRemovalUtil';
+import SettingsScreen from '../../screens/WelcomePage';
+
 
 // Mock the `removeAllUserData` function
 jest.mock('../../database/dataRemovalUtil', () => ({

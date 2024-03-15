@@ -1,10 +1,11 @@
+import { Button } from "@rneui/base";
+import LottieView from 'lottie-react-native';
 import React from "react";
 import { View, Text, Dimensions, TouchableOpacity } from "react-native";
 import Carousel from 'react-native-reanimated-carousel';
-import LottieView from 'lottie-react-native';
 
 import stylesheet from "../Styles/stylesheet";
-import { Button } from "@rneui/base";
+
 
 const {width : screenWidth} = Dimensions.get('window');
 

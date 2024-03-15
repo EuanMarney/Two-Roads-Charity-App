@@ -1,7 +1,9 @@
-import React from 'react';
 import { render } from '@testing-library/react-native';
-import Layout from '../../components/Layout';
+import React from 'react';
 import { Text } from 'react-native';
+
+import Layout from '../../components/Layout';
+
 
 describe('Layout Component', () => {
     it('renders correctly', () => {

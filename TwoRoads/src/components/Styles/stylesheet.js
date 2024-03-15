@@ -502,7 +502,7 @@ const styles = StyleSheet.create(
             alignItems: 'center',
             position: 'absolute',
             bottom: width * 0.33,
-            width: width,
+            width,
             marginLeft: "10%",
             marginRight: "10%" 
           },

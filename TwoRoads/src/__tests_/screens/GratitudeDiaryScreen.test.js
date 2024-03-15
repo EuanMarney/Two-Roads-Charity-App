@@ -1,7 +1,9 @@
-import React from "react";
 import { render,fireEvent} from "@testing-library/react-native";
-import GratitudeDiary from "../../screens/InputScreens/GratitudeDiaryScreen";
+import React from "react";
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
+
+import GratitudeDiary from "../../screens/InputScreens/GratitudeDiaryScreen";
+
 
 // Combine the mocks for useNavigation and useRoute
 jest.mock('@react-navigation/native', () => {

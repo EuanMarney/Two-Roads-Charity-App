@@ -1,8 +1,8 @@
 import React from "react";
 import { TouchableOpacity, View } from "react-native";
+import Feather from 'react-native-vector-icons/Feather';
 
 import stylesheet from "../Styles/stylesheet";
-import Feather from 'react-native-vector-icons/Feather';
 
 const TrackPlayer = ({onPause, onPlay, onRewind, onFastForward, isPlaying}) => {
 

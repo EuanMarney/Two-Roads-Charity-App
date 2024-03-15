@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 
 // eslint-disable-next-line import/order
 import { getConnectionActsForDate } from '../../database/connectionActs';
@@ -45,19 +45,19 @@ const CalendarRememberanceScreen = ({ route }) => {
 
   return (
     <ScrollView>
-      <View>
+      <View style={sectionStyles.gratitudeHeader}>
         <Text>Date: {selectedDate}</Text>
-        <Text>Hedonic Moments</Text>
+        <Text style={sectionStyles.headerText}>Hedonic Moments</Text>
         {data.moments.map(
           (
             moment,
             index, // Corrected access to moments via data.moments
           ) => (
-            <View key={`moment-${index}`}>
-              <Text>First Moment: {moment.firstMoment}</Text>
-              <Text>Second Moment: {moment.secondMoment}</Text>
-              <Text>Third Moment: {moment.thirdMoment}</Text>
-              <Text>Fourth Moment: {moment.fourthMoment}</Text>
+            <View key={`moment-${index}`} syle={sectionStyles.entry}>
+              <Text style={sectionStyles.entryText}>First Moment: {moment.firstMoment}</Text>
+              <Text style={sectionStyles.entryText}>Second Moment: {moment.secondMoment}</Text>
+              <Text style={sectionStyles.entryText}>Third Moment: {moment.thirdMoment}</Text>
+              <Text style={sectionStyles.entryText}>Fourth Moment: {moment.fourthMoment}</Text>
             </View>
           ),
         )}
@@ -119,5 +119,38 @@ const CalendarRememberanceScreen = ({ route }) => {
     </ScrollView>
   );
 };
+
+
+const sectionStyles = StyleSheet.create({
+  gratitudeHeader: {
+    backgroundColor: '#3892E5', // The blue from the Gratitude Diary image
+    padding: 10,
+  },
+  kindnessHeader: {
+    backgroundColor: '#820263', // The purple from the Acts of Kindness image
+    padding: 10,
+  },
+  hedonicHeader: {
+    backgroundColor: '#592E83', // The darker purple from the Hedonic Moments image
+    padding: 10,
+  },
+  connectionHeader: {
+    backgroundColor: '#2C7761', // The teal from the Acts of Connection image
+    padding: 10,
+  },
+  entry: {
+    backgroundColor: '#F0F8FF', // Assuming a light color for entries
+    margin: 5,
+    padding: 10,
+    borderRadius: 5,
+  },
+  entryText: {
+    color: '#FFFFFF', // White text to stand out against the darker background
+  },
+  headerText: {
+    color: '#FFFFFF', // White text for the header
+    fontWeight: 'bold',
+  },
+});
 
 export default CalendarRememberanceScreen;

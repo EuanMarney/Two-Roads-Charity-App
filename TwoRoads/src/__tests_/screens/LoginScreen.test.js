@@ -1,7 +1,9 @@
-import React from "react";
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
-import LoginScreen from "../../screens/LoginScreen";
 import * as SecureStore from 'expo-secure-store';
+import React from "react";
+
+import LoginScreen from "../../screens/LoginScreen";
+
 
 // Mocking external modules
 jest.mock('expo-secure-store');
